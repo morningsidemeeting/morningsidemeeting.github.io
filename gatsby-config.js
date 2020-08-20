@@ -1,5 +1,4 @@
 module.exports = {
-  pathPrefix: "/website",
   plugins: [
     `gatsby-plugin-sass`,
     {
