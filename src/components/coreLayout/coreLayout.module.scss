@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap");
+@import './../../shared/vars.scss';
+
+.container {
+  max-width: 600px;
+  width: 90vw;
+  margin: 20px auto;
+  color: $mainTextColor;
+
+  h1,
+  h2 {
+    font-family: "Playfair Display", serif;
+    text-align: center;
+    font-weight: 700;
+    font-size: 36px;
+
+    a {
+      text-decoration: none;
+      color: $mainTextColor;
+    }
+  }
+
+  h2 {
+    font-weight: 400;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 24px;
+  }
+
+  section {
+    margin-top: 50px;
+  }
+
+  h3 {
+    font-family: "Playfair Display", serif;
+    font-weight: 700;
+    font-size: 20px;
+  }
+
+  section header {
+    font-family: "Playfair Display", serif;
+    font-weight: 700;
+    font-size: 18px;
+    font-style: italic;
+  }
+
+  p,
+  li {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 18px;
+  }
+
+  p strong {
+    font-weight: 700;
+  }
+
+  footer {
+    margin-top: 100px;
+  }
+
+  footer hr {
+    width: 50%;
+    height: 1px;
+    background-color: #000;
+    border: none;
+  }
+
+  figure figcaption,
+  figure blockquote {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+
+  figure figcaption {
+    text-align: right;
+  }
+
+  figure figcaption::before {
+    content: "—";
+  }
+
+}
