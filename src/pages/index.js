@@ -9,6 +9,7 @@ const HomePage = ({ data }) => {
     <CoreLayout withSubtitle={true}>
       <section>
         <h3>Meeting for Worship</h3>
+        <p>Testing auto deploy</p>
         <p>
           We gather for silent worship every First Day (Sunday) morning at 11
           o’clock. Traditionally, we meet at Riverside Church in Manhattan.
