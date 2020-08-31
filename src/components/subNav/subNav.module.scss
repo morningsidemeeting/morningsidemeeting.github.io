@@ -2,19 +2,26 @@
 
 .subNav {
   width: 80%;
-  display: flex;
-  justify-content: center;
   margin: 0 auto;
-  padding: 0;
-  list-style: none;
-  font-family: "Playfair Display", serif;
+
+  ul {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+    font-family: "Playfair Display", serif;
+  }
+
+  h2 {
+    font-weight: 700;
+  }
 
   li {
     margin: 0 10px;
   }
 
   a {
-    font-style: italic;
     text-decoration: none;
     color: $mainTextColor;
   }

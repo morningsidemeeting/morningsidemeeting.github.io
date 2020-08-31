@@ -1,12 +1,13 @@
 import React from "react"
 import SubNav from "./index"
-import { Link } from "gatsby"
 
-const AboutSubNav = () => (
-  <SubNav>
-    <Link to="/about">History</Link>
-    <Link to="/faith">Faith</Link>
-  </SubNav>
-)
+const links = [
+  ["History", "/about"],
+  ["Faith", "/faith"],
+  ["Practice", "/practice"],
+  ["Fellowship", "/fellowship"],
+]
+
+const AboutSubNav = () => <SubNav links={links} subTitle="About Us" />
 
 export default AboutSubNav

@@ -1,13 +1,19 @@
 import React from "react"
+import { Link } from "gatsby"
 import Styles from "./subNav.module.scss"
 
-const SubNav = ({ children }) => {
+const SubNav = ({ links = [], subTitle = "" }) => {
   return (
-    <ul className={Styles.subNav}>
-      {React.Children.map(children, l => (
-        <li>{l}</li>
-      ))}
-    </ul>
+    <div className={Styles.subNav}>
+      <h2>{subTitle}</h2>
+      <ul>
+        {links.map(([name, path]) => (
+          <li>
+            <Link to={path}>{name}</Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }
 
