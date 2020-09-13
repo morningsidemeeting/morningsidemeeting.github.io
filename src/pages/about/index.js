@@ -36,13 +36,6 @@ const AboutPage = () => (
         discussion groups on a wide variety of topics.
       </p>
       <p>
-        Our lack of a Meetinghouse has presented particular challenges as we
-        have labored together to create a loving community. We have met those
-        challenges by establishing spiritual nurture groups, conducting mid-week
-        meetings in each others’ homes, holding periodic retreats, and forming
-        discussion groups on a wide variety of topics.
-      </p>
-      <p>
         It is believed that Morningside was the first Meeting anywhere to take a
         same-sex marriage under its care with the marriage of John Bohne and
         William McCann on May 30, 1987. Other meetings had held “Ceremonies of
