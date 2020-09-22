@@ -73,23 +73,30 @@ const AboutPage = () => (
       </p>
       <p>
         The seminal Quaker writing from this period is the Journal or
-        Autobiography of George Fox, which describes the spiritual journey of a
-        young man who, failing to discover answers in the existing (state)
-        religion, found solace in silent worship, replacing theological
-        questions with personal experience and continuing revelation.{" "}
+        <a href="https://www.ccel.org/ccel/fox_g/autobio.html">
+          Autobiography of George Fox
+        </a>
+        , which describes the spiritual journey of a young man who, failing to
+        discover answers in the existing (state) religion, found solace in
+        silent worship, replacing theological questions with personal experience
+        and continuing revelation.{" "}
       </p>
       <p>
         18th century Friends were led to see the inherent contradiction between
         the freedom of the Spirit and the ownership of human beings, and to
         begin questioning all moral argumens for slavery. Leaders like John
-        Woolman, who, in The Journal of John Woolman (1774), recounted his
-        40-year campaign to persuade slave-owning Friends to free their slaves,
-        emphasized that the fact that God was within us all was inconsistent
-        with the ownership of slaves. Woolman also saw dress as a socioeconomic
-        statement. He refused to wear cotton and eliminated collars and dyed
-        fabric from his wardrobe, not in order to create a Quaker aesthetic, but
-        because cotton and buttons and dyes were produced with slave labor and
-        wearing those products validated the system of slavery.
+        Woolman, who, in{" "}
+        <a href="http://www.ccel.org/ccel/woolman/journal.html">
+          The Journal of John Woolman
+        </a>{" "}
+        (1774), recounted his 40-year campaign to persuade slave-owning Friends
+        to free their slaves, emphasized that the fact that God was within us
+        all was inconsistent with the ownership of slaves. Woolman also saw
+        dress as a socioeconomic statement. He refused to wear cotton and
+        eliminated collars and dyed fabric from his wardrobe, not in order to
+        create a Quaker aesthetic, but because cotton and buttons and dyes were
+        produced with slave labor and wearing those products validated the
+        system of slavery.
       </p>
       <p>
         In the 19th century Friends experienced a period of Quietism in which
@@ -101,18 +108,47 @@ const AboutPage = () => (
       <p>
         In the 20th Century writers such as Rufus Jones reinvigorated Quakerism
         by framing it as simultaneously mystical and practical. Jones was one of
-        the founders, in 1917 of the American Friends Service Committee (AFSC),
-        to provide alternative service programs for conscientious objectors in
+        the founders, in 1917 of the{" "}
+        <a href="http://afsc.org/">American Friends Service Committee (AFSC)</a>
+        , to provide alternative service programs for conscientious objectors in
         World War I. His combination of mysticism and service has come to define
         Quakerism today. An excellent collection of digitized works of Jones and
-        other Quakers is available at HathiTrush.org. In 1943, a group of
-        Friends founded the Friends Committee on National Legislation (FCNL) in
-        order to lobby for changes in national legislation to make the nation's
-        laws more consistent with Quaker testimonies and values, especially the
-        peace testimony. FCNL is a “nonpartisan, multi-issue advocacy that
-        connects historic Quaker testimonies on peace, equality, simplicity, and
-        truth with peace and social justice issues.”
+        other Quakers is available at from the{" "}
+        <a href="https://www.hathitrust.org/">Hathi Trust Digital Library</a>.
+        In 1943, a group of Friends founded the{" "}
+        <a href="http://fcnl.org/">
+          Friends Committee on National Legislation (FCNL)
+        </a>{" "}
+        in order to lobby for changes in national legislation to make the
+        nation's laws more consistent with Quaker testimonies and values,
+        especially the peace testimony. FCNL is a “nonpartisan, multi-issue
+        advocacy that connects historic Quaker testimonies on peace, equality,
+        simplicity, and truth with peace and social justice issues.”
       </p>
+      <section>
+        <h2>Further Information on Quaker History and Practice</h2>
+        <p>
+          <a href="http://www.quakerinfo.org/resources/books">
+            Quaker Infomation Service
+          </a>{" "}
+          of Earlham College provides an excellent list of books about the
+          history of Friends.
+        </p>
+        <p>
+          <a href="https://quaker.org/">Quaker.org</a> is an excellent site for
+          all things Quaker. Maintained by Russell Nelson.
+        </p>
+        <p>
+          <a href="https://quakerbooks.org/">Quakerbooks.org</a> is a source of
+          works by and about Quakers that you won't find in your local
+          bookstore, such as Pendle Hill Pamphlets.
+        </p>
+        <p>
+          The Morninside Library maintains a small lending library on the
+          premises of Morningside Meeting's meeting room. The librarian would be
+          happy to introduce you to the collection.
+        </p>
+      </section>
     </section>
   </CoreLayout>
 )

@@ -8,10 +8,18 @@ const FaithPage = () => (
     <section>
       <h2>Practice</h2>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus
-        quasi facilis, rerum maiores minima adipisci, pariatur sunt asperiores
-        dolores veritatis totam cupiditate, labore voluptatibus quod vero quia
-        doloribus dolorem molestiae.
+        New York Yearly meeting publishes a manual of faith and practice that
+        provides Monthly meetings with guidance when making decisions of
+        process.{" "}
+        <a href="https://www.nyym.org/faith-and-practice">Faith and Practice</a>{" "}
+        is not a rulebook; it does not prescribe rules of governance. Instead it
+        provides prayerful reflections about the most basic questions of
+        conducting Worship and Business.
+      </p>
+      <p>
+        Quaker process is always the combination of past wisdom and present
+        experience. For this reason, Faith and Practice, which is regularly
+        updated, serves both as collective memory and immediate resource.
       </p>
     </section>
   </CoreLayout>
