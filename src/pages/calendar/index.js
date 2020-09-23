@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react"
 import { Helmet } from "react-helmet"
 import CoreLayout from "../../components/coreLayout"
 
-const CLIENT_ID = "AIzaSyA_vE8NXdGqTvS3KVKbMsEcEQy5V8-WKmg"
-const API_KEY =
+const API_KEY = "AIzaSyA_vE8NXdGqTvS3KVKbMsEcEQy5V8-WKmg"
+const CLIENT_ID =
   "914511001806-psum5tklqtm6to1b9r20lnq1jaklbq4m.apps.googleusercontent.com"
 const DISCOVERY_DOCS = [
   "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest",
