@@ -2,6 +2,13 @@ import React, { useState, useEffect } from "react"
 import { Helmet } from "react-helmet"
 import CoreLayout from "../../components/coreLayout"
 
+const CLIENT_ID = process.env.GCAL_CLIENT_ID
+const API_KEY = process.env.GCAL_API_KEY
+const DISCOVERY_DOCS = [
+  "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest",
+]
+const SCOPES = "https://www.googleapis.com/auth/calendar.readonly"
+
 const CalendarPage = () => {
   function getGapi() {
     return new Promise((resolve, reject) => {
@@ -9,7 +16,6 @@ const CalendarPage = () => {
       waitForGapi()
 
       function waitForGapi() {
-        console.log("waiting...")
         sanity++
         if (
           typeof window === "undefined" ||
@@ -28,10 +34,23 @@ const CalendarPage = () => {
   }
   async function loadCalendar() {
     try {
-      const api = await getGapi()
-      console.log("api", api)
-      api.load("client:auth2", () => {
-        console.log("wow")
+      const gapi = await getGapi()
+      gapi.load("client:auth2", () => {
+        gapi.client
+          .init({
+            apiKey: API_KEY,
+            clientId: CLIENT_ID,
+            discoveryDocs: DISCOVERY_DOCS,
+            scope: SCOPES,
+          })
+          .then(
+            function () {
+              console.log("OK then")
+            },
+            function (error) {
+              console.log("had a problem", error)
+            }
+          )
       })
     } catch (e) {
       console.log(e)
