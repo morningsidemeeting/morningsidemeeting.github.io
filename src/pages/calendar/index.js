@@ -9,53 +9,64 @@ const DISCOVERY_DOCS = [
 ]
 const SCOPES = "https://www.googleapis.com/auth/calendar.readonly"
 
-const CalendarPage = () => {
-  function getGapi() {
-    return new Promise((resolve, reject) => {
-      let sanity = 0
-      waitForGapi()
+function getGapi() {
+  return new Promise((resolve, reject) => {
+    let sanity = 0
+    waitForGapi()
 
-      function waitForGapi() {
-        sanity++
-        if (
-          typeof window === "undefined" ||
-          typeof window.gapi == "undefined"
-        ) {
-          if (sanity > 10) {
-            reject("Could not find gapi")
-          } else {
-            setTimeout(waitForGapi, 1000)
-          }
+    function waitForGapi() {
+      sanity++
+      if (typeof window === "undefined" || typeof window.gapi == "undefined") {
+        if (sanity > 10) {
+          reject("Could not find gapi")
         } else {
-          resolve(window.gapi)
+          setTimeout(waitForGapi, 1000)
         }
+      } else {
+        resolve(window.gapi)
       }
-    })
-  }
-  async function loadCalendar() {
-    try {
-      const gapi = await getGapi()
-      gapi.load("client:auth2", () => {
-        gapi.client
-          .init({
-            apiKey: API_KEY,
-            clientId: CLIENT_ID,
-            discoveryDocs: DISCOVERY_DOCS,
-            scope: SCOPES,
-          })
-          .then(
-            function () {
-              console.log("OK then")
-            },
-            function (error) {
-              console.log("had a problem", error)
-            }
-          )
-      })
-    } catch (e) {
-      console.log(e)
     }
+  })
+}
+
+async function loadCalendar() {
+  try {
+    const gapi = await getGapi()
+    gapi.load("client:auth2", () => {
+      gapi.client
+        .init({
+          apiKey: API_KEY,
+          clientId: CLIENT_ID,
+          discoveryDocs: DISCOVERY_DOCS,
+          scope: SCOPES,
+        })
+        .then(
+          function () {
+            gapi.client.calendar.events
+              .list({
+                calendarId:
+                  "d1kb6t7loimf7b9ib89to5d2hs@group.calendar.google.com",
+                timeMin: new Date().toISOString(),
+                showDeleted: false,
+                singleEvents: true,
+                maxResults: 10,
+                orderBy: "startTime",
+              })
+              .then(function (response) {
+                console.log("foooo", response.result.items)
+              })
+          },
+          function (error) {
+            console.log("had a problem", error)
+          }
+        )
+    })
+  } catch (e) {
+    console.log(e)
   }
+}
+
+const CalendarPage = () => {
   useEffect(() => {
     console.log("Here I am, Fooboy.")
     loadCalendar()
