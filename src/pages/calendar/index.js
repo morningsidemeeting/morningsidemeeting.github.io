@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import { Helmet } from "react-helmet"
 import CoreLayout from "../../components/coreLayout"
 
-const API_KEY = "AIzaSyA_vE8NXdGqTvS3KVKbMsEcEQy5V8-WKmg"
+const API_KEY = "AIzaSyDL8RarX_mwDJLqUEFjubpBdGl63u2Q5_g"
 const CLIENT_ID =
   "914511001806-psum5tklqtm6to1b9r20lnq1jaklbq4m.apps.googleusercontent.com"
 const DISCOVERY_DOCS = [
