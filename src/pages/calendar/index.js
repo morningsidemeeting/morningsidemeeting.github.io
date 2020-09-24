@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react"
 import { Helmet } from "react-helmet"
 import CoreLayout from "../../components/coreLayout"
 
-const API_KEY = process.env.GCAL_API_KEY
-const CLIENT_ID = process.env.GCAL_CLIENT_ID
+const API_KEY = "AIzaSyCCOtjPgXJ5tIqEILv9gm5pCpOAbyV_3aY"
+const CLIENT_ID =
+  "914511001806-psum5tklqtm6to1b9r20lnq1jaklbq4m.apps.googleusercontent.com"
 const DISCOVERY_DOCS = [
   "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest",
 ]
