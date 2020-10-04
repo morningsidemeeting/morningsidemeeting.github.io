@@ -1,0 +1,18 @@
+.calendarEvents {
+  list-style: none;
+
+  li {
+    margin-top: 2em;
+
+    header {
+      font-style: normal;
+      font-weight: 700;
+    }
+
+    time,
+    time + span {
+      font-style: italic;
+      display: block;
+    }
+  }
+}

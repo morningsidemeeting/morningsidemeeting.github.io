@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react"
 import { Helmet } from "react-helmet"
+import { format } from "date-fns"
 import CoreLayout from "../../components/coreLayout"
+import Styles from "./calendar.module.scss"
+import { parseISO } from "date-fns/esm"
 
 const API_KEY = "AIzaSyCCOtjPgXJ5tIqEILv9gm5pCpOAbyV_3aY"
 const CLIENT_ID =
@@ -86,13 +89,39 @@ const CalendarPage = () => {
   }
 
   function renderEvents() {
+    function displayDay(date) {
+      return format(date, "MMMM d, y")
+    }
+    function displayTime(date) {
+      return format(date, "h:mm aaaa")
+    }
     if (hasFetchedEvents) {
       return !events.length ? (
         <p>There are no upcoming events on the calendar.</p>
       ) : (
-        <ul>
-          {events.map(({ summary, id, start, end }) => {
-            return <li key={id}>{summary}</li>
+        <ul className={Styles.calendarEvents}>
+          {events.map(({ summary, id, location, description, start, end }) => {
+            const startDate = parseISO(start.dateTime || start.date)
+            const endDate = parseISO(end.dateTime || end.date)
+            const startDayStr = format(startDate, "yyyy-MM-dd")
+            const isSameDay = startDayStr === format(endDate, "yyyy-MM-dd")
+            const displaySpan = isSameDay
+              ? `${displayDay(startDate)}, ${displayTime(
+                  startDate
+                )} to ${displayTime(endDate)}`
+              : `${displayDay(startDate)}, ${displayTime(
+                  startDate
+                )} to ${displayDay(endDate)}, ${displayTime(endDate)}`
+            return (
+              <li key={id}>
+                <header>{summary}</header>
+                <time dateTime={startDayStr}>{displaySpan}</time>
+                {location ? <span>{location}</span> : null}
+                {description ? (
+                  <p dangerouslySetInnerHTML={{ __html: description }}></p>
+                ) : null}
+              </li>
+            )
           })}
         </ul>
       )

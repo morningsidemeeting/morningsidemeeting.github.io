@@ -11,6 +11,7 @@
   },
   "license": "0BSD",
   "dependencies": {
+    "date-fns": "^2.16.1",
     "gatsby": "^2.24.47",
     "gatsby-plugin-sass": "^2.3.12",
     "gatsby-theme-blog": "^2.0.1",
