@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, Fragment } from "react"
 import { Helmet } from "react-helmet"
 import { format } from "date-fns"
 import CoreLayout from "../../components/coreLayout"
@@ -33,7 +33,7 @@ function getGapi() {
   })
 }
 
-async function fetchCalendar() {
+async function fetchCalendar(maxResults=10) {
   return new Promise(async (resolve, reject) => {
     try {
       const gapi = await getGapi()
@@ -54,8 +54,8 @@ async function fetchCalendar() {
                   timeMin: new Date().toISOString(),
                   showDeleted: false,
                   singleEvents: true,
-                  maxResults: 10,
                   orderBy: "startTime",
+                  maxResults,
                 })
                 .then(function (response) {
                   console.log("got some events", response.result.items)
@@ -85,46 +85,89 @@ const CalendarPage = () => {
     }
     const loadedEvents = await fetchCalendar()
     setHasFetchedEvents(true)
-    setEvents(loadedEvents)
+    const groupedEvents = groupEvents(loadedEvents);
+    setEvents(groupedEvents)
   }
 
-  function renderEvents() {
-    function displayDay(date) {
-      return format(date, "MMMM d, y")
-    }
-    function displayTime(date) {
-      return format(date, "h:mm aaaa")
-    }
+  function groupEvents(events) {
+    const eventsMap = new Map();
+    return events.reduce((acc, evt, i) => {
+      const startMonth = format(parseEventISODate(evt.start), "MMMM")
+      const monthEvents = acc.get(startMonth)
+      if (!monthEvents) {
+        acc.set(startMonth, [evt]);
+      } else {
+        acc.set(startMonth, monthEvents.concat(evt));
+      }
+      return acc;
+    }, eventsMap)
+  }
+
+  function parseEventISODate(evt) {
+    return parseISO(evt.dateTime || evt.date);
+  }
+
+  function displayDay(date) {
+    return format(date, "MMMM d, y")
+  }
+
+  function displayTime(date) {
+    return format(date, "h:mm aaaa")
+  }
+
+  function renderEvent({ summary, id, location, description, start, end }) {
+    const startDate = parseEventISODate(start)
+    const endDate = parseEventISODate(end)
+    const startDayStr = format(startDate, "yyyy-MM-dd")
+    const isSameDay = startDayStr === format(endDate, "yyyy-MM-dd")
+    const displaySpan = isSameDay
+      ? `${displayDay(startDate)}, ${displayTime(
+          startDate
+        )} to ${displayTime(endDate)}`
+      : `${displayDay(startDate)}, ${displayTime(
+          startDate
+        )} to ${displayDay(endDate)}, ${displayTime(endDate)}`
+    return (
+      <li key={id}>
+        <header>{summary}</header>
+        <time dateTime={startDayStr}>{displaySpan}</time>
+        {location ? <span>{location}</span> : null}
+        {description ? (
+          <p dangerouslySetInnerHTML={{ __html: description }}></p>
+        ) : null}
+      </li>
+    )
+  } 
+
+  function renderEvents() { 
     if (hasFetchedEvents) {
-      return !events.length ? (
-        <p>There are no upcoming events on the calendar.</p>
-      ) : (
-        <ul className={Styles.calendarEvents}>
-          {events.map(({ summary, id, location, description, start, end }) => {
-            const startDate = parseISO(start.dateTime || start.date)
-            const endDate = parseISO(end.dateTime || end.date)
-            const startDayStr = format(startDate, "yyyy-MM-dd")
-            const isSameDay = startDayStr === format(endDate, "yyyy-MM-dd")
-            const displaySpan = isSameDay
-              ? `${displayDay(startDate)}, ${displayTime(
-                  startDate
-                )} to ${displayTime(endDate)}`
-              : `${displayDay(startDate)}, ${displayTime(
-                  startDate
-                )} to ${displayDay(endDate)}, ${displayTime(endDate)}`
-            return (
-              <li key={id}>
-                <header>{summary}</header>
-                <time dateTime={startDayStr}>{displaySpan}</time>
-                {location ? <span>{location}</span> : null}
-                {description ? (
-                  <p dangerouslySetInnerHTML={{ __html: description }}></p>
-                ) : null}
-              </li>
-            )
-          })}
-        </ul>
-      )
+      if (!events.size) {
+        return <p>There are no upcoming events on the calendar.</p>
+      } else {
+        const months = [];
+        const eventsByMonth = events.entries();
+        for (let i = 0; i < events.size; i++) {
+          const [month, evts] = eventsByMonth.next().value;
+          months.push(<Fragment>
+            <h3>{month}</h3>
+            <ul className={Styles.calendarEvents}>
+
+            { evts.map(renderEvent)}
+            </ul>
+          </Fragment>)
+        }
+        return months;
+        // const eventsByMonth = events.entries();
+        // let nextMonth = eventsByMonth.next();
+        // while (nextMonth.value) {
+        //   const [month, evts] = nextMonth.value;
+        //   months.push(<Fragment>
+        //     <h3>{month}</h3>
+        //     { evts.map(renderEvent)}
+        //   </Fragment>)
+        // }
+        // return months;
+      }
     } else {
       return <p>Loading events from calendar...</p>
     }
