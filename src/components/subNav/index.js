@@ -9,7 +9,7 @@ const SubNav = ({ links = [], subTitle = "" }) => {
       <ul>
         {links.map(([name, path]) => (
           <li>
-            <Link to={path}>{name}</Link>
+            <Link to={path} activeClassName="active">{name}</Link>
           </li>
         ))}
       </ul>
