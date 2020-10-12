@@ -2,6 +2,12 @@ import React from "react"
 import CoreLayout from "../../components/coreLayout"
 import SubNav from "../../components/subNav/business"
 
+// import parse  from "csv-parse/lib/sync"
+// import { readFileSync } from "fs"
+
+// let registrations = fs.readFileSync('./registrations.csv')
+// let records = parse(registrations, {columns: true});
+
 const AboutPage = () => (
   <CoreLayout withSubtitle={false}>
     <SubNav />
