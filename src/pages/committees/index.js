@@ -1,20 +1,17 @@
 import React from "react";
 import CoreLayout from "../../components/coreLayout";
 import SubNav from "../../components/subNav/business";
+import Styles from "./committees.module.scss";
 
 import { graphql } from "gatsby";
 
-// import parse  from "csv-parse/lib/sync"
-// import { readFileSync } from "fs"
-
-// let registrations = fs.readFileSync('./registrations.csv')
-// let records = parse(registrations, {columns: true});
+const committeeLinks = {};
 
 const AboutPage = ({ data }) => {
   function renderCommitteesAndNominees() {
     const committees = data.allCommitteesCsv.edges;
     return (
-      <ul>
+      <ul className={Styles.committeeList}>
         {committees.map(({ node: committee }, i) => {
           return (
             <li key={`committee-${i}`}>
@@ -25,6 +22,7 @@ const AboutPage = ({ data }) => {
       </ul>
     );
   }
+
   return (
     <CoreLayout withSubtitle={false}>
       <SubNav />
