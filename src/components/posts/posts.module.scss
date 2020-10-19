@@ -1,0 +1,9 @@
+@import './../../shared/vars.scss';
+.post {
+  time {
+    font-family: $bodyFontFamily;
+    font-style: italic;
+    margin-top: -1em;
+    display: block;
+  }
+}

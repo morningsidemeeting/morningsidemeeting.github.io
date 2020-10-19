@@ -1,10 +1,11 @@
-import React from "react"
-import CoreLayout from "../components/coreLayout"
-import { graphql } from "gatsby"
-import { MDXRenderer } from "gatsby-plugin-mdx"
+import React from "react";
+import CoreLayout from "../components/coreLayout";
+import Posts from "../components/posts";
+import { graphql } from "gatsby";
+import { MDXRenderer } from "gatsby-plugin-mdx";
 
 const HomePage = ({ data }) => {
-  const { title = "untitled", body = "" } = data.allBlogPost.edges[0]?.node
+  const { title = "untitled", body = "" } = data.allMdxBlogPost.nodes[0];
   return (
     <CoreLayout withSubtitle={true}>
       <section>
@@ -40,26 +41,26 @@ const HomePage = ({ data }) => {
           </a>{" "}
           for information about how to join via Zoom.
         </p>
-        <h3>{title}</h3>
-        <MDXRenderer>{body}</MDXRenderer>
+        <Posts nodes={data.allMdxBlogPost.nodes} />
       </section>
     </CoreLayout>
-  )
-}
+  );
+};
 
 export const query = graphql`
   {
-    allBlogPost(sort: { fields: date, order: DESC }, limit: 1) {
-      edges {
-        node {
-          id
-          date
-          title
-          body
-        }
+    allMdxBlogPost(
+      limit: 1
+      sort: { fields: date, order: DESC }
+      filter: { tags: { in: "announcements" } }
+    ) {
+      nodes {
+        body
+        title
+        id
       }
     }
   }
-`
+`;
 
-export default HomePage
+export default HomePage;
