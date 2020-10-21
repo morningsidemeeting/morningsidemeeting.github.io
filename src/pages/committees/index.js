@@ -2,10 +2,12 @@ import React from "react";
 import CoreLayout from "../../components/coreLayout";
 import SubNav from "../../components/subNav/business";
 import Styles from "./committees.module.scss";
-
+import { Link } from "gatsby";
 import { graphql } from "gatsby";
 
-const committeeLinks = {};
+const committeeLinks = {
+  "Peace and Social Concerns Committee": "/peace-and-social-concerns",
+};
 
 const AboutPage = ({ data }) => {
   function renderCommitteesAndNominees() {
@@ -13,9 +15,16 @@ const AboutPage = ({ data }) => {
     return (
       <ul className={Styles.committeeList}>
         {committees.map(({ node: committee }, i) => {
+          const { Position: name, Nominees: members } = committee;
+          const committeePage = committeeLinks[name];
+          const committeeEl = committeePage ? (
+            <Link to={committeePage}>{name}</Link>
+          ) : (
+            <strong>{name}</strong>
+          );
           return (
             <li key={`committee-${i}`}>
-              <strong>{committee.Position}:</strong> {committee.Nominees}
+              {committeeEl} {members}
             </li>
           );
         })}
