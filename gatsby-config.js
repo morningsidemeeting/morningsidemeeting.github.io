@@ -1,3 +1,4 @@
+const path = require(`path`);
 module.exports = {
   plugins: [
     `gatsby-plugin-sass`,
@@ -11,10 +12,19 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `data`,
-        path: `${__dirname}/src/data/`,
+        path: path.join(__dirname, `src`, `data`),
         ignore: [`**/\.*`], // ignore files starting with a dot
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: path.join(__dirname, `src`, `images`),
+      },
+    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     `gatsby-transformer-csv`,
   ],
   // Customize your site metadata:

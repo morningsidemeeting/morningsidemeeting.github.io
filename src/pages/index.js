@@ -2,10 +2,11 @@ import React from "react";
 import CoreLayout from "../components/coreLayout";
 import Posts from "../components/posts";
 import { graphql } from "gatsby";
-import { MDXRenderer } from "gatsby-plugin-mdx";
+import Img from "gatsby-image";
+import Styles from "../components/coreLayout/coreLayout.module.scss";
 
 const HomePage = ({ data }) => {
-  const { title = "untitled", body = "" } = data.allMdxBlogPost.nodes[0];
+  console.log(data.churchImg);
   return (
     <CoreLayout withSubtitle={true}>
       <section>
@@ -15,6 +16,10 @@ const HomePage = ({ data }) => {
           dedicated to the Quaker testimonies of equality, integrity,
           simplicity, stewardship of the earth, and peace.
         </p>
+        <Img
+          fluid={data.churchImg.childImageSharp.fluid}
+          className={Styles.columnImage}
+        />
         <p>
           Morningsiders come from a variety of faith backgrounds, and accept a
           variety of beliefs about the divine and our relationship to scripture.
@@ -58,6 +63,16 @@ export const query = graphql`
         body
         title
         id
+      }
+    }
+    churchImg: file(relativePath: { eq: "ny_riverside_church.jpg" }) {
+      childImageSharp {
+        # Specify the image processing specifications right in the query.
+        # Makes it trivial to update as your page's design changes.
+        fluid(maxWidth: 800, quality: 100) {
+          ...GatsbyImageSharpFluid
+          ...GatsbyImageSharpFluidLimitPresentationSize
+        }
       }
     }
   }

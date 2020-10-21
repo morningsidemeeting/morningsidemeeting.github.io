@@ -1,7 +1,7 @@
-import React from "react"
-import MainNav from "../../components/mainNav"
-import { Link } from "gatsby"
-import Styles from "./coreLayout.module.scss"
+import React from "react";
+import MainNav from "../../components/mainNav";
+import { Link } from "gatsby";
+import Styles from "./coreLayout.module.scss";
 
 export default function CoreLayout({
   withSubtitle = false,
@@ -35,5 +35,5 @@ export default function CoreLayout({
         </figure>
       </footer>
     </div>
-  )
+  );
 }
