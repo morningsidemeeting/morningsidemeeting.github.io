@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import MainNav from "../../components/mainNav";
 import { Link } from "gatsby";
 import Styles from "./coreLayout.module.scss";
+import quotes from "./quotes.json";
 
 export default function CoreLayout({
   withSubtitle = false,
   withNav = true,
   children,
 }) {
+  const [footerQuote, setFooterQuote] = useState(
+    quotes[Math.floor(Math.random() * quotes.length)]
+  );
+  const { quote, author, work, date } = footerQuote;
   return (
     <div className={Styles.container}>
       <h1>
@@ -24,14 +29,13 @@ export default function CoreLayout({
       <main>{children}</main>
       <footer>
         <hr />
-        <figure>
+        <figure className={Styles.footerQuote}>
           <blockquote>
-            Our life is love, and peace, and tenderness; and bearing one with
-            another, and forgiving one another, and not laying accusations one
-            against another; but praying one for another, and helping one
-            another up with a tender hand.
+            <p>{quote}</p>
           </blockquote>
-          <figcaption>Isaac Penington, Letters, 1667</figcaption>
+          <figcaption>
+            {[author, work, date].filter((s) => s).join(", ")}
+          </figcaption>
         </figure>
       </footer>
     </div>

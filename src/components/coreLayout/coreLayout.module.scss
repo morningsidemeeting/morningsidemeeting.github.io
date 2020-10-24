@@ -80,18 +80,55 @@
     border: none;
   }
 
-  figure figcaption,
-  figure blockquote {
-    margin-left: 30px;
-    margin-right: 30px;
+  .footerQuote {
+    figcaption,
+    blockquote p {
+      max-width: $maxColWidth;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    figcaption {
+      text-align: right;
+    }
+
+    blockquote p {
+      text-indent: -.3em;
+        &:before{
+          content: "“";
+        }
+    }
+
+    figcaption::before {
+      content: "—";
+    }
   }
 
-  figure figcaption {
-    text-align: right;
-  }
+  blockquote {
+    p {
+      padding-left: 30px;
+      padding-right: 20px;
 
-  figure figcaption::before {
-    content: "—";
+      &:first-child {
+        text-indent: -.3em;
+        &:before{
+          content: "“";
+        }
+      }
+
+      &:last-child:after{
+          content: "”";
+        }
+    }
+
+    & + p {
+      padding-right: 20px;
+      text-align: right;
+    }
+
+    & + p:before {
+      content: "—";
+    }
   }
 
 }
