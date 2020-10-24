@@ -1,6 +1,6 @@
-import React from "react"
-import CoreLayout from "../../components/coreLayout"
-import SubNav from "../../components/subNav/about"
+import React from "react";
+import CoreLayout from "../../components/coreLayout";
+import SubNav from "../../components/subNav/worship";
 
 const FaithPage = () => (
   <CoreLayout withSubtitle={false}>
@@ -23,5 +23,5 @@ const FaithPage = () => (
       </p>
     </section>
   </CoreLayout>
-)
-export default FaithPage
+);
+export default FaithPage;

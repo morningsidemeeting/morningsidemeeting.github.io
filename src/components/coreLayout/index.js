@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import MainNav from "../../components/mainNav";
 import { Link } from "gatsby";
 import Styles from "./coreLayout.module.scss";
@@ -18,6 +18,7 @@ export default function CoreLayout({
       <h1>
         <Link to="/">Morningside Quaker Meeting</Link>
       </h1>
+      {withNav ? <MainNav /> : null}
       {withSubtitle ? (
         <h2>
           Morningside Monthly Meeting
@@ -25,7 +26,6 @@ export default function CoreLayout({
           of the Religious Society of Friends
         </h2>
       ) : null}
-      {withNav ? <MainNav /> : null}
       <main>{children}</main>
       <footer>
         <hr />

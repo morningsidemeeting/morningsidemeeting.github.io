@@ -1,27 +1,27 @@
-import React from "react"
-import { Link } from "gatsby"
-import Styles from "./mainNav.module.scss"
+import React from "react";
+import { Link } from "gatsby";
+import Styles from "./mainNav.module.scss";
+
+const mainNavItems = [
+  ["About", "/about"],
+  ["Worship", "/worship"],
+  ["Business", "/business"],
+  ["Calendar", "/calendar"],
+  ["Contact", "/contact"],
+];
 
 const MainNav = ({ location }) => {
   return (
     <ul className={Styles.mainNav}>
-      <li>
-        <Link to="/about">About</Link>
-      </li>
-      <li>
-        <Link to="/worship">Worship</Link>
-      </li>
-      <li>
-        <Link to="/business">Business</Link>
-      </li>
-      <li>
-        <Link to="/calendar">Calendar</Link>
-      </li>
-      <li>
-        <Link to="/contact">Contact</Link>
-      </li>
+      {mainNavItems.map(([name, path], i) => (
+        <li key={`subnav-link-${i}`} className={Styles.mainNavItem}>
+          <Link to={path} activeClassName={Styles.active}>
+            {name}
+          </Link>
+        </li>
+      ))}
     </ul>
-  )
-}
+  );
+};
 
-export default MainNav
+export default MainNav;

@@ -9,7 +9,7 @@ const SubNav = ({ links = [], subTitle = "" }) => {
       <ul>
         {links.map(([name, path], i) => (
           <li key={`subnav-link-${i}`}>
-            <Link to={path} activeClassName="active">
+            <Link to={path} activeClassName={Styles.active}>
               {name}
             </Link>
           </li>

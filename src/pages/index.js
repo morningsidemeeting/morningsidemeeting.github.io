@@ -6,7 +6,6 @@ import Img from "gatsby-image";
 import Styles from "../components/coreLayout/coreLayout.module.scss";
 
 const HomePage = ({ data }) => {
-  console.log(data.churchImg);
   return (
     <CoreLayout withSubtitle={true}>
       <section>

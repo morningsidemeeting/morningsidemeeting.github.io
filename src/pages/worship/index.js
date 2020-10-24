@@ -1,8 +1,10 @@
-import React from "react"
-import CoreLayout from "../../components/coreLayout"
+import React from "react";
+import CoreLayout from "../../components/coreLayout";
+import SubNav from "../../components/subNav/worship";
 
 const WorshipPage = () => (
   <CoreLayout withSubtitle={false}>
+    <SubNav />
     <section>
       <h2>Weekly Meeting</h2>
       <p>
@@ -59,5 +61,5 @@ const WorshipPage = () => (
       <p>All are welcome to share refreshments and conversation.</p>
     </section>
   </CoreLayout>
-)
-export default WorshipPage
+);
+export default WorshipPage;
