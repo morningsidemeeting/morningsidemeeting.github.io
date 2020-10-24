@@ -6,7 +6,7 @@ import Posts from "../../components/posts";
 
 const PeaceCommitteePage = ({ data }) => {
   return (
-    <CoreLayout withSubtitle={true}>
+    <CoreLayout withSubtitle={false}>
       <SubNav />
       <section>
         <h2>Peace &amp; Social Concerns Committee</h2>

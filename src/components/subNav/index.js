@@ -5,7 +5,6 @@ import Styles from "./subNav.module.scss";
 const SubNav = ({ links = [], subTitle = "" }) => {
   return (
     <div className={Styles.subNav}>
-      <h2>{subTitle}</h2>
       <ul>
         {links.map(([name, path], i) => (
           <li key={`subnav-link-${i}`}>

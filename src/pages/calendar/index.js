@@ -172,10 +172,7 @@ const CalendarPage = () => {
         <script async defer src="https://apis.google.com/js/api.js"></script>
       </Helmet>
       <CoreLayout withSubtitle={false}>
-        <section>
-          <h2>Calendar</h2>
-          {renderEvents()}
-        </section>
+        <section>{renderEvents()}</section>
       </CoreLayout>
     </React.Fragment>
   );
