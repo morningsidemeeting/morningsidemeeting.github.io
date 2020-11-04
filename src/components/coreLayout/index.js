@@ -27,7 +27,7 @@ export default function CoreLayout({
         </h2>
       ) : null}
       <main>{children}</main>
-      <footer>
+      <footer className={Styles.siteFooter}>
         <hr />
         <figure className={Styles.footerQuote}>
           <blockquote>

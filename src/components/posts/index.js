@@ -14,7 +14,6 @@ const Posts = ({ nodes = [], title }) => (
         {date ? (
           <time dateTime={date}>{format(parseISO(date), "MMMM d, y")}</time>
         ) : null}
-
         <MDXRenderer>{body}</MDXRenderer>
       </div>
     ))}

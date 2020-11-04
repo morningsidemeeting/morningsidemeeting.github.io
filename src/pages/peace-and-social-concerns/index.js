@@ -3,6 +3,7 @@ import CoreLayout from "../../components/coreLayout";
 import SubNav from "../../components/subNav/business";
 import { graphql } from "gatsby";
 import Posts from "../../components/posts";
+import Calendar, { CALENDAR_IDS } from "../../components/calendar";
 
 const PeaceCommitteePage = ({ data }) => {
   return (
@@ -33,7 +34,13 @@ const PeaceCommitteePage = ({ data }) => {
           the Whole, which means that all are invited to attend meetings and
           participate in decisions.
         </p>
+      </section>
+      <section>
         <Posts nodes={data.allMdxBlogPost.nodes} title="Announcements" />
+      </section>
+      <section>
+        <h2>Events</h2>
+        <Calendar calendarIds={[CALENDAR_IDS.psc]} />
       </section>
     </CoreLayout>
   );
