@@ -39,35 +39,60 @@ function getGapi() {
   });
 }
 
-async function fetchCalendar(calendarId, maxResults = 10) {
+async function fetchDrive(maxResults = 10) {
   return new Promise(async (resolve, reject) => {
     try {
       const gapi = await getGapi();
       gapi.load("client:auth2", () => {
-        gapi.client
-          .init({
-            apiKey: API_KEY,
-            clientId: CLIENT_ID,
-            discoveryDocs: DISCOVERY_DOCS,
-            scope: SCOPES,
-          })
-          .then(
-            function () {
+        gapi.auth2.init({ client_id: CLIENT_ID }).then(function () {
+          gapi.client.setApiKey(API_KEY);
+          gapi.client
+            .load(
+              "https://content.googleapis.com/discovery/v1/apis/drive/v3/rest"
+            )
+            .then(function () {
               gapi.client.drive.files
                 .list({
-                  pageSize: 10,
-                  fields: "nextPageToken, files(id, name)",
+                  q: "'1z84XpKreg6-MZlShXk8_svqQQYX4R24z' in parents",
                 })
-                .then(function (response) {
-                  // console.log("got some events", response.result.items);
-                  resolve(response.result.files);
-                });
-            },
-            function (error) {
-              console.log("had a problem", error);
-              reject(error);
-            }
-          );
+                .then(
+                  function (response) {
+                    // Handle the results here (response.result has the parsed body).
+                    console.log("Response", response);
+                    resolve(response);
+                  },
+                  function (err) {
+                    console.error("Execute error", err);
+                    reject(err);
+                  }
+                );
+            });
+        });
+        // gapi.client
+        //   .init({
+        //     apiKey: API_KEY,
+        //     clientId: CLIENT_ID,
+        //     discoveryDocs: DISCOVERY_DOCS,
+        //     scope: SCOPES,
+        //   })
+        //   .then(
+        //     function () {
+        //       gapi.client.drive.files
+        //         .list({
+        //           corpora: "drive",
+        //           pageSize: 10,
+        //           fields: "nextPageToken, files(id, name)",
+        //         })
+        //         .then(function (response) {
+        //           // console.log("got some events", response.result.items);
+        //           resolve(response.result.files);
+        //         });
+        //     },
+        //     function (error) {
+        //       console.log("had a problem", error);
+        //       reject(error);
+        //     }
+        //   );
       });
     } catch (error) {
       console.log(error);
@@ -76,25 +101,26 @@ async function fetchCalendar(calendarId, maxResults = 10) {
   });
 }
 
-const Calendar = ({ calendarIds = [CALENDAR_IDS.main] }) => {
-  const [events, setEvents] = useState([]);
-  const [hasFetchedEvents, setHasFetchedEvents] = useState(false);
+const Files = () => {
+  const [files, setFiles] = useState([]);
+  const [hasFetchedFiles, setHasFetchedFiles] = useState(false);
 
-  async function fetchCalendarEvents() {
-    if (hasFetchedEvents) {
+  async function fetchDriveFiles() {
+    if (hasFetchedFiles) {
       return;
     }
-    let loadedEvents = [];
-    await Promise.all(
-      calendarIds.map(async (calendarId) => {
-        const calendarEvents = await fetchCalendar(calendarId);
-        loadedEvents = loadedEvents.concat(...calendarEvents);
-      })
-    );
 
-    setHasFetchedEvents(true);
-    const groupedEvents = groupEvents(loadedEvents);
-    setEvents(groupedEvents);
+    const driveFiles = await fetchDrive();
+    // await Promise.all(
+    //   calendarIds.map(async (calendarId) => {
+    //     const calendarEvents = await fetchDrive(calendarId);
+    //     loadedEvents = loadedEvents.concat(...calendarEvents);
+    //   })
+    // );
+
+    setHasFetchedFiles(true);
+    // const groupedEvents = groupEvents(loadedEvents);
+    // setEvents(groupedEvents);
   }
 
   function groupEvents(events) {
@@ -177,30 +203,30 @@ const Calendar = ({ calendarIds = [CALENDAR_IDS.main] }) => {
   }
 
   function renderEvents() {
-    if (hasFetchedEvents) {
-      if (!events.size) {
-        return <p>There are no upcoming events on the calendar.</p>;
-      } else {
-        const months = [];
-        const eventsByMonth = events.entries();
-        for (let i = 0; i < events.size; i++) {
-          const [month, evts] = eventsByMonth.next().value;
-          months.push(
-            <Fragment key={`month-${month}`}>
-              <h3>{month}</h3>
-              <ul className={Styles.calendarEvents}>{evts.map(renderEvent)}</ul>
-            </Fragment>
-          );
-        }
-        return months;
-      }
-    } else {
-      return <p>Loading events from calendar...</p>;
-    }
+    // if (hasFetchedFiles) {
+    //   if (!events.size) {
+    //     return <p>There are no upcoming events on the calendar.</p>;
+    //   } else {
+    //     const months = [];
+    //     const eventsByMonth = events.entries();
+    //     for (let i = 0; i < events.size; i++) {
+    //       const [month, evts] = eventsByMonth.next().value;
+    //       months.push(
+    //         <Fragment key={`month-${month}`}>
+    //           <h3>{month}</h3>
+    //           <ul className={Styles.calendarEvents}>{evts.map(renderEvent)}</ul>
+    //         </Fragment>
+    //       );
+    //     }
+    //     return months;
+    //   }
+    // } else {
+    //   return <p>Loading events from calendar...</p>;
+    // }
   }
 
   useEffect(() => {
-    fetchCalendarEvents();
+    fetchDriveFiles();
   });
 
   return (
@@ -208,8 +234,8 @@ const Calendar = ({ calendarIds = [CALENDAR_IDS.main] }) => {
       <Helmet>
         <script async defer src="https://apis.google.com/js/api.js"></script>
       </Helmet>
-      <section>{renderEvents()}</section>
+      <section>HI</section>
     </React.Fragment>
   );
 };
-export default Calendar;
+export default Files;
