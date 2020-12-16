@@ -1,12 +1,11 @@
 import React from "react";
 import CoreLayout from "../../components/coreLayout";
 import SubNav from "../../components/subNav/business";
-import Files from "../../components/files";
+// import Files from "../../components/files";
 
 const AboutPage = () => (
   <CoreLayout withSubtitle={false}>
     <SubNav />
-    <Files />
     <section>
       <h2>Meeting for Worship with a Concern for Business</h2>
       <p>

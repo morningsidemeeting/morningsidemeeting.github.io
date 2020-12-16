@@ -4,9 +4,9 @@ import Styles from "./mainNav.module.scss";
 
 const mainNavItems = [
   ["About", "/about"],
+  ["Calendar", "/calendar"],
   ["Worship", "/worship"],
   ["Business", "/business"],
-  ["Calendar", "/calendar"],
   ["Contact", "/contact"],
 ];
 
