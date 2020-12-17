@@ -1,6 +1,6 @@
 import React from "react";
 import CoreLayout from "../../components/coreLayout";
-import SubNav from "../../components/subNav/business";
+// import SubNav from "../../components/subNav/committees";
 import { graphql } from "gatsby";
 import Posts from "../../components/posts";
 import Calendar, { CALENDAR_IDS } from "../../components/calendar";
@@ -8,7 +8,6 @@ import Calendar, { CALENDAR_IDS } from "../../components/calendar";
 const PeaceCommitteePage = ({ data }) => {
   return (
     <CoreLayout withSubtitle={false}>
-      <SubNav />
       <section>
         <h2>Peace &amp; Social Concerns Committee</h2>
         <p>

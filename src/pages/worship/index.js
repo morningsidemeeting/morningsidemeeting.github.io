@@ -1,12 +1,12 @@
 import React from "react";
 import CoreLayout from "../../components/coreLayout";
-import SubNav from "../../components/subNav/worship";
+import SubNav from "../../components/subNav/about";
 
 const WorshipPage = () => (
   <CoreLayout withSubtitle={false}>
     <SubNav />
     <section>
-      <h2>Weekly Meeting</h2>
+      <h2>Weekly Meeting for Worship</h2>
       <p>
         We gather for worship each First Day (Sunday) at 11:00am on the 12th
         floor of the tower in Riverside Church in New York City.

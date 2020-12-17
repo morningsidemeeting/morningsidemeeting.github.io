@@ -1,7 +1,7 @@
 import React from "react";
 import CoreLayout from "../../components/coreLayout";
-import SubNav from "../../components/subNav/business";
 import Styles from "./committees.module.scss";
+// import SubNav from "../../components/subNav/committees";
 import { Link } from "gatsby";
 import { graphql } from "gatsby";
 
@@ -9,13 +9,39 @@ const committeeLinks = {
   "Peace and Social Concerns Committee": "/peace-and-social-concerns",
 };
 
-const AboutPage = ({ data }) => {
+const CommitteesPage = ({ data }) => {
+  const committees = data.allCommitteesCsv.edges;
+
+  function renderCommitteePagesList() {
+    return (
+      <ul className={Styles.committeePages}>
+        {committees.reduce((acc, { node: committee }, i) => {
+          const { Position: name } = committee;
+          const committeePage = committeeLinks[name];
+          if (committeePage) {
+            acc.push(
+              <li key={`committee-${i}`}>
+                <Link to={committeePage}>
+                  {name.replace(/committee/i, "").trim()}
+                </Link>
+              </li>
+            );
+          }
+          return acc;
+        }, [])}
+      </ul>
+    );
+  }
+
   function renderCommitteesAndNominees() {
-    const committees = data.allCommitteesCsv.edges;
     return (
       <ul className={Styles.committeeList}>
         {committees.map(({ node: committee }, i) => {
-          const { Position: name, Nominees: members } = committee;
+          const {
+            Position: name,
+            Nominees: members,
+            Responsibilities: responsibilities,
+          } = committee;
           const committeePage = committeeLinks[name];
           const committeeEl = committeePage ? (
             <Link to={committeePage}>{name}</Link>
@@ -25,6 +51,7 @@ const AboutPage = ({ data }) => {
           return (
             <li key={`committee-${i}`}>
               {committeeEl} {members}
+              <p>{responsibilities}</p>
             </li>
           );
         })}
@@ -34,7 +61,6 @@ const AboutPage = ({ data }) => {
 
   return (
     <CoreLayout withSubtitle={false}>
-      <SubNav />
       <section>
         <h2>Committees</h2>
         <p>
@@ -43,6 +69,11 @@ const AboutPage = ({ data }) => {
           Relief Committee with three members, activities in Quakerism are
           accomplished through Committees.
         </p>
+
+        <h3>Committee Pages</h3>
+        {renderCommitteePagesList()}
+
+        <h3>All Positions &amp; committee members for 2020</h3>
 
         <p>
           Committees have either a clerk for a long standing committee such as
@@ -67,8 +98,6 @@ const AboutPage = ({ data }) => {
           that leading known.
         </p>
 
-        <h3>Positions &amp; committee members for 2020</h3>
-
         <p>
           All positions are for one year, renewable except for the nominating
           committee terms which are for two years, staggered terms, renewable
@@ -89,10 +118,11 @@ export const query = graphql`
         node {
           Position
           Nominees
+          Responsibilities
         }
       }
     }
   }
 `;
 
-export default AboutPage;
+export default CommitteesPage;

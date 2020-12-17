@@ -1,6 +1,6 @@
 import React from "react";
 import CoreLayout from "../../components/coreLayout";
-import SubNav from "../../components/subNav/business";
+import SubNav from "../../components/subNav/about";
 // import Files from "../../components/files";
 
 const AboutPage = () => (

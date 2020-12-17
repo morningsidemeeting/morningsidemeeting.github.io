@@ -4,6 +4,8 @@ import SubNav from "./index";
 const links = [
   ["Morningside", "/about"],
   ["Quakers", "/quakers"],
+  ["Worship", "/worship"],
+  ["Business", "/business"],
   ["Fellowship", "/fellowship"],
 ];
 

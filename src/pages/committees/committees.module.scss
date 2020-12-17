@@ -1,4 +1,5 @@
-.committeeList {
+.committeeList,
+.committeePages {
   list-style: none;
 
   margin: 0;
@@ -12,6 +13,10 @@
     a {
       font-weight: bold;
       display: block;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }
