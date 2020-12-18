@@ -43,6 +43,10 @@
 
     a {
       color: #3f51b5;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
     }
 
     .columnImage {
@@ -84,22 +88,37 @@
     font-weight: 700;
   }
 
-  .siteFooter {
-    margin-top: 100px;
-    font-family: $bodyFontFamily;
-  }
-
   hr {
-    width: 50%;
+    width: 40%;
     height: 1px;
     background-color: #000;
     border: none;
+    margin-top: 3em;
+    margin-bottom: 3em;
+  }
+
+  .siteFooter {
+    margin-top: 100px;
+    font-family: $bodyFontFamily;
+
+    hr {
+      margin-top: 0;
+      margin-bottom: 2em;
+      width: 70%;
+    }
+
+    .copyright {
+      text-align: center;
+      font-style: italic;
+    }
   }
 
   .footerQuote {
+    margin-bottom: 2em;
     figcaption,
     blockquote p {
-      max-width: $maxColWidth;
+      font-size: $footerFontSize;
+      max-width: $maxColWidth - 100px;
       margin-left: auto;
       margin-right: auto;
     }

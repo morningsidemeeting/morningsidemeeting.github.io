@@ -39,6 +39,9 @@ export default function CoreLayout({
             {[author, work, date].filter((s) => s).join(", ")}
           </figcaption>
         </figure>
+        <p className={Styles.copyright}>
+          © 2016 Morningside Monthly Meeting, Religious Society of Friends.
+        </p>
       </footer>
     </div>
   );

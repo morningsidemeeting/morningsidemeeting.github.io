@@ -56,6 +56,7 @@ const HomePage = ({ data }) => {
           </a>{" "}
           for information about how to join via Zoom.
         </p>
+        <hr />
         <Posts nodes={announcements} />
       </section>
     </CoreLayout>
