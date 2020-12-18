@@ -62,7 +62,6 @@ const CommitteesPage = ({ data }) => {
   return (
     <CoreLayout withSubtitle={false}>
       <section>
-        <h2>Committees</h2>
         <p>
           As Friends do not have a traditional minister and staff, Meeting acts
           through its committees. From a Business Meeting of the whole to a

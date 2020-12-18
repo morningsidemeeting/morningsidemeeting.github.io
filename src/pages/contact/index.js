@@ -5,7 +5,6 @@ import Styles from "./contact.module.scss";
 const AboutPage = () => (
   <CoreLayout withSubtitle={false}>
     <section className={Styles.contact}>
-      <h2>Contact Us</h2>
       <p>
         For all inquiries, please email our main address:{" "}
         <a href="mailto:morningsidequakermeeting@gmail.com">

@@ -18,9 +18,12 @@ const HomePage = ({ data }) => {
           stewardship of the earth, and peace.
         </p>
         {currentAnnouncement ? (
-          <p>
-            Click here for{" "}
-            <a href={currentAnnouncement.slug}>{currentAnnouncement.title}</a>.
+          <p className={Styles.postPromo}>
+            <a href={currentAnnouncement.slug}>
+              Click here for <strong>{currentAnnouncement.title}</strong> or
+              scroll to the bottom of this page
+            </a>
+            .
           </p>
         ) : null}
         <Img

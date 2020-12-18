@@ -1,22 +1,63 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap");
-@import './../../shared/vars.scss';
+@import url('https://fonts.googleapis.com/css2?family=Playball&display=swap');
+
+$mainTextColor: #222;
+$bodyFontFamily: "times new roman", serif;
+$headerFontFamily: 'Playball', cursive;
+$fullMaxWidth: calc(100vw - 320px);
+$maxColWidth: 80%;
+$bodyFontSize: 24px;
+
+@keyframes pulse {
+  0% {
+    color: #001F3F;
+  }
+  50% {
+    color: #FF4136;
+  }
+  100% {
+    color: #001F3F;
+  }
+}
+
+body {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/9/9f/Bluets_%28Houstonia_caerulea%29_Hedyotis_caerulea.jpg');
+}
 
 .container {
   max-width: $fullMaxWidth;
-  width: 90vw;
-  margin: 20px auto;
+  width: 100%;
+  margin: 20px 0 20px 240px;
   color: $mainTextColor;
+
+  > ul {
+    position: fixed !important;
+    top: 10px;
+    left: 20px;
+    display: block;
+    width: 200px;
+
+    li {
+      background-color: rgb(205, 120, 50);
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+    }
+  }
 
   h1,
   h2 {
     font-family: $headerFontFamily;
     text-align: center;
     font-weight: 700;
-    font-size: 36px;
+    font-size: 72px;
+    animation: pulse 5s infinite;
 
     a {
       text-decoration: none;
       color: $mainTextColor;
+      animation: pulse 5s infinite;
     }
   }
 
@@ -24,11 +65,14 @@
     font-weight: 400;
     margin-left: auto;
     margin-right: auto;
-    font-size: 24px;
+    font-size: 48px;
   }
 
   section {
     margin: 50px 0;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
 
     p,
     ul,

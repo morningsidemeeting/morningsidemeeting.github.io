@@ -11,7 +11,7 @@
 
     strong,
     a {
-      font-weight: bold;
+      
       display: block;
       text-decoration: none;
       &:hover {
@@ -19,4 +19,8 @@
       }
     }
   }
+}
+
+.committeeList li a {
+  font-weight: bold;
 }
