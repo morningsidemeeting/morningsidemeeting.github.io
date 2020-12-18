@@ -1,15 +1,9 @@
 import React from "react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import CoreLayout from "../../components/coreLayout";
+import { Post } from "../../components/posts";
 
-// import Layout from "./layout";
-// import SEO from "./seo";
-// import PostTitle from "./post-title";
-// import PostDate from "./post-date";
-// import PostFooter from "./post-footer";
-// import PostHero from "./post-hero";
-
-const Post = ({
+const BlogPost = ({
   data: {
     post,
     site: {
@@ -19,12 +13,14 @@ const Post = ({
   location,
   previous,
   next,
-}) => (
-  <CoreLayout withSubtitle={false}>
-    <section>
-      <MDXRenderer>{post.body}</MDXRenderer>
-    </section>
-  </CoreLayout>
-);
+}) => {
+  return (
+    <CoreLayout withSubtitle={false}>
+      <section>
+        <Post linkTitle={false} {...post} />
+      </section>
+    </CoreLayout>
+  );
+};
 
-export default Post;
+export default BlogPost;

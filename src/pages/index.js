@@ -6,15 +6,23 @@ import Img from "gatsby-image";
 import Styles from "../components/coreLayout/coreLayout.module.scss";
 
 const HomePage = ({ data }) => {
+  const announcements = data.allMdxBlogPost.nodes;
+  const currentAnnouncement = announcements[0];
   return (
     <CoreLayout withSubtitle={true}>
       <section>
         <p>
           Morningside Monthly Meeting of the Religious Society of Friends,
           formed in 1973, is a welcoming, diverse community of individuals
-          dedicated to the Quaker testimonies of equality, integrity,
-          simplicity, stewardship of the earth, and peace.
+          living the Quaker testimonies of equality, integrity, simplicity,
+          stewardship of the earth, and peace.
         </p>
+        {currentAnnouncement ? (
+          <p>
+            Click here for{" "}
+            <a href={currentAnnouncement.slug}>{currentAnnouncement.title}</a>.
+          </p>
+        ) : null}
         <Img
           fluid={data.churchImg.childImageSharp.fluid}
           className={Styles.columnImage}
@@ -45,7 +53,7 @@ const HomePage = ({ data }) => {
           </a>{" "}
           for information about how to join via Zoom.
         </p>
-        <Posts nodes={data.allMdxBlogPost.nodes} />
+        <Posts nodes={announcements} />
       </section>
     </CoreLayout>
   );
@@ -62,6 +70,8 @@ export const query = graphql`
         body
         title
         id
+        date
+        slug
       }
     }
     churchImg: file(relativePath: { eq: "ny_riverside_church.jpg" }) {
