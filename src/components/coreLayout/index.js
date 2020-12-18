@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import SEO from "../../components/seo";
 import MainNav from "../../components/mainNav";
 import { Link } from "gatsby";
 import Styles from "./coreLayout.module.scss";

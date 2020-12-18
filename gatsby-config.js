@@ -29,17 +29,20 @@ module.exports = {
   ],
   // Customize your site metadata:
   siteMetadata: {
+    url: `https://morningsidemeeting.github.io/`,
+    image: "/images/ny_riverside_church.jpg",
     title: `Morningside Monthly Meeting`,
+    titleTemplate: "%s · FRIENDS.",
     author: `My Name`,
     description: `A welcoming community dedicated to the Quaker testimonies of equality, integrity, simplicity, and peace.`,
     social: [
       {
-        name: `twitter`,
-        url: `https://twitter.com/gatsbyjs`,
+        name: `facebook`,
+        url: `https://www.facebook.com/MorningsideQuakers`,
       },
       {
         name: `github`,
-        url: `https://github.com/gatsbyjs`,
+        url: `https://github.com/morningsidequakermeeting`,
       },
     ],
   },
