@@ -10,15 +10,15 @@
     &.unknown {
       a {
         font-weight: bold;
+        margin-left: 35px;
+        display: inline-block;
+        line-height: 25px;
+        font-style: normal;
       }
     }
 
-    a {
-      display: inline-block;
-    }
-
     p {
-      margin: 0
+      margin: 0.5em 0 0;
     }
 
     .timestamp {

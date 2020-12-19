@@ -1,8 +1,10 @@
-import React, { useState, useEffect, Fragment } from "react";
-import { Helmet } from "react-helmet";
+import React, { useState, useEffect } from "react";
+import { graphql, useStaticQuery } from "gatsby";
 import { format } from "date-fns";
 import { parseISO } from "date-fns/esm";
 import Styles from "./files.module.scss";
+import BackgroundImage from "gatsby-background-image";
+import Gapi, { getGapi } from "../gapi";
 
 const API_KEY = "AIzaSyCCOtjPgXJ5tIqEILv9gm5pCpOAbyV_3aY";
 const CLIENT_ID =
@@ -10,32 +12,60 @@ const CLIENT_ID =
 const DISCOVERY_DOCS =
   "https://content.googleapis.com/discovery/v1/apis/drive/v3/rest";
 const DEFAULT_FIELDS = [];
-
-// These can be imported by pages using the calendar component, so they can
-// refer by key to the one they'd like to include
 export const FOLDER_IDS = {
   business_minutes: "1z84XpKreg6-MZlShXk8_svqQQYX4R24z",
 };
 
-function getGapi() {
-  return new Promise((resolve, reject) => {
-    let sanity = 0;
-    waitForGapi();
-
-    function waitForGapi() {
-      sanity++;
-      if (typeof window === "undefined" || typeof window.gapi == "undefined") {
-        if (sanity > 10) {
-          reject("Could not find gapi");
-        } else {
-          setTimeout(waitForGapi, 1000);
+const BackgroundHeader = ({ className, fileType, children }) => {
+  const data = useStaticQuery(
+    graphql`
+      query {
+        pdf: file(relativePath: { eq: "pdf.png" }) {
+          childImageSharp {
+            fluid(quality: 90, maxWidth: 100) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
         }
-      } else {
-        resolve(window.gapi);
+        gdoc: file(relativePath: { eq: "gdoc.png" }) {
+          childImageSharp {
+            fluid(quality: 90, maxWidth: 100) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
       }
-    }
-  });
-}
+      fragment childImgFields on ImageSharp {
+        fluid(quality: 90, maxWidth: 100) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    `
+  );
+
+  const imageData = data[fileType]
+    ? data[fileType].childImageSharp.fluid
+    : null;
+
+  const headerStyles = {
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "25px",
+    backgroundPosition: "top left",
+  };
+
+  return imageData ? (
+    <BackgroundImage
+      Tag="header"
+      className={className}
+      fluid={imageData}
+      style={headerStyles}
+    >
+      {children}
+    </BackgroundImage>
+  ) : (
+    <header>{children}</header>
+  );
+};
 
 async function fetchDrive(folderId, orderBy = "name", pageSize = 100) {
   return new Promise(async (resolve, reject) => {
@@ -73,7 +103,7 @@ async function fetchDrive(folderId, orderBy = "name", pageSize = 100) {
   });
 }
 
-const Files = ({ folderIds = [FOLDER_IDS.business_minutes], orderBy }) => {
+const Files = ({ folderIds = [], orderBy }) => {
   const [files, setFiles] = useState([]);
   const [hasFetchedFiles, setHasFetchedFiles] = useState(false);
 
@@ -93,33 +123,6 @@ const Files = ({ folderIds = [FOLDER_IDS.business_minutes], orderBy }) => {
 
     setHasFetchedFiles(true);
     setFiles(loadedFiles);
-    // const sortedFiles = sortFiles(loadedFiles);
-
-    // const groupedEvents = groupEvents(loadedEvents);
-    // setEvents(groupedEvents);
-  }
-
-  function sortFiles(files, sortBy = "name") {
-    return files.sort((evtA, evtB) => {
-      const startA = evtA[sortBy];
-      const startB = evtB[sortBy];
-
-      if (startA > startB) {
-        return 1;
-      } else if (startB > startA) {
-        return -1;
-      } else {
-        return 0;
-      }
-    });
-  }
-
-  function displayDay(date) {
-    return format(date, "MMMM d, y");
-  }
-
-  function displayTime(date) {
-    return format(date, "h:mm aaaa");
   }
 
   function renderFile({
@@ -136,7 +139,7 @@ const Files = ({ folderIds = [FOLDER_IDS.business_minutes], orderBy }) => {
       case "application/pdf":
         fileType = "pdf";
         break;
-      case "application/pdf":
+      case "application/vnd.google-apps.document":
         fileType = "gdoc";
         break;
       default:
@@ -145,7 +148,9 @@ const Files = ({ folderIds = [FOLDER_IDS.business_minutes], orderBy }) => {
     }
     return (
       <li key={id} className={Styles[fileType]}>
-        <a href={webViewLink}>{name}</a>
+        <BackgroundHeader fileType={fileType}>
+          <a href={webViewLink}>{name}</a>
+        </BackgroundHeader>
         {description ? <p>{description}</p> : null}
         <span className={Styles.timestamp}>Modified on {modifiedOn}</span>
       </li>
@@ -170,9 +175,7 @@ const Files = ({ folderIds = [FOLDER_IDS.business_minutes], orderBy }) => {
 
   return (
     <React.Fragment>
-      <Helmet>
-        <script async defer src="https://apis.google.com/js/api.js"></script>
-      </Helmet>
+      <Gapi />
       <section>{renderFiles()}</section>
     </React.Fragment>
   );

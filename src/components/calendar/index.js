@@ -1,8 +1,8 @@
 import React, { useState, useEffect, Fragment } from "react";
-import { Helmet } from "react-helmet";
 import { format } from "date-fns";
 import { parseISO } from "date-fns/esm";
 import Styles from "./calendar.module.scss";
+import Gapi, { getGapi } from "../gapi";
 
 const API_KEY = "AIzaSyCCOtjPgXJ5tIqEILv9gm5pCpOAbyV_3aY";
 const CLIENT_ID =
@@ -19,26 +19,6 @@ export const CALENDAR_IDS = {
   psc: "dr4fmp2quj73h6i65ul5v53bco@group.calendar.google.com",
   communications: "a6hc0gdimm88606pbt8n0he3eg@group.calendar.google.com",
 };
-
-function getGapi() {
-  return new Promise((resolve, reject) => {
-    let sanity = 0;
-    waitForGapi();
-
-    function waitForGapi() {
-      sanity++;
-      if (typeof window === "undefined" || typeof window.gapi == "undefined") {
-        if (sanity > 10) {
-          reject("Could not find gapi");
-        } else {
-          setTimeout(waitForGapi, 1000);
-        }
-      } else {
-        resolve(window.gapi);
-      }
-    }
-  });
-}
 
 async function fetchCalendar(calendarId, maxResults = 10) {
   return new Promise(async (resolve, reject) => {
@@ -210,9 +190,7 @@ const Calendar = ({ calendarIds = [CALENDAR_IDS.main], withFooter = true }) => {
 
   return (
     <React.Fragment>
-      <Helmet>
-        <script async defer src="https://apis.google.com/js/api.js"></script>
-      </Helmet>
+      <Gapi />
       <section>{renderEvents()}</section>
     </React.Fragment>
   );
