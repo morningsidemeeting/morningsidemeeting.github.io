@@ -1,13 +1,12 @@
 import React from "react";
 import Committee from "../../components/committee";
 
-const PeaceCommitteePage = () => {
+export const basePath = "/peace-and-social-concerns";
+export const title = "Peace & Social Concerns Committee";
+
+export default function CommitteePage() {
   return (
-    <Committee
-      title="Peace &amp; Social Concerns Committee"
-      calendarSlug="psc"
-      tag="psc"
-    >
+    <Committee title={title} basePath={basePath}>
       <p>
         As Friends, we are called to live out the values that we proclaim
         within. Our work for social justice arises out of our belief that there
@@ -33,6 +32,4 @@ const PeaceCommitteePage = () => {
       </p>
     </Committee>
   );
-};
-
-export default PeaceCommitteePage;
+}
