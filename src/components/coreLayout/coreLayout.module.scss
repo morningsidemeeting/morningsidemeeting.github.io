@@ -30,6 +30,10 @@
   section {
     margin: 50px 0;
 
+    &:first-child h2 {
+      margin-top: -20px;
+    }
+
     p,
     ul,
     time,

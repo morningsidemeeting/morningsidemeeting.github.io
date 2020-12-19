@@ -1,9 +1,11 @@
 import React from "react";
 import Committee from "../../components/committee";
+export const basePath = "/communications";
+export const title = "Communications Committee";
 
-const CommunicationsCommitteePage = () => {
+export default function CommitteePage() {
   return (
-    <Committee title="Communications Committee" basePath="/communications">
+    <Committee title={title} basePath={basePath}>
       <p>
         The committee is first and foremost focused on helping Morningside
         members and attenders and distant Friends maintain a sense of community
@@ -52,6 +54,4 @@ const CommunicationsCommitteePage = () => {
       </p>
     </Committee>
   );
-};
-
-export default CommunicationsCommitteePage;
+}

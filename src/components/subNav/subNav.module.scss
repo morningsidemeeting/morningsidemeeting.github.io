@@ -22,8 +22,8 @@
   }
 
   a {
-    text-decoration: none;
-    color: $mainTextColor;
+    text-decoration: none !important;
+    color: $mainTextColor !important;
 
   }
 
@@ -31,4 +31,9 @@
     border-bottom: 2px solid #000;
     padding-bottom: 3px;
   }
+}
+
+section .subNav {
+  margin-top: 10px;
+  margin-bottom: 30px;
 }

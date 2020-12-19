@@ -4,10 +4,6 @@ import { basePath, title } from "./index";
 
 export default function CommitteeEventsPage() {
   return (
-    <CommitteeEvents
-      calendarSlug="communications"
-      title={title}
-      basePath={basePath}
-    />
+    <CommitteeEvents calendarSlug="psc" title={title} basePath={basePath} />
   );
 }
