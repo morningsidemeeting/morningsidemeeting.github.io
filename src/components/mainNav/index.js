@@ -5,8 +5,8 @@ import Styles from "./mainNav.module.scss";
 const mainNavItems = [
   ["About", "/about"],
   ["Calendar", "/calendar"],
-  ["Committees", "/committees"],
   ["News", "/news"],
+  ["Committees", "/committees"],
   ["Documents", "/newsletters"],
   ["Contact", "/contact"],
 ];

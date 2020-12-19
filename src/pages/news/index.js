@@ -3,6 +3,8 @@ import { graphql } from "gatsby";
 import CoreLayout from "../../components/coreLayout";
 import Posts from "../../components/posts";
 
+const INCLUDE_POSTS_FROM = ["psc", "blog", "prisons"];
+
 const NewsPage = ({ data }) => {
   return (
     <CoreLayout withSubtitle={false}>
@@ -18,7 +20,13 @@ export const query = graphql`
     allMdxBlogPost(
       limit: 10
       sort: { fields: date, order: DESC }
-      filter: { tags: { in: ["psc", "blog"], nin: "archived" } }
+      # LIST ALL TAGS FOR POSTS TO INCLUDE IN THIS LIST
+      filter: {
+        tags: {
+          # in: ["psc", "blog", "prisons"]
+          nin: ["archived", "announcements"]
+        }
+      }
     ) {
       nodes {
         body

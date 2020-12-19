@@ -17,7 +17,12 @@ export const Post = ({
   withTags,
 }) => {
   const footer = withTags ? (
-    <footer>{tags.map((t) => tagNames[t]).join(", ")}</footer>
+    <footer>
+      {tags
+        .map((t) => tagNames[t])
+        .filter((n) => !!n)
+        .join(", ")}
+    </footer>
   ) : null;
   let parsedDate = date;
   try {
