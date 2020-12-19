@@ -37,7 +37,7 @@ function getGapi() {
   });
 }
 
-async function fetchDrive(folderId, pageSize = 100) {
+async function fetchDrive(folderId, orderBy = "name", pageSize = 100) {
   return new Promise(async (resolve, reject) => {
     try {
       const gapi = await getGapi();
@@ -48,6 +48,7 @@ async function fetchDrive(folderId, pageSize = 100) {
             gapi.client.drive.files
               .list({
                 q: `'${folderId}' in parents`,
+                orderBy,
                 pageSize,
                 fields:
                   "files(id, name, description, starred, mimeType, webViewLink, createdTime, modifiedTime)",
@@ -72,7 +73,7 @@ async function fetchDrive(folderId, pageSize = 100) {
   });
 }
 
-const Files = ({ folderIds = [FOLDER_IDS.business_minutes] }) => {
+const Files = ({ folderIds = [FOLDER_IDS.business_minutes], orderBy }) => {
   const [files, setFiles] = useState([]);
   const [hasFetchedFiles, setHasFetchedFiles] = useState(false);
 
@@ -84,7 +85,7 @@ const Files = ({ folderIds = [FOLDER_IDS.business_minutes] }) => {
     let loadedFiles = [];
     await Promise.all(
       folderIds.map(async (folderId) => {
-        const folderFiles = await fetchDrive(folderId);
+        const folderFiles = await fetchDrive(folderId, orderBy);
         console.log(folderFiles);
         loadedFiles = loadedFiles.concat(...folderFiles);
       })
@@ -92,35 +93,25 @@ const Files = ({ folderIds = [FOLDER_IDS.business_minutes] }) => {
 
     setHasFetchedFiles(true);
     setFiles(loadedFiles);
+    // const sortedFiles = sortFiles(loadedFiles);
+
     // const groupedEvents = groupEvents(loadedEvents);
     // setEvents(groupedEvents);
   }
 
-  function groupEvents(events) {
-    const eventsMap = new Map();
-    return events
-      .sort((evtA, evtB) => {
-        const startA = getEventDate(evtA.start);
-        const startB = getEventDate(evtB.start);
+  function sortFiles(files, sortBy = "name") {
+    return files.sort((evtA, evtB) => {
+      const startA = evtA[sortBy];
+      const startB = evtB[sortBy];
 
-        if (startA > startB) {
-          return 1;
-        } else if (startB > startA) {
-          return -1;
-        } else {
-          return 0;
-        }
-      })
-      .reduce((acc, evt, i) => {
-        const startMonth = format(parseEventISODate(evt.start), "MMMM");
-        const monthEvents = acc.get(startMonth);
-        if (!monthEvents) {
-          acc.set(startMonth, [evt]);
-        } else {
-          acc.set(startMonth, monthEvents.concat(evt));
-        }
-        return acc;
-      }, eventsMap);
+      if (startA > startB) {
+        return 1;
+      } else if (startB > startA) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
   }
 
   function getEventDate(evt) {

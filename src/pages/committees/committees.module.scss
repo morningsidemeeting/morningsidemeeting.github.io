@@ -6,7 +6,7 @@
   padding: 0;
 
   li {
-    margin: 1em 0 0;
+    margin: .5em 0 0;
     padding: 0;
 
     strong,
@@ -21,6 +21,9 @@
   }
 }
 
-.committeeList li a {
-  font-weight: bold;
+.committeeList li {
+  margin: 1em 0 0;
+  a {
+    font-weight: bold;
+  }
 }

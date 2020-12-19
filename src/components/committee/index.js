@@ -17,7 +17,10 @@ const CommitteePage = ({ data, title, calendarTag, tag, children }) => {
       </section>
       <section>
         <h2>Events</h2>
-        <Calendar calendarIds={[CALENDAR_IDS[calendarTag]]} />
+        <Calendar
+          calendarIds={[CALENDAR_IDS[calendarTag]]}
+          withFooter={false}
+        />
       </section>
     </CoreLayout>
   );

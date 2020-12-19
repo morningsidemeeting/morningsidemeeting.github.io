@@ -38,23 +38,17 @@ const HomePage = ({ data }) => {
           to name their relationships as they choose.
         </p>
         <p>
-          We gather for silent worship every First Day (Sunday) morning at 11
-          o’clock. Traditionally, we meet at Riverside Church in Manhattan.
-          Since March 15, 2020, meetings for worship have been held on Zoom.
-        </p>
-        <p>
           Members and attenders of Morningside Meeting also work together in
           committees to advance peace, racial justice, and prison reform. We
           care for and tend to each other's physical, psychological, and
           spiritual well-being.
         </p>
         <p>
-          <strong>All are welcome.</strong> If you are not already on our
-          mailing list, please contact us at{" "}
-          <a href="mailto:morningsidequakermeeting@gmail.com">
-            morningsidequakermeeting@gmail.com
-          </a>{" "}
-          for information about how to join via Zoom.
+          We gather for silent worship every First Day (Sunday) morning at 11
+          o’clock. Traditionally, we meet at Riverside Church in Manhattan.
+          Currently we hold hybrid meetings, with most members attending via
+          Zoom and a small number gathering together and connecting from
+          Riverside. <strong>All are welcome.</strong>
         </p>
         <hr />
         <Posts nodes={announcements} />

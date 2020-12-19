@@ -78,6 +78,15 @@ const AboutPage = () => (
     <section>
       <h2>Further Information on Quaker History and Practice</h2>
       <p>
+        New York Yearly meeting publishes a manual of faith and practice that
+        provides Monthly meetings with guidance when making decisions of
+        process.{" "}
+        <a href="https://www.nyym.org/faith-and-practice">Faith and Practice</a>{" "}
+        is not a rulebook; it does not prescribe rules of governance. Instead it
+        provides prayerful reflections about the most basic questions of
+        conducting Worship and Business.
+      </p>
+      <p>
         <a href="http://www.quakerinfo.org/resources/books">
           Quaker Infomation Service
         </a>{" "}

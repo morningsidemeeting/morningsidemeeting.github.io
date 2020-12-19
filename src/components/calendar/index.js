@@ -17,6 +17,7 @@ const SCOPES = "https://www.googleapis.com/auth/calendar.readonly";
 export const CALENDAR_IDS = {
   main: "d1kb6t7loimf7b9ib89to5d2hs@group.calendar.google.com",
   psc: "dr4fmp2quj73h6i65ul5v53bco@group.calendar.google.com",
+  communications: "a6hc0gdimm88606pbt8n0he3eg@group.calendar.google.com",
 };
 
 function getGapi() {
@@ -80,7 +81,7 @@ async function fetchCalendar(calendarId, maxResults = 10) {
   });
 }
 
-const Calendar = ({ calendarIds = [CALENDAR_IDS.main] }) => {
+const Calendar = ({ calendarIds = [CALENDAR_IDS.main], withFooter = true }) => {
   const [events, setEvents] = useState([]);
   const [hasFetchedEvents, setHasFetchedEvents] = useState(false);
 
@@ -173,7 +174,7 @@ const Calendar = ({ calendarIds = [CALENDAR_IDS.main] }) => {
         {description ? (
           <p dangerouslySetInnerHTML={{ __html: description }}></p>
         ) : null}
-        {calendarId != CALENDAR_IDS.main ? (
+        {withFooter && calendarId != CALENDAR_IDS.main ? (
           <footer>{organizer.displayName}</footer>
         ) : null}
       </li>
@@ -191,7 +192,7 @@ const Calendar = ({ calendarIds = [CALENDAR_IDS.main] }) => {
           const [month, evts] = eventsByMonth.next().value;
           months.push(
             <Fragment key={`month-${month}`}>
-              <h3>{month}</h3>
+              <h3 className={Styles.calendarMonth}>{month}</h3>
               <ul className={Styles.calendarEvents}>{evts.map(renderEvent)}</ul>
             </Fragment>
           );
