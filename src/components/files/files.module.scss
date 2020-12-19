@@ -1,24 +1,32 @@
 .files {
   list-style: none;
-  padding: 0 20px;
+  padding: 0;
 
   li {
-    margin-top: 2em;
+    margin-top: 1.5em;
 
-    header {
-      font-style: normal;
-      font-weight: 700;
+    &.pdf,
+    &.gdoc,
+    &.unknown {
+      a {
+        font-weight: bold;
+      }
     }
 
-    time,
-    time + span {
-      font-style: italic;
+    a {
+      display: inline-block;
+    }
+
+    p {
+      margin: 0
+    }
+
+    .timestamp {
       display: block;
-    }
-
-    footer {
-      font-size: 0.82em;
-      // font-style: italic;
+      margin: 0.5em 0 0;
+      font-size: 16px;
+      font-style: italic;
     }
   }
+
 }

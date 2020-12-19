@@ -114,14 +114,6 @@ const Files = ({ folderIds = [FOLDER_IDS.business_minutes], orderBy }) => {
     });
   }
 
-  function getEventDate(evt) {
-    return evt.dateTime || evt.date;
-  }
-
-  function parseEventISODate(evt) {
-    return parseISO(getEventDate(evt));
-  }
-
   function displayDay(date) {
     return format(date, "MMMM d, y");
   }
@@ -130,56 +122,42 @@ const Files = ({ folderIds = [FOLDER_IDS.business_minutes], orderBy }) => {
     return format(date, "h:mm aaaa");
   }
 
-  function renderFile({ id, name, webViewLink, description }) {
+  function renderFile({
+    id,
+    name,
+    webViewLink,
+    description,
+    modifiedTime,
+    mimeType,
+  }) {
+    const modifiedOn = format(parseISO(modifiedTime), "yyyy-MM-dd");
+    let fileType;
+    switch (mimeType) {
+      case "application/pdf":
+        fileType = "pdf";
+        break;
+      case "application/pdf":
+        fileType = "gdoc";
+        break;
+      default:
+        fileType = "unknown";
+        break;
+    }
     return (
-      <p key={id}>
-        <a href={webViewLink}>{name}</a>: {description}
-      </p>
+      <li key={id} className={Styles[fileType]}>
+        <a href={webViewLink}>{name}</a>
+        {description ? <p>{description}</p> : null}
+        <span className={Styles.timestamp}>Modified on {modifiedOn}</span>
+      </li>
     );
   }
-
-  // function renderEvent({
-  //   summary,
-  //   id,
-  //   location,
-  //   description,
-  //   start,
-  //   end,
-  //   organizer,
-  // }) {
-  //   const { email: calendarId } = organizer;
-  //   const startDate = parseEventISODate(start);
-  //   const endDate = parseEventISODate(end);
-  //   const startDayStr = format(startDate, "yyyy-MM-dd");
-  //   const isSameDay = startDayStr === format(endDate, "yyyy-MM-dd");
-  //   const displaySpan = isSameDay
-  //     ? `${displayDay(startDate)}, ${displayTime(startDate)} to ${displayTime(
-  //         endDate
-  //       )}`
-  //     : `${displayDay(startDate)}, ${displayTime(startDate)} to ${displayDay(
-  //         endDate
-  //       )}, ${displayTime(endDate)}`;
-  //   return (
-  //     <li key={id}>
-  //       <header>{summary}</header>
-  //       <time dateTime={startDayStr}>{displaySpan}</time>
-  //       {location ? <span>{location}</span> : null}
-  //       {description ? (
-  //         <p dangerouslySetInnerHTML={{ __html: description }}></p>
-  //       ) : null}
-  //       {calendarId != CALENDAR_IDS.main ? (
-  //         <footer>{organizer.displayName}</footer>
-  //       ) : null}
-  //     </li>
-  //   );
-  // }
 
   function renderFiles() {
     if (hasFetchedFiles) {
       if (!files.length) {
         return <p>No files found.</p>;
       } else {
-        return files.map(renderFile);
+        return <ul className={Styles.files}>{files.map(renderFile)}</ul>;
       }
     } else {
       return <p>Loading files...</p>;
