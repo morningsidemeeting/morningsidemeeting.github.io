@@ -7,6 +7,7 @@ const mainNavItems = [
   ["Calendar", "/calendar"],
   ["Committees", "/committees"],
   ["News", "/news"],
+  ["Documents", "/newsletters"],
   ["Contact", "/contact"],
 ];
 

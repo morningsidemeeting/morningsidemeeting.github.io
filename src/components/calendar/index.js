@@ -21,6 +21,10 @@ export const CALENDAR_IDS = {
 };
 
 async function fetchCalendar(calendarId, maxResults = 10) {
+  // also accept calendar slugs
+  if (CALENDAR_IDS[calendarId]) {
+    calendarId = CALENDAR_IDS[calendarId];
+  }
   return new Promise(async (resolve, reject) => {
     try {
       const gapi = await getGapi();

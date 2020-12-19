@@ -5,7 +5,7 @@ const PeaceCommitteePage = () => {
   return (
     <Committee
       title="Peace &amp; Social Concerns Committee"
-      calendarTag="psc"
+      calendarSlug="psc"
       tag="psc"
     >
       <p>

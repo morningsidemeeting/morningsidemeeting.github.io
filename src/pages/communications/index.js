@@ -3,11 +3,7 @@ import Committee from "../../components/committee";
 
 const CommunicationsCommitteePage = () => {
   return (
-    <Committee
-      title="Communications Committee"
-      calendarTag="communications"
-      tag="communications"
-    >
+    <Committee title="Communications Committee" basePath="/communications">
       <p>
         The committee is first and foremost focused on helping Morningside
         members and attenders and distant Friends maintain a sense of community

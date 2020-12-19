@@ -14,6 +14,9 @@ const DISCOVERY_DOCS =
 const DEFAULT_FIELDS = [];
 export const FOLDER_IDS = {
   business_minutes: "1z84XpKreg6-MZlShXk8_svqQQYX4R24z",
+  newsletters: "1n4mL6JZWAdeaC9_BP6rgh3dNd5L2Jb2T",
+  sotm: "1HjcVWx-afyh3quiEhwg9BSJJ6UcZ64_T",
+  communications: "12_ZPd3N84heC06hrvSsFn8tE64j7ZU2W",
 };
 
 const BackgroundHeader = ({ className, fileType, children }) => {
@@ -68,6 +71,10 @@ const BackgroundHeader = ({ className, fileType, children }) => {
 };
 
 async function fetchDrive(folderId, orderBy = "name", pageSize = 100) {
+  // accept folder slugs as well as IDs:
+  if (FOLDER_IDS[folderId]) {
+    folderId = FOLDER_IDS[folderId];
+  }
   return new Promise(async (resolve, reject) => {
     try {
       const gapi = await getGapi();
@@ -140,6 +147,7 @@ const Files = ({ folderIds = [], orderBy }) => {
         fileType = "pdf";
         break;
       case "application/vnd.google-apps.document":
+      case "application/vnd.google-apps.shortcut":
         fileType = "gdoc";
         break;
       default:
