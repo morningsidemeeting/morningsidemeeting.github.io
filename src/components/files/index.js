@@ -4,14 +4,8 @@ import { format } from "date-fns";
 import { parseISO } from "date-fns/esm";
 import Styles from "./files.module.scss";
 import BackgroundImage from "gatsby-background-image";
-import Gapi, { getGapi } from "../gapi";
+import Gapi, { loadAndInitGapi } from "../gapi";
 
-const API_KEY = "AIzaSyCCOtjPgXJ5tIqEILv9gm5pCpOAbyV_3aY";
-const CLIENT_ID =
-  "1026426394881-dbessqt7532lnu3j8evh83qicmg6uhak.apps.googleusercontent.com";
-const DISCOVERY_DOCS =
-  "https://content.googleapis.com/discovery/v1/apis/drive/v3/rest";
-const DEFAULT_FIELDS = [];
 export const FOLDER_IDS = {
   business_minutes: "1z84XpKreg6-MZlShXk8_svqQQYX4R24z",
   newsletters: "1n4mL6JZWAdeaC9_BP6rgh3dNd5L2Jb2T",
@@ -77,31 +71,19 @@ async function fetchDrive(folderId, orderBy = "name", pageSize = 100) {
   }
   return new Promise(async (resolve, reject) => {
     try {
-      const gapi = await getGapi();
-      gapi.load("client:auth2", () => {
-        gapi.auth2.init({ client_id: CLIENT_ID }).then(function () {
-          gapi.client.setApiKey(API_KEY);
-          gapi.client.load(DISCOVERY_DOCS).then(function () {
-            gapi.client.drive.files
-              .list({
-                q: `'${folderId}' in parents`,
-                orderBy,
-                pageSize,
-                fields:
-                  "files(id, name, description, starred, mimeType, webViewLink, createdTime, modifiedTime)",
-              })
-              .then(
-                function (response) {
-                  // Handle the results here (response.result has the parsed body).
-                  resolve(response.result.files);
-                },
-                function (err) {
-                  console.error("Execute error", err);
-                  reject(err);
-                }
-              );
+      loadAndInitGapi().then((client) => {
+        console.log("this is the client", client);
+        client.drive.files
+          .list({
+            q: `'${folderId}' in parents`,
+            orderBy,
+            pageSize,
+            fields:
+              "files(id, name, description, starred, mimeType, webViewLink, createdTime, modifiedTime)",
+          })
+          .then(function (response) {
+            resolve(response.result.files);
           });
-        });
       });
     } catch (error) {
       console.log(error);

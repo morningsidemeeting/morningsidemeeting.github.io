@@ -2,15 +2,7 @@ import React, { useState, useEffect, Fragment } from "react";
 import { format } from "date-fns";
 import { parseISO } from "date-fns/esm";
 import Styles from "./calendar.module.scss";
-import Gapi, { getGapi } from "../gapi";
-
-const API_KEY = "AIzaSyCCOtjPgXJ5tIqEILv9gm5pCpOAbyV_3aY";
-const CLIENT_ID =
-  "1026426394881-dbessqt7532lnu3j8evh83qicmg6uhak.apps.googleusercontent.com";
-const DISCOVERY_DOCS = [
-  "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest",
-];
-const SCOPES = "https://www.googleapis.com/auth/calendar.readonly";
+import Gapi, { loadAndInitGapi } from "../gapi";
 
 // These can be imported by pages using the calendar component, so they can
 // refer by key to the one they'd like to include
@@ -27,37 +19,56 @@ async function fetchCalendar(calendarId, maxResults = 10) {
   }
   return new Promise(async (resolve, reject) => {
     try {
-      const gapi = await getGapi();
-      gapi.load("client:auth2", () => {
-        gapi.client
-          .init({
-            apiKey: API_KEY,
-            clientId: CLIENT_ID,
-            discoveryDocs: DISCOVERY_DOCS,
-            scope: SCOPES,
-          })
-          .then(
-            function () {
-              gapi.client.calendar.events
-                .list({
-                  calendarId,
-                  timeMin: new Date().toISOString(),
-                  showDeleted: false,
-                  singleEvents: true,
-                  orderBy: "startTime",
-                  maxResults,
-                })
-                .then(function (response) {
-                  // console.log("got some events", response.result.items);
-                  resolve(response.result.items);
-                });
-            },
-            function (error) {
-              console.log("had a problem", error);
-              reject(error);
-            }
-          );
-      });
+      loadAndInitGapi()
+        .then((client) => {
+          client.calendar.events
+            .list({
+              calendarId,
+              timeMin: new Date().toISOString(),
+              showDeleted: false,
+              singleEvents: true,
+              orderBy: "startTime",
+              maxResults,
+            })
+            .then(function (response) {
+              resolve(response.result.items);
+            });
+        })
+        .catch((error) => {
+          console.log("Calendar was unable to load", error);
+          reject(error);
+        });
+      // const gapi = await getGapi();
+      // gapi.load("client:auth2", () => {
+      //   gapi.client
+      //     .init({
+      //       apiKey: API_KEY,
+      //       clientId: CLIENT_ID,
+      //       discoveryDocs: DISCOVERY_DOCS,
+      //       scope: SCOPES,
+      //     })
+      //     .then(
+      //       function () {
+      //         gapi.client.calendar.events
+      //           .list({
+      //             calendarId,
+      //             timeMin: new Date().toISOString(),
+      //             showDeleted: false,
+      //             singleEvents: true,
+      //             orderBy: "startTime",
+      //             maxResults,
+      //           })
+      //           .then(function (response) {
+      //             // console.log("got some events", response.result.items);
+      //             resolve(response.result.items);
+      //           });
+      //       },
+      //       function (error) {
+      //         console.log("had a problem", error);
+      //         reject(error);
+      //       }
+      //     );
+      // });
     } catch (error) {
       console.log(error);
       reject(error);

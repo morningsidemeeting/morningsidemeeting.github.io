@@ -1,6 +1,15 @@
 import React, { Children } from "react";
 import { Helmet } from "react-helmet";
 
+const API_KEY = "AIzaSyCCOtjPgXJ5tIqEILv9gm5pCpOAbyV_3aY";
+const CLIENT_ID =
+  "1026426394881-dbessqt7532lnu3j8evh83qicmg6uhak.apps.googleusercontent.com";
+const SCOPES = "https://www.googleapis.com/auth/calendar.readonly";
+const DISCOVERY_DOCS = [
+  "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest",
+  "https://content.googleapis.com/discovery/v1/apis/drive/v3/rest",
+];
+
 export function getGapi() {
   return new Promise((resolve, reject) => {
     let sanity = 0;
@@ -18,6 +27,25 @@ export function getGapi() {
         resolve(window.gapi);
       }
     }
+  });
+}
+
+export async function loadAndInitGapi() {
+  return new Promise(async (resolve, reject) => {
+    const gapi = await getGapi();
+    gapi.load("client:auth2", () => {
+      gapi.client
+        .init({
+          apiKey: API_KEY,
+          clientId: CLIENT_ID,
+          scope: SCOPES,
+          discoveryDocs: DISCOVERY_DOCS,
+        })
+        .then(
+          () => resolve(gapi.client),
+          (error) => reject(error)
+        );
+    });
   });
 }
 

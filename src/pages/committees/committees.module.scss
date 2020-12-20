@@ -11,12 +11,12 @@
 
     strong,
     a {
-      
       display: block;
       text-decoration: none;
-      &:hover {
-        text-decoration: underline;
-      }
+    }
+
+    a:hover {
+      text-decoration: underline;
     }
   }
 }
