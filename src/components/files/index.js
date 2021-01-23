@@ -92,7 +92,12 @@ async function fetchDrive(folderId, orderBy = "name", pageSize = 100) {
   });
 }
 
-const Files = ({ folderIds = [], orderBy }) => {
+const Files = ({
+  folderIds = [],
+  orderBy,
+  withModifiedOn = false,
+  formatFileName,
+}) => {
   const [files, setFiles] = useState([]);
   const [hasFetchedFiles, setHasFetchedFiles] = useState(false);
 
@@ -111,7 +116,21 @@ const Files = ({ folderIds = [], orderBy }) => {
     );
 
     setHasFetchedFiles(true);
-    setFiles(loadedFiles);
+    setFiles(formatFiles(loadedFiles));
+  }
+
+  function formatFiles(files) {
+    return files.map((f) => {
+      const { modifiedTime, name } = f;
+      return Object.assign({}, f, {
+        modifiedTime: format(parseISO(modifiedTime), "yyyy-MM-dd"),
+        name:
+          formatFileName && typeof formatFileName === "function"
+            ? formatFileName(name)
+            : name,
+      });
+    });
+    // return files;
   }
 
   function renderFile({
@@ -142,7 +161,9 @@ const Files = ({ folderIds = [], orderBy }) => {
           <a href={webViewLink}>{name}</a>
         </BackgroundHeader>
         {description ? <p>{description}</p> : null}
-        <span className={Styles.timestamp}>Modified on {modifiedOn}</span>
+        {withModifiedOn === true ? (
+          <span className={Styles.timestamp}>Modified on {modifiedOn}</span>
+        ) : null}
       </li>
     );
   }

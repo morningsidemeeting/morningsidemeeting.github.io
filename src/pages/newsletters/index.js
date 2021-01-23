@@ -1,9 +1,33 @@
 import React, { useState, useEffect, Fragment } from "react";
 import FilesPage from "../../components/files/filesPage";
 
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+function formatDate(match, p1, p2) {
+  console.log("match is", match, p1, parseInt(p2) - 1);
+  return `${months[parseInt(p2) - 1]}, 20${p1}`;
+}
+
+function formatFileName(name) {
+  return name.replace(/(\d{2})(\d{2}).pdf$/, formatDate);
+}
+
 export default function NewslettersPage() {
   return (
-    <FilesPage folderSlug="newsletters">
+    <FilesPage folderSlug="newsletters" formatFileName={formatFileName}>
       <section>
         <h3>Newsletter Submission Guidelines</h3>
         <p>
