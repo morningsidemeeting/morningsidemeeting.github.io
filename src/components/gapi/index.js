@@ -1,4 +1,4 @@
-import React, { Children } from "react";
+import React from "react";
 import { Helmet } from "react-helmet";
 
 const API_KEY = "AIzaSyCCOtjPgXJ5tIqEILv9gm5pCpOAbyV_3aY";
