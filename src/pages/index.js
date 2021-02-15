@@ -17,6 +17,15 @@ const HomePage = ({ data }) => {
           living the Quaker testimonies of equality, integrity, simplicity,
           stewardship of the earth, and peace.
         </p>
+
+        <p>
+          We gather for silent worship every First Day (Sunday) morning at 11
+          o’clock. Traditionally, we meet at Riverside Church in Manhattan.
+          Currently we hold hybrid meetings, with most members attending via
+          Zoom and a small number gathering together and connecting from
+          Riverside. All are welcome.
+        </p>
+
         {currentAnnouncement ? (
           <p className={Styles.callToAction}>
             <a href={currentAnnouncement.slug}>
@@ -29,26 +38,6 @@ const HomePage = ({ data }) => {
           fluid={data.churchImg.childImageSharp.fluid}
           className={Styles.columnImage}
         />
-        <p>
-          Morningsiders come from a variety of faith backgrounds, and accept a
-          variety of beliefs about the divine and our relationship to scripture.
-          It is believed that Morningside was the first Meeting anywhere to take
-          a same-sex marriage under its care and affirm the right of all couples
-          to name their relationships as they choose.
-        </p>
-        <p>
-          Members and attenders of Morningside Meeting also work together in
-          committees to advance peace, racial justice, and prison reform. We
-          care for and tend to each other's physical, psychological, and
-          spiritual well-being.
-        </p>
-        <p>
-          We gather for silent worship every First Day (Sunday) morning at 11
-          o’clock. Traditionally, we meet at Riverside Church in Manhattan.
-          Currently we hold hybrid meetings, with most members attending via
-          Zoom and a small number gathering together and connecting from
-          Riverside. <strong>All are welcome.</strong>
-        </p>
         <hr />
         <Posts nodes={announcements} />
       </section>
