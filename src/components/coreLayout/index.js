@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-// import SEO from "../../components/seo";
+import React from "react";
 import MainNav from "../../components/mainNav";
 import SiteFooter from "../../components/siteFooter";
 import { Link } from "gatsby";

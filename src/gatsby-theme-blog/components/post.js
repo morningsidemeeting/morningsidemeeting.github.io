@@ -1,5 +1,4 @@
 import React from "react";
-import { MDXRenderer } from "gatsby-plugin-mdx";
 import CoreLayout from "../../components/coreLayout";
 import { Post } from "../../components/posts";
 

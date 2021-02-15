@@ -1,6 +1,6 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React from "react";
 import FilesPage from "../../components/files/filesPage";
 
-export default function BusinessMinutesPage() {
+export default function DocsPage() {
   return <FilesPage folderSlug="business_minutes" />;
 }
