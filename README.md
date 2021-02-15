@@ -13,11 +13,39 @@ It is deployed to GitHub Pages via the [Gatsby Publsh workflow](https://github.c
 
 It was developed using Node 12.17.0. (The repo includes an `.nvmrc` file.)
 
-## Managing the Domain Name
+### Managing the Domain Name
 
 TK: The website will rely on the Gatsby Publish workflow to set the correct CNAME, as [specified in the documentation](https://github.com/marketplace/actions/gatsby-publish#cname).
 
+### Adding a Committee Section
+
+TK TK TK.
+
+### Google Calendar Integration
+
+### Google Docs Integration
+
 ## Contributor's Guide
+
+### Editing Site Content through GitHub
+
+We will maintain much of the content on our website using Google's suite of tools: Calendar and Docs in particular. (Information for developers on how to work with these integrations can be [found above](#google-calendar-integration)).)
+
+Some of the site content, however, is in the source code for the website itself. Fortunately GitHub, where the code is hosted, provides a web interface for editing code directly in one's browser. We will provide interested members of the Morningside community GitHub access to the repository, allowing them to create new posts, update content, and more on their own.
+
+### Site Pages
+
+Most of the site's pages have some content hard-coded into them. This text should be easily editable by anyone with access to the source code (via GitHub) and a basic understanding of HTML.
+
+The pages are all nested in their own directories under `/src/pages/`. The name of the directory corresponds to the URL of that page on the site, and the content will be in the index file for that directory: `index.js`. So, for example, to edit the text of the page "A Brief History of the Quakers" in the "About" section of the site:
+
+1. Figure out the name of the directory by looking at the URL of the page in your browser. The URL for this page is `https://morningsidemeeting.org/quakers`, so the directory will be called `quakers`.
+1. Edit the text in the index file for that directory: `/src/pages/quakers/index.js`.
+1. Save (commit) your changes to the `main` branch of the repository.
+
+### Updating Homepage Content
+
+The text at the top of the homepage is hard-coded into the
 
 ### Footer
 

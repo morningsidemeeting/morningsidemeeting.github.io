@@ -18,7 +18,7 @@ const AboutPage = () => (
         (who would marry Fox) and James Nayler, believed that a priestly class,
         vestments and religious symbols stood in the way of true worship.
         Referring to John 15:15, early Quakers saw themselves as “friends” to
-        that of God in all.{" "}
+        that of God in all.
       </p>
       <p>
         The seminal Quaker writing from this period is the Journal or
@@ -28,7 +28,7 @@ const AboutPage = () => (
         , which describes the spiritual journey of a young man who, failing to
         discover answers in the existing (state) religion, found solace in
         silent worship, replacing theological questions with personal experience
-        and continuing revelation.{" "}
+        and continuing revelation.
       </p>
       <p>
         18th century Friends were led to see the inherent contradiction between
