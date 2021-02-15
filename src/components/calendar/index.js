@@ -169,7 +169,7 @@ const Calendar = ({ calendarIds = [CALENDAR_IDS.main], withFooter = true }) => {
         {description ? (
           <p dangerouslySetInnerHTML={{ __html: description }}></p>
         ) : null}
-        {withFooter && calendarId != CALENDAR_IDS.main ? (
+        {withFooter && calendarId !== CALENDAR_IDS.main ? (
           <footer>{organizer.displayName}</footer>
         ) : null}
       </li>

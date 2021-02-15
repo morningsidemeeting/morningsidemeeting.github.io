@@ -8,9 +8,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      GCAL_API_KEY: ${{ secrets.GCAL_API_KEY }}
-      GCAL_CLIENT_ID: ${{ secrets.GCAL_CLIENT_ID }}
+    # env:
+    #   GCAL_API_KEY: ${{ secrets.GCAL_API_KEY }}
+    #   GCAL_CLIENT_ID: ${{ secrets.GCAL_CLIENT_ID }}
     steps:
       - uses: actions/checkout@v1
       - uses: enriikke/gatsby-gh-pages-action@v2

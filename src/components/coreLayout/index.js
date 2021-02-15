@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SEO from "../../components/seo";
+// import SEO from "../../components/seo";
 import MainNav from "../../components/mainNav";
 import { Link } from "gatsby";
 import Styles from "./coreLayout.module.scss";
@@ -10,7 +10,9 @@ export default function CoreLayout({
   withNav = true,
   children,
 }) {
-  const [footerQuote, setFooterQuote] = useState(
+  // We'll randomly select a quote from our list to use for the duration of
+  // this instance's life:
+  const [footerQuote] = useState(
     quotes[Math.floor(Math.random() * quotes.length)]
   );
   const { quote, author, work, date } = footerQuote;
