@@ -73,7 +73,7 @@ const CommitteesPage = ({ data }) => {
         <h3>Committee Pages</h3>
         {renderCommitteePagesList()}
 
-        <h3>All Positions &amp; committee members for 2020</h3>
+        <h3>All Positions &amp; committee members for 2021</h3>
 
         <p>
           Committees have either a clerk for a long standing committee such as
@@ -85,11 +85,11 @@ const CommitteesPage = ({ data }) => {
         </p>
 
         <p>
-          In order to ensure a democratic distribution of authority, the clerk
-          and other members of committees serve only for a specified length of
-          time. All Meeting members and attenders may be asked to sit on
-          committees, depending upon their leadings and the discernment of their
-          gifts by the Nominating Committee.
+          In order to ensure shared decision-making, the clerk and other members
+          of committees serve only for a specified length of time. All Meeting
+          members and attenders may be asked to sit on committees, depending
+          upon their leadings and the discernment of their gifts by the
+          Nominating Committee.
         </p>
 
         <p>

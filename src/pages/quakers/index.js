@@ -99,13 +99,12 @@ const AboutPage = () => (
       </p>
       <p>
         <a href="https://quakerbooks.org/">Quakerbooks.org</a> is a source of
-        works by and about Quakers that you won't find in your local bookstore,
-        such as Pendle Hill Pamphlets.
+        works by and about Quakers, including the Pendle Hill Pamphlets.
       </p>
       <p>
-        The Morninside Library maintains a small lending library on the premises
-        of Morningside Meeting's meeting room. The librarian would be happy to
-        introduce you to the collection.
+        The Morningside Library maintains a small lending library on the
+        premises of Morningside Meeting's meeting room. The librarian would be
+        happy to introduce you to the collection.
       </p>
     </section>
   </CoreLayout>

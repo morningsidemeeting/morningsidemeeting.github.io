@@ -12,10 +12,10 @@ const AboutPage = () => (
         </a>
       </p>
       <p>
-        Morningside Friends meet in the tower of the Riverside Church in New
-        York City, which is located on Riverside Drive and 120th Street near
-        Columbia University, where Harlem and the Upper West Side meet. (120th
-        Street is also named Reinhold Niebuhr Place.)
+        For in-person worship, Morningside Friends meet in the tower of the
+        Riverside Church in New York City, which is located on Riverside Drive
+        and 120th Street near Columbia University, where Harlem and the Upper
+        West Side meet. (120th Street is also named Reinhold Niebuhr Place.)
       </p>
 
       <p>

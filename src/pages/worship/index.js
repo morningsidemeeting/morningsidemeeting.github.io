@@ -8,8 +8,13 @@ const WorshipPage = () => (
     <section>
       <h2>Weekly Meeting for Worship</h2>
       <p>
-        We gather for worship each First Day (Sunday) at 11:00am on the 12th
-        floor of the tower in Riverside Church in New York City.
+        Traditionally, we have gathered for worship each First Day (Sunday) at
+        11:00am on the 12th floor of the tower in Riverside Church in New York
+        City. In March 2020, meeting for worship was moved entirely online in
+        response to the COVID-19 pandemic. In November 2020, arrangements were
+        made for up to 20 Friends and attenders to meet for in-person worship on
+        the 20th floor of the tower of Riverside Church, where we join in
+        blended worship with those attending online.
       </p>
       <p>Our weekly worship adheres to the following pattern:</p>
       <h3>Worship</h3>
@@ -26,9 +31,13 @@ const WorshipPage = () => (
         message with a period of silence.
       </p>
       <p>
-        Meeting for worship begins when the first worshipper enters the room and
-        begins to settle into the Silence. Its conclusion is signaled by a
-        handshake initiated by the meeting coordinator.
+        Traditionally, meeting for worship begins when the first worshipper
+        enters the room and begins to settle into the Silence; its conclusion is
+        signaled by a handshake initiated by the meeting coordinator. As a
+        blended meeting, those attending online begin to sign in at 10:45 a.m.,
+        as those attending in person begin to gather. At 11 a.m., all are
+        welcomed into silent worship by a Friend serving as host for that day;
+        the meeting for worship concludes with a brief announcement by the host.
       </p>
       <h3>Afterwords</h3>
       <p>
@@ -42,23 +51,30 @@ const WorshipPage = () => (
       </p>
       <h3>Introductions</h3>
       <p>
-        Following Afterwords, the meeting coordinator will invite members of the
+        Following Afterwords, the meeting host will invite members of the
         Morningside Ministry and Counsel Committee who are present to introduce
-        themselves. They welcome your questions about Quakerism in general and
-        Morningside in particular.
+        themselves. As members of the committee charged with the pastoral care
+        of the meeting, they welcome your questions about Quakerism in general
+        and Morningside in particular.
       </p>
       <p>
         At this point, visitors, newcomers, and those who are returning after a
-        prolonged absence will be invited to rise and introduce themselves, in
-        order that they may be greeted more fully during our Fellowship Hour.
+        prolonged absence will be invited to introduce themselves, in order that
+        they may be greeted more fully during the following time of fellowship.
       </p>
       <h3>Announcements</h3>
       <p>
         Friends are invited to make announcements about events of interest to
-        the community.
+        the community
       </p>
       <h3>Fellowship</h3>
-      <p>All are welcome to share refreshments and conversation.</p>
+      <p>
+        Traditionally, all have been welcome to share refreshments and
+        conversation following worship. During the time of pandemic, fellowship
+        may take place as Friends and attenders remain in the online worship
+        room, or as we adjourn to breakout rooms for conversation in small
+        groups.
+      </p>
     </section>
   </CoreLayout>
 );
