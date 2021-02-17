@@ -1,7 +1,6 @@
 import React from "react";
 import CoreLayout from "../../components/coreLayout";
 import Styles from "./committees.module.scss";
-// import SubNav from "../../components/subNav/committees";
 import { Link } from "gatsby";
 import { graphql } from "gatsby";
 
@@ -11,7 +10,7 @@ const committeeLinks = {
 };
 
 const CommitteesPage = ({ data }) => {
-  const committees = data.allCommitteesCsv.edges;
+  const committees = data.allCommittees2021Csv.edges;
 
   function renderCommitteePagesList() {
     return (
@@ -52,7 +51,9 @@ const CommitteesPage = ({ data }) => {
           return (
             <li key={`committee-${i}`}>
               {committeeEl} {members}
-              <p>{responsibilities}</p>
+              {responsibilities.split("\n\n").map((text) => (
+                <p>{text}</p>
+              ))}
             </li>
           );
         })}
@@ -113,7 +114,7 @@ const CommitteesPage = ({ data }) => {
 
 export const query = graphql`
   query {
-    allCommitteesCsv {
+    allCommittees2021Csv {
       edges {
         node {
           Position
