@@ -1,7 +1,6 @@
 import React from "react";
 import Committee from "../../components/committee";
-export const basePath = "/communications";
-export const title = "Communications Committee";
+import { basePath, title } from "./config.json";
 
 export default function CommitteePage() {
   return (

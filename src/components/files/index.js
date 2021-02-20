@@ -72,7 +72,6 @@ async function fetchDrive(folderId, orderBy = "name", pageSize = 100) {
   return new Promise(async (resolve, reject) => {
     try {
       loadAndInitGapi().then((client) => {
-        console.log("this is the client", client);
         client.drive.files
           .list({
             q: `'${folderId}' in parents`,
@@ -83,11 +82,13 @@ async function fetchDrive(folderId, orderBy = "name", pageSize = 100) {
           })
           .then(function (response) {
             resolve(response.result.files);
+          })
+          .catch((error) => {
+            resolve([]);
           });
       });
     } catch (error) {
-      console.log(error);
-      reject(error);
+      resolve([]);
     }
   });
 }
@@ -110,7 +111,6 @@ const Files = ({
     await Promise.all(
       folderIds.map(async (folderId) => {
         const folderFiles = await fetchDrive(folderId, orderBy);
-        console.log(folderFiles);
         loadedFiles = loadedFiles.concat(...folderFiles);
       })
     );
