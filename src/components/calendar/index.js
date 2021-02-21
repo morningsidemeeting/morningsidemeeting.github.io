@@ -3,14 +3,7 @@ import { format } from "date-fns";
 import { parseISO } from "date-fns/esm";
 import Styles from "./calendar.module.scss";
 import Gapi, { loadAndInitGapi } from "../gapi";
-
-// These can be imported by pages using the calendar component, so they can
-// refer by key to the one they'd like to include
-export const CALENDAR_IDS = {
-  main: "d1kb6t7loimf7b9ib89to5d2hs@group.calendar.google.com",
-  psc: "dr4fmp2quj73h6i65ul5v53bco@group.calendar.google.com",
-  communications: "a6hc0gdimm88606pbt8n0he3eg@group.calendar.google.com",
-};
+import CALENDAR_IDS from "../../shared/calendarIds.json";
 
 async function fetchCalendar(calendarId, maxResults = 10) {
   // also accept calendar slugs
@@ -38,37 +31,6 @@ async function fetchCalendar(calendarId, maxResults = 10) {
           console.log("Calendar was unable to load", error);
           reject(error);
         });
-      // const gapi = await getGapi();
-      // gapi.load("client:auth2", () => {
-      //   gapi.client
-      //     .init({
-      //       apiKey: API_KEY,
-      //       clientId: CLIENT_ID,
-      //       discoveryDocs: DISCOVERY_DOCS,
-      //       scope: SCOPES,
-      //     })
-      //     .then(
-      //       function () {
-      //         gapi.client.calendar.events
-      //           .list({
-      //             calendarId,
-      //             timeMin: new Date().toISOString(),
-      //             showDeleted: false,
-      //             singleEvents: true,
-      //             orderBy: "startTime",
-      //             maxResults,
-      //           })
-      //           .then(function (response) {
-      //             // console.log("got some events", response.result.items);
-      //             resolve(response.result.items);
-      //           });
-      //       },
-      //       function (error) {
-      //         console.log("had a problem", error);
-      //         reject(error);
-      //       }
-      //     );
-      // });
     } catch (error) {
       console.log(error);
       reject(error);

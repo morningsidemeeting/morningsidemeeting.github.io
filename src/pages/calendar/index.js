@@ -1,6 +1,7 @@
 import React from "react";
 import CoreLayout from "../../components/coreLayout";
-import Calendar, { CALENDAR_IDS } from "../../components/calendar";
+import Calendar from "../../components/calendar";
+import CALENDAR_IDS from "../../shared/calendarIds.json";
 
 const allCalendarIds = Object.values(CALENDAR_IDS);
 

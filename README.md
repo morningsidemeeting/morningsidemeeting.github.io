@@ -17,9 +17,32 @@ It was developed using Node 12.17.0. (The repo includes an `.nvmrc` file.)
 
 TK: The website will rely on the Gatsby Publish workflow to set the correct CNAME, as [specified in the documentation](https://github.com/marketplace/actions/gatsby-publish#cname).
 
+### Adding a Shared Calendar
+
+Shared calendars are owned by the `morningsidemeetingtest@gmail.com` Google account, currently maintained by Scott Blumenthal. If you'd like to have a new calendar created, please contact Scott. Once created, it administrative permissions can be shared with anyone who needs them.
+
+Shared calendars are accessed via a Google API. Within the codebase, they are usually referred to by a "slug" set in `/src/shared/calendarIds.json`. After creating a new calendar, add a slug for it to the list of calendar IDs in that file.
+
 ### Adding a Committee Section
 
-TK TK TK.
+Each committee section consists of four pages: a hompage (`index.js`), events (`events.js`), posts (`posts.js`), and docs (`documents.js`).
+
+To create a new committee section:
+
+1. Copy `src/pages/example-committee-section` to a new directory under `src/pages` with a unique name. The name will become the path for the section. So for example, if you were adding a Technology Committee section, you might copy the directory to `src/pages/technology`, which would become available at `https://morningsidemeeting.org/technology`.
+1. Update the `config.json` file. Fill in the relevant information as below:
+
+```
+{
+  "title": "Title of the Committee",
+  "basePath": "/communications",
+  "calendarSlug": "communications",
+  "postsTag": "communications",
+  "filesSlug": "communications"
+}
+```
+
+`title` is displayed at the top of the committee section pages. `basePath` should correspond to the name of the directory created in Step 1. `calendarSlug` corresponds to the "slug" of the for the calendar in `/src/shared/calendarIds.json`. (See ["Adding A Shared Calendar"](#adding-a-shared-calendar) above)
 
 ### Google Calendar Integration
 
@@ -46,6 +69,10 @@ The pages are all nested in their own directories under `/src/pages/`. The name 
 ### Updating Homepage Content
 
 The text at the top of the homepage is hard-coded into the
+
+### Adding a Post
+
+Anyone with repository access can add posts for any section of the site. Simply add a file to the `content/posts/` directory... TK TK TK
 
 ### Footer
 
