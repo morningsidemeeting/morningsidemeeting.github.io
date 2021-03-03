@@ -2,13 +2,13 @@ import React from "react";
 import { graphql } from "gatsby";
 import CoreLayout from "../../components/coreLayout";
 import Posts from "../../components/posts";
-import Styles from "../../components/coreLayout/coreLayout.module.scss";
+import { callToAction } from "../../components/coreLayout/coreLayout.module.scss";
 
 const NewsPage = ({ data }) => {
   return (
     <CoreLayout withSubtitle={false}>
       <section>
-        <p className={Styles.callToAction}>
+        <p className={callToAction}>
           <a href="/news/share">
             Want to share news on Morningside Meeting's website? Please fill out
             out our submission form.

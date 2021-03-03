@@ -3,7 +3,7 @@ import React, { Fragment } from "react";
 import { format } from "date-fns";
 import { parseISO } from "date-fns/esm";
 import { MDXRenderer } from "gatsby-plugin-mdx";
-import Styles from "./posts.module.scss";
+import { post } from "./posts.module.scss";
 import tagNames from "../../data/tags.json";
 
 export const Post = ({
@@ -31,7 +31,7 @@ export const Post = ({
     // there is either NO date, or date is already a formatted string.
   }
   return (
-    <div className={Styles.post}>
+    <div className={post}>
       {title ? <h3>{linkTitle ? <a href={slug}>{title}</a> : title}</h3> : null}
       {parsedDate ? <time dateTime={date}>{parsedDate}</time> : null}
       <MDXRenderer>{body}</MDXRenderer>

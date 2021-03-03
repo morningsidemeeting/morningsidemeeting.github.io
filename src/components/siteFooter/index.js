@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Styles from "./siteFooter.module.scss";
+import { siteFooter, footerQuote, copyright } from "./siteFooter.module.scss";
 import quotes from "../../data/quotes.json";
 
 export default function SiteFooter() {
@@ -10,9 +10,9 @@ export default function SiteFooter() {
   );
   const { quote, author, work, date } = footerQuote;
   return (
-    <footer className={Styles.siteFooter}>
+    <footer className={siteFooter}>
       <hr />
-      <figure className={Styles.footerQuote}>
+      <figure className={footerQuote}>
         <blockquote>
           <p>{quote}</p>
         </blockquote>
@@ -20,7 +20,7 @@ export default function SiteFooter() {
           {[author, work, date].filter((s) => s).join(", ")}
         </figcaption>
       </figure>
-      <p className={Styles.copyright}>
+      <p className={copyright}>
         © 2016 Morningside Monthly Meeting, Religious Society of Friends.
       </p>
     </footer>

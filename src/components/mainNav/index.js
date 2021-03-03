@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
-import Styles from "./mainNav.module.scss";
+import { mainNav, mainNavItem, active } from "./mainNav.module.scss";
 
 const mainNavItems = [
   ["About", "/about"],
@@ -13,10 +13,10 @@ const mainNavItems = [
 
 const MainNav = ({ location }) => {
   return (
-    <ul className={Styles.mainNav}>
+    <ul className={mainNav}>
       {mainNavItems.map(([name, path], i) => (
-        <li key={`subnav-link-${i}`} className={Styles.mainNavItem}>
-          <Link to={path} activeClassName={Styles.active}>
+        <li key={`subnav-link-${i}`} className={mainNavItem}>
+          <Link to={path} activeClassName={active}>
             {name}
           </Link>
         </li>

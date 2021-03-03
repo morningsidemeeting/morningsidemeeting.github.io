@@ -1,10 +1,10 @@
 import React from "react";
 import CoreLayout from "../../components/coreLayout";
-import Styles from "./contact.module.scss";
+import { contact } from "./contact.module.scss";
 
 const AboutPage = () => (
   <CoreLayout withSubtitle={false}>
-    <section className={Styles.contact}>
+    <section className={contact}>
       <p>
         For all inquiries, please email our main address:{" "}
         <a href="mailto:morningsidequakermeeting@gmail.com">

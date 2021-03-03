@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import { format } from "date-fns";
 import { parseISO } from "date-fns/esm";
-import Styles from "./files.module.scss";
+// keeping this * import for dynamic style selection below
+// e.g. Styles[fileType]
+import * as Styles from "./files.module.scss";
 import BackgroundImage from "gatsby-background-image";
 import Gapi, { loadAndInitGapi } from "../gapi";
 

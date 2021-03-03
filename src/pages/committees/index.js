@@ -1,6 +1,6 @@
 import React from "react";
 import CoreLayout from "../../components/coreLayout";
-import Styles from "./committees.module.scss";
+import { committeePages, committeeList } from "./committees.module.scss";
 import { Link } from "gatsby";
 import { graphql } from "gatsby";
 
@@ -14,7 +14,7 @@ const CommitteesPage = ({ data }) => {
 
   function renderCommitteePagesList() {
     return (
-      <ul className={Styles.committeePages}>
+      <ul className={committeePages}>
         {committees.reduce((acc, { node: committee }, i) => {
           const { Position: name } = committee;
           const committeePage = committeeLinks[name];
@@ -35,7 +35,7 @@ const CommitteesPage = ({ data }) => {
 
   function renderCommitteesAndNominees() {
     return (
-      <ul className={Styles.committeeList}>
+      <ul className={committeeList}>
         {committees.map(({ node: committee }, i) => {
           const {
             Position: name,

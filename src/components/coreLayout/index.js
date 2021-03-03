@@ -2,7 +2,7 @@ import React from "react";
 import MainNav from "../../components/mainNav";
 import SiteFooter from "../../components/siteFooter";
 import { Link } from "gatsby";
-import Styles from "./coreLayout.module.scss";
+import { container } from "./coreLayout.module.scss";
 
 export default function CoreLayout({
   withSubtitle = false,
@@ -10,7 +10,7 @@ export default function CoreLayout({
   children,
 }) {
   return (
-    <div className={Styles.container}>
+    <div className={container}>
       <h1>
         <Link to="/">Morningside Quaker Meeting</Link>
       </h1>

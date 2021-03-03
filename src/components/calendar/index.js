@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { format } from "date-fns";
 import { parseISO } from "date-fns/esm";
-import Styles from "./calendar.module.scss";
+import { calendarEvents, calendarMonth } from "./calendar.module.scss";
 import Gapi, { loadAndInitGapi } from "../gapi";
 import CALENDAR_IDS from "../../shared/calendarIds.json";
 
@@ -149,8 +149,8 @@ const Calendar = ({ calendarIds = [CALENDAR_IDS.main], withFooter = true }) => {
           const [month, evts] = eventsByMonth.next().value;
           months.push(
             <Fragment key={`month-${month}`}>
-              <h3 className={Styles.calendarMonth}>{month}</h3>
-              <ul className={Styles.calendarEvents}>{evts.map(renderEvent)}</ul>
+              <h3 className={calendarMonth}>{month}</h3>
+              <ul className={calendarEvents}>{evts.map(renderEvent)}</ul>
             </Fragment>
           );
         }
