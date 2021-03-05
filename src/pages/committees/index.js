@@ -50,7 +50,8 @@ const CommitteesPage = ({ data }) => {
           );
           return (
             <li key={`committee-${i}`}>
-              {committeeEl} {members}
+              {committeeEl}
+              <p className={Styles.nominees}>{members}</p>
               {responsibilities.split("\n\n").map((text) => (
                 <p>{text}</p>
               ))}
