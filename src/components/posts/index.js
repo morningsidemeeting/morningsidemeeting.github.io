@@ -26,7 +26,9 @@ export const Post = ({
   ) : null;
   let parsedDate = date;
   try {
-    parsedDate = format(parseISO(date), "MMMM d, y");
+    // if it looks like a time was not specified, shift from GMT to EST
+    const ESTDate = date.replace("T00:00:00.000Z", "T05:00:00.000Z");
+    parsedDate = format(parseISO(ESTDate), "MMMM d, y");
   } catch (e) {
     // there is either NO date, or date is already a formatted string.
   }
