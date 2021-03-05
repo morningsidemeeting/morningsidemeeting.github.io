@@ -13,7 +13,11 @@ function CommitteePosts({ data, tag }) {
       </section>
     );
   } else {
-    return null;
+    return (
+      <section>
+        <p>No posts found.</p>
+      </section>
+    );
   }
 }
 

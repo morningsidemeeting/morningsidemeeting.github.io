@@ -10,6 +10,7 @@ async function fetchCalendar(calendarId, maxResults = 10) {
   if (CALENDAR_IDS[calendarId]) {
     calendarId = CALENDAR_IDS[calendarId];
   }
+  console.log("fetch this calendar ID", calendarId);
   return new Promise(async (resolve, reject) => {
     try {
       loadAndInitGapi()
@@ -25,15 +26,18 @@ async function fetchCalendar(calendarId, maxResults = 10) {
             })
             .then(function (response) {
               resolve(response.result.items);
+            })
+            .catch((error) => {
+              resolve([]);
             });
         })
         .catch((error) => {
           console.log("Calendar was unable to load", error);
-          reject(error);
+          resolve([]);
         });
     } catch (error) {
       console.log(error);
-      reject(error);
+      resolve([]);
     }
   });
 }
