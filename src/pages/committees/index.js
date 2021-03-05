@@ -7,6 +7,7 @@ import { graphql } from "gatsby";
 const committeeLinks = {
   "Peace and Social Concerns Committee": "/peace-and-social-concerns",
   "Communications and Website Committee": "/communications",
+  "Finance Committee": "/finance",
 };
 
 const CommitteesPage = ({ data }) => {
