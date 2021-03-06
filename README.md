@@ -19,7 +19,7 @@ TK: The website will rely on the Gatsby Publish workflow to set the correct CNAM
 
 ### Adding Sub-navigation
 
-The sub-navigation bars for pages are all in the `/src/components/subNav` folder. Each renders the base component defined in `index.js`, passing in an array of `links`. Each link is an array of two string: the link text and the path for the page. For example, the About subnav links are:
+The sub-navigation bars for pages are all in the `/src/components/nav` folder. Each renders the base component defined in `index.js`, passing in an array of `links`. Each link is an array of two string: the link text and the path for the page. For example, the About subnav links are:
 
 ```
 const links = [
@@ -34,11 +34,11 @@ const links = [
 To create a new sub-navigation component, just copy one of the existing files, replace the links, and import it into the page where you'd like it to show. An example from the top of the About page:
 
 ```
-import SubNav from "../../components/subNav/about";
+import Nav from "../../components/nav/about";
 
 const AboutPage = () => (
   <CoreLayout withSubtitle={false}>
-    <SubNav />
+    <Nav />
   …
 ```
 

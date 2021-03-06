@@ -7,17 +7,9 @@ function CommitteePosts({ data, tag }) {
   const nodes = data.allMdxBlogPost.nodes.filter((n) => n.tags.includes(tag));
 
   if (nodes.length) {
-    return (
-      <section>
-        <Posts nodes={nodes} title="Posts" />
-      </section>
-    );
+    return <Posts nodes={nodes} title="Posts" />;
   } else {
-    return (
-      <section>
-        <p>No posts found.</p>
-      </section>
-    );
+    return <p>No posts found.</p>;
   }
 }
 

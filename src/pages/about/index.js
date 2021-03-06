@@ -1,10 +1,10 @@
 import React from "react";
 import CoreLayout from "../../components/coreLayout";
-import SubNav from "../../components/subNav/about";
+import Nav from "../../components/nav/about";
 
 const AboutPage = () => (
   <CoreLayout withSubtitle={false}>
-    <SubNav />
+    <Nav />
     <section>
       <h2>A Brief History of Morningside Monthly Meeting</h2>
       <p>

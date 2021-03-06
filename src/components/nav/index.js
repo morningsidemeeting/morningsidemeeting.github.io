@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "gatsby";
-import Styles from "./subNav.module.scss";
+import Styles from "./nav.module.scss";
 
-const SubNav = ({ links = [], isPrimary }) => {
+const Nav = ({ links = [], isPrimary }) => {
   return (
     <div className={`${Styles.nav} ${!isPrimary ? Styles.secondary : ""}`}>
       <ul>
@@ -18,4 +18,4 @@ const SubNav = ({ links = [], isPrimary }) => {
   );
 };
 
-export default SubNav;
+export default Nav;

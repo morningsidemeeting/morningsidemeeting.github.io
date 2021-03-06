@@ -1,5 +1,5 @@
 import React from "react";
-import SubNav from "./index";
+import Nav from "./index";
 
 const links = [
   ["Newsletters", "/newsletters"],
@@ -8,6 +8,6 @@ const links = [
   ["Memorial Minutes", "/memorial-minutes"],
 ];
 
-const DocsSubNav = () => <SubNav links={links} />;
+const DocsNav = () => <Nav links={links} />;
 
-export default DocsSubNav;
+export default DocsNav;

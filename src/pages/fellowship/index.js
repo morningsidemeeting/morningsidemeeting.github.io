@@ -1,10 +1,10 @@
-import React from "react"
-import CoreLayout from "../../components/coreLayout"
-import SubNav from "../../components/subNav/about"
+import React from "react";
+import CoreLayout from "../../components/coreLayout";
+import Nav from "../../components/nav/about";
 
 const FaithPage = () => (
   <CoreLayout withSubtitle={false}>
-    <SubNav />
+    <Nav />
     <section>
       <h2>Quaker Fellowship</h2>
       <p>
@@ -76,5 +76,5 @@ const FaithPage = () => (
       </p>
     </section>
   </CoreLayout>
-)
-export default FaithPage
+);
+export default FaithPage;

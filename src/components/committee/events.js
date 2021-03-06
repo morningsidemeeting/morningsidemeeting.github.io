@@ -5,11 +5,7 @@ import Calendar from "../calendar";
 export default function CommitteeEventsPage({ title, basePath, calendarSlug }) {
   function renderEvents() {
     if (calendarSlug) {
-      return (
-        <section>
-          <Calendar calendarIds={[calendarSlug]} withFooter={false} />
-        </section>
-      );
+      return <Calendar calendarIds={[calendarSlug]} withFooter={false} />;
     } else {
       return null;
     }

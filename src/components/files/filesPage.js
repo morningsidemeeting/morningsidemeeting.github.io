@@ -1,12 +1,12 @@
 import React from "react";
 import CoreLayout from "../coreLayout";
-import SubNav from "../subNav/docs";
+import Nav from "../nav/docs";
 import Files from "../files";
 
 const FilesPage = ({ folderSlug, formatFileName, children }) => {
   return (
     <CoreLayout withSubtitle={false}>
-      <SubNav />
+      <Nav />
       {children}
       <Files
         folderIds={[folderSlug]}

@@ -1,5 +1,5 @@
 import React from "react";
-import SubNav from "./index";
+import Nav from "./index";
 
 const links = [
   ["Meeting for Worship", "/worship"],
@@ -7,6 +7,6 @@ const links = [
   ["Practice", "/practice"],
 ];
 
-const AboutSubNav = () => <SubNav links={links} />;
+const AboutNav = () => <Nav links={links} />;
 
-export default AboutSubNav;
+export default AboutNav;

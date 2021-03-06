@@ -1,6 +1,6 @@
 import React from "react";
 import CoreLayout from "../coreLayout";
-import SubNav from "../subNav";
+import Nav from "../nav";
 
 export default function CommitteePage({ title, basePath, children }) {
   const links = [
@@ -12,11 +12,9 @@ export default function CommitteePage({ title, basePath, children }) {
 
   return (
     <CoreLayout withSubtitle={false}>
-      <section>
-        <h2>{title}</h2>
-        <SubNav links={links} />
-        {children}
-      </section>
+      <h2>{title}</h2>
+      <Nav links={links} />
+      <section>{children}</section>
     </CoreLayout>
   );
 }

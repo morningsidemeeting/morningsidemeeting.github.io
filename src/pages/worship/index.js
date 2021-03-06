@@ -1,10 +1,10 @@
 import React from "react";
 import CoreLayout from "../../components/coreLayout";
-import SubNav from "../../components/subNav/about";
+import Nav from "../../components/nav/about";
 
 const WorshipPage = () => (
   <CoreLayout withSubtitle={false}>
-    <SubNav />
+    <Nav />
     <section>
       <h2>Weekly Meeting for Worship</h2>
       <p>

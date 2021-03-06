@@ -1,10 +1,10 @@
 import React from "react";
 import CoreLayout from "../../components/coreLayout";
-import SubNav from "../../components/subNav/worship";
+import Nav from "../../components/nav/worship";
 
 const FaithPage = () => (
   <CoreLayout withSubtitle={false}>
-    <SubNav />
+    <Nav />
     <section>
       <h2>Quaker Testimonies</h2>
       <p>

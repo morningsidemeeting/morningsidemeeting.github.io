@@ -1,5 +1,5 @@
 import React from "react";
-import SubNav from "./index";
+import Nav from "./index";
 
 const links = [
   ["About", "/about"],
@@ -10,6 +10,6 @@ const links = [
   ["Contact", "/contact"],
 ];
 
-const MainNav = () => <SubNav links={links} isPrimary={true} />;
+const MainNav = () => <Nav links={links} isPrimary={true} />;
 
 export default MainNav;

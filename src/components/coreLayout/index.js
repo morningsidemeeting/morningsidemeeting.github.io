@@ -1,6 +1,6 @@
 import React from "react";
 // import MainNav from "../../components/mainNav";
-import MainNav from "../../components/subNav/main";
+import MainNav from "../../components/nav/main";
 import SiteFooter from "../../components/siteFooter";
 import { Link } from "gatsby";
 import Styles from "./coreLayout.module.scss";

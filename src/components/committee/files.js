@@ -5,11 +5,7 @@ import Files from "../files";
 export default function CommitteeFilesPage({ title, basePath, filesSlug }) {
   function renderFiles() {
     if (filesSlug) {
-      return (
-        <section>
-          <Files folderIds={[filesSlug]} orderBy="name desc" />
-        </section>
-      );
+      return <Files folderIds={[filesSlug]} orderBy="name desc" />;
     } else {
       return null;
     }
