@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "gatsby";
 import Styles from "./subNav.module.scss";
 
-const SubNav = ({ links = [] }) => {
+const SubNav = ({ links = [], isPrimary }) => {
   return (
-    <div className={Styles.subNav}>
+    <div className={`${Styles.nav} ${!isPrimary ? Styles.secondary : ""}`}>
       <ul>
         {links.map(([name, path], i) => (
           <li key={`subnav-link-${i}`}>
