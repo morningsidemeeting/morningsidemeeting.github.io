@@ -9,6 +9,6 @@ const links = [
   ["Fellowship", "/fellowship"],
 ];
 
-const AboutSubNav = () => <SubNav links={links} subTitle="About Us" />;
+const AboutSubNav = () => <SubNav links={links} />;
 
 export default AboutSubNav;

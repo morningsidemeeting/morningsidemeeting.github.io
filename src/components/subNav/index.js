@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 import Styles from "./subNav.module.scss";
 
-const SubNav = ({ links = [], subTitle = "" }) => {
+const SubNav = ({ links = [] }) => {
   return (
     <div className={Styles.subNav}>
       <ul>

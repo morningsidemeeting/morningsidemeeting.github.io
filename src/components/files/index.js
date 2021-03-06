@@ -5,13 +5,7 @@ import { parseISO } from "date-fns/esm";
 import Styles from "./files.module.scss";
 import BackgroundImage from "gatsby-background-image";
 import Gapi, { loadAndInitGapi } from "../gapi";
-
-export const FOLDER_IDS = {
-  business_minutes: "1z84XpKreg6-MZlShXk8_svqQQYX4R24z",
-  newsletters: "1n4mL6JZWAdeaC9_BP6rgh3dNd5L2Jb2T",
-  sotm: "1HjcVWx-afyh3quiEhwg9BSJJ6UcZ64_T",
-  communications: "12_ZPd3N84heC06hrvSsFn8tE64j7ZU2W",
-};
+import FOLDER_IDS from "../../shared/folderIds.json";
 
 const BackgroundHeader = ({ className, fileType, children }) => {
   const data = useStaticQuery(

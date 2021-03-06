@@ -17,11 +17,64 @@ It was developed using Node 12.17.0. (The repo includes an `.nvmrc` file.)
 
 TK: The website will rely on the Gatsby Publish workflow to set the correct CNAME, as [specified in the documentation](https://github.com/marketplace/actions/gatsby-publish#cname).
 
+### Adding Sub-navigation
+
+The sub-navigation bars for pages are all in the `/src/components/subNav` folder. Each renders the base component defined in `index.js`, passing in an array of `links`. Each link is an array of two string: the link text and the path for the page. For example, the About subnav links are:
+
+```
+const links = [
+  ["Morningside", "/about"],
+  ["Quakers", "/quakers"],
+  ["Worship", "/worship"],
+  ["Business", "/business"],
+  ["Fellowship", "/fellowship"],
+];
+```
+
+To create a new sub-navigation component, just copy one of the existing files, replace the links, and import it into the page where you'd like it to show. An example from the top of the About page:
+
+```
+import SubNav from "../../components/subNav/about";
+
+const AboutPage = () => (
+  <CoreLayout withSubtitle={false}>
+    <SubNav />
+  …
+```
+
 ### Adding a Shared Calendar
 
 Shared calendars are owned by the `morningsidemeetingtest@gmail.com` Google account, currently maintained by Scott Blumenthal. If you'd like to have a new calendar created, please contact Scott. Once created, it administrative permissions can be shared with anyone who needs them.
 
 Shared calendars are accessed via a Google API. Within the codebase, they are usually referred to by a "slug" set in `/src/shared/calendarIds.json`. After creating a new calendar, add a slug for it to the list of calendar IDs in that file.
+
+### Adding a New Set of Documents
+
+The website's Google Drive is owned by the `morningsidemeetingtest@gmail.com` Google account, currently maintained by Scott Blumenthal. If you'd like to add a new set of document, please contact Scott.
+
+Each document set lives in its own folder at the top level of the Drive. To create a new folder for "Memorial Minutes," for example, add the folder then change its sharing options so "Anyone with the link can view":
+
+![change setting from this](https://user-images.githubusercontent.com/326477/110209339-fc98e600-7e59-11eb-8994-7503602e0495.png)
+
+![to this](https://user-images.githubusercontent.com/326477/110209341-002c6d00-7e5a-11eb-8815-f54b50f2d4ca.png)
+
+Grant individual access (at the "editor" level) to anyone who should be able to add or remove files from the folder:
+
+![add editor access to individuals](https://user-images.githubusercontent.com/326477/110209346-0589b780-7e5a-11eb-8c13-4d5b62f4e091.png)
+
+The Files component, which lists files on the Morningside site's pages, refers to folders by a `slug`. Add new slugs (and their associated folder ID) to `/src/shared/folderIds.json`:
+
+```
+{
+  …
+  "memorial_minutes": "1fIB8s7CI63ciUCCBDTgF5LlkbOkq7DUO"
+  …
+}
+```
+
+You can get the folder ID from the URL in Google Drive:
+
+![folder ID is in the URL](https://user-images.githubusercontent.com/326477/110209348-09b5d500-7e5a-11eb-82d5-b943b5163e00.png)
 
 ### Adding a Committee Section
 
@@ -43,6 +96,27 @@ To create a new committee section:
 ```
 
 `title` is displayed at the top of the committee section pages. `basePath` should correspond to the name of the directory created in Step 1. `calendarSlug` corresponds to the "slug" of the for the calendar in `/src/shared/calendarIds.json`. (See ["Adding A Shared Calendar"](#adding-a-shared-calendar) above)
+
+### Google API Access
+
+Access to Google Calendars and Drive is managed by the GAPI component at `/src/components/gapi/index.js`. This component uses React Helmet to inject the Google API script include at the top of a page:
+
+```
+<Helmet>
+  <script async defer src="https://apis.google.com/js/api.js"></script>
+</Helmet>
+```
+
+The Google API key and client id are both included in the file itself.
+
+It also exports an async function, `loadAndInitGapi` that loads and initializes the Google API client, and returns the client so it can be used to make calls. For example, the Files component (at `/src/components/files/index.js`) calls uses `loadAndInitGapi` to load a list of files like this:
+
+```
+loadAndInitGapi().then((client) => {
+        client.drive.files
+          .list({
+          …
+```
 
 ### Google Calendar Integration
 

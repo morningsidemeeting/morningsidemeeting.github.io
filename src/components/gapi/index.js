@@ -3,14 +3,14 @@ import { Helmet } from "react-helmet";
 
 const API_KEY = "AIzaSyCCOtjPgXJ5tIqEILv9gm5pCpOAbyV_3aY";
 const CLIENT_ID =
-  "1026426394881-dbessqt7532lnu3j8evh83qicmg6uhak.apps.googleusercontent.com";
+  "1026426394881-65pd5nb1o7q8khjbqj7cj10hcf75jec8.apps.googleusercontent.com";
 const SCOPES = "https://www.googleapis.com/auth/calendar.readonly";
 const DISCOVERY_DOCS = [
   "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest",
   "https://content.googleapis.com/discovery/v1/apis/drive/v3/rest",
 ];
 
-export function getGapi() {
+function getGapi() {
   return new Promise((resolve, reject) => {
     let sanity = 0;
     waitForGapi();
