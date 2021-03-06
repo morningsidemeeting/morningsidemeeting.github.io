@@ -1,5 +1,4 @@
 import React from "react";
-// import MainNav from "../../components/mainNav";
 import MainNav from "../../components/nav/main";
 import SiteFooter from "../../components/siteFooter";
 import { Link } from "gatsby";

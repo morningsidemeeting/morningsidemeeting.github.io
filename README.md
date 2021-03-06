@@ -146,7 +146,21 @@ The text at the top of the homepage is hard-coded into the
 
 ### Adding a Post
 
-Anyone with repository access can add posts for any section of the site. Simply add a file to the `content/posts/` directory... TK TK TK
+Anyone with repository access can add posts for any section of the site. Simply add an `.mdx` file (a [React-friendly variation](https://mdxjs.com/) of [Markdown](https://www.markdownguide.org/)) file to the `content/posts/` directory with the following format:
+
+```
+---
+title: Updates on the Ribbon 2020 March
+date: 2020-08-18
+tags: [psc, committees]
+---
+
+Your post's content here.  Irure tempor magna dolore ad cupidatat est labore deserunt exercitation anim ipsum eu quis. Adipisicing sint laborum est id pariatur est ipsum. Qui ex fugiat ex anim.
+
+Quis reprehenderit veniam ut sint. Cillum est incididunt adipisicing voluptate eiusmod irure Lorem amet mollit excepteur. Ea aute cillum deserunt officia sint sit sunt. Dolor non exercitation laborum amet anim laboris aliqua amet eiusmod
+```
+
+Tags determine where on the site the post will show up: in the main news section, on committee pages, etc. If you want a post not to display any more, just add the `archived` tag to the list.
 
 ### Footer
 

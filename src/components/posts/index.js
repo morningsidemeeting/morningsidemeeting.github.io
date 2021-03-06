@@ -11,7 +11,6 @@ export const Post = ({
   body = "",
   tags = [],
   linkTitle = true,
-  id,
   date,
   slug,
   withTags,
