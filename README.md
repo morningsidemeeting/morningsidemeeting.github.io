@@ -146,7 +146,9 @@ The text at the top of the homepage is hard-coded into the
 
 ### Adding a Post
 
-Anyone with repository access can add posts for any section of the site. Simply add an `.mdx` file (a [React-friendly variation](https://mdxjs.com/) of [Markdown](https://www.markdownguide.org/)) file to the `content/posts/` directory with the following format:
+The easiest way to add a post to the site is to fill out the Google Form [Share News With Morningside Meeting](https://morningsidemeeting.org/news/share/). Your submission will go to the site administrator who can add the post manually.
+
+Anyone with repository access can also add posts for any section of the site. Simply add an `.mdx` file (a [React-friendly variation](https://mdxjs.com/) of [Markdown](https://www.markdownguide.org/)) file to the `content/posts/` directory with the following format:
 
 ```
 ---

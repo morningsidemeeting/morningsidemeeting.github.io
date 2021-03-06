@@ -3,7 +3,8 @@ import CoreLayout from "../components/coreLayout";
 import Posts from "../components/posts";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
-import Styles from "../components/coreLayout/coreLayout.module.scss";
+import { columnImage } from "../components/coreLayout/coreLayout.module.scss";
+import CallToAction from "../components/callToAction";
 
 const HomePage = ({ data }) => {
   const announcements = data.allMdxBlogPost.nodes;
@@ -27,16 +28,14 @@ const HomePage = ({ data }) => {
         </p>
 
         {currentAnnouncement ? (
-          <p className={Styles.callToAction}>
-            <a href={currentAnnouncement.slug}>
-              Click here for <strong>{currentAnnouncement.title}</strong> or
-              scroll to the bottom of this page.
-            </a>
-          </p>
+          <CallToAction path={currentAnnouncement.slug}>
+            Click here for <strong>{currentAnnouncement.title}</strong> or
+            scroll to the bottom of this page.
+          </CallToAction>
         ) : null}
         <Img
           fluid={data.churchImg.childImageSharp.fluid}
-          className={Styles.columnImage}
+          className={columnImage}
         />
         <hr />
         <Posts nodes={announcements} />
