@@ -17,7 +17,6 @@ const months = [
 ];
 
 function formatDate(match, p1, p2) {
-  console.log("match is", match, p1, parseInt(p2) - 1);
   return `${months[parseInt(p2) - 1]}, 20${p1}`;
 }
 
