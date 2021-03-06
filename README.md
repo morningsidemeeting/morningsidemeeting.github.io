@@ -122,6 +122,8 @@ loadAndInitGapi().then((client) => {
 
 ### Google Docs Integration
 
+Documents submitted via the Google Form will be added to this [Google Drive folder](https://drive.google.com/drive/folders/0B6T3EA0swtJFfmwxZTRNU3FwVm5CWVZyNG1MZGZrbkg2QmVpdjlZUlRQdnhmNGxYOEU5R00)
+
 ## Contributor's Guide
 
 ### Editing Site Content through GitHub
@@ -146,7 +148,9 @@ The text at the top of the homepage is hard-coded into the
 
 ### Adding a Post
 
-The easiest way to add a post to the site is to fill out the Google Form [Share News With Morningside Meeting](https://morningsidemeeting.org/news/share/). Your submission will go to the site administrator who can add the post manually.
+The easiest way to add a post to the site is to fill out the Google Form [Share News With Morningside Meeting](https://morningsidemeeting.org/news/share/). Your submission will go to a site administrator who can add the post manually.
+
+Administrators can review submitted posts in [this Google Sheet](https://docs.google.com/spreadsheets/d/1NE96Ao7SvoAfuwyCFu1ZTiWMGhb1DsaRg3H8iF1nI4o/edit#gid=1084204557).
 
 Anyone with repository access can also add posts for any section of the site. Simply add an `.mdx` file (a [React-friendly variation](https://mdxjs.com/) of [Markdown](https://www.markdownguide.org/)) file to the `content/posts/` directory with the following format:
 
