@@ -46,7 +46,7 @@ const AboutPage = () => (
 
 Shared calendars are owned by the `morningsidemeetingtest@gmail.com` Google account, currently maintained by Scott Blumenthal. If you'd like to have a new calendar created, please contact Scott. Once created, it administrative permissions can be shared with anyone who needs them.
 
-Shared calendars are accessed via a Google API. Within the codebase, they are usually referred to by a "slug" set in `/src/shared/calendarIds.json`. After creating a new calendar, add a slug for it to the list of calendar IDs in that file.
+Shared calendars are accessed via a Google API. Within the codebase, they are usually referred to by a "slug" set in `CALENDAR_IDS` in `/src/shared/googleConfig.js`. After creating a new calendar, add a slug for it to the list of calendar IDs in that file.
 
 ### Adding a New Set of Documents
 
@@ -75,6 +75,8 @@ The Files component, which lists files on the Morningside site's pages, refers t
 You can get the folder ID from the URL in Google Drive:
 
 ![folder ID is in the URL](https://user-images.githubusercontent.com/326477/110209348-09b5d500-7e5a-11eb-82d5-b943b5163e00.png)
+
+Add this ID (with a slug) to the list of `FOLDER_IDS` in `/src/shared/googleConfig.js` so it can easily be accessed from pages.
 
 ### Adding a Committee Section
 
@@ -107,7 +109,7 @@ Access to Google Calendars and Drive is managed by the GAPI component at `/src/c
 </Helmet>
 ```
 
-The Google API key and client id are both included in the file itself.
+The Google API key and client id are imported from `/src/shared/googleConfig.js`.
 
 It also exports an async function, `loadAndInitGapi` that loads and initializes the Google API client, and returns the client so it can be used to make calls. For example, the Files component (at `/src/components/files/index.js`) calls uses `loadAndInitGapi` to load a list of files like this:
 

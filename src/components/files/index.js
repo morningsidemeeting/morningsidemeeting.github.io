@@ -5,7 +5,7 @@ import { parseISO } from "date-fns/esm";
 import Styles from "./files.module.scss";
 import BackgroundImage from "gatsby-background-image";
 import Gapi, { loadAndInitGapi } from "../gapi";
-import FOLDER_IDS from "../../shared/folderIds.json";
+import { FOLDER_IDS } from "../../shared/googleConfig";
 
 const BackgroundHeader = ({ className, fileType, children }) => {
   const data = useStaticQuery(

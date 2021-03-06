@@ -3,7 +3,7 @@ import { format } from "date-fns";
 import { parseISO } from "date-fns/esm";
 import Styles from "./calendar.module.scss";
 import Gapi, { loadAndInitGapi } from "../gapi";
-import CALENDAR_IDS from "../../shared/calendarIds.json";
+import { CALENDAR_IDS } from "../../shared/googleConfig";
 
 async function fetchCalendar(calendarId, maxResults = 10) {
   // also accept calendar slugs

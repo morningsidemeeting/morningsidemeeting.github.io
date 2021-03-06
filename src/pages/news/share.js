@@ -1,12 +1,13 @@
 import React from "react";
 import CoreLayout from "../../components/coreLayout";
+import { SHARE_POSTS_FORM_EMBEDDED_URL } from "../../shared/googleConfig";
 
 export default function SharePage() {
   return (
     <CoreLayout withSubtitle={false}>
       <section>
         <iframe
-          src="https://docs.google.com/forms/d/e/1FAIpQLSduWq8tRwHnHzr4_BFJ4v89ZYL6okhw31pAqawNUSDHpGsvGw/viewform?embedded=true"
+          src={SHARE_POSTS_FORM_EMBEDDED_URL}
           width="640"
           height="1700"
           frameBorder="0"
