@@ -11,6 +11,18 @@ const AboutPage = () => (
           morningsidequakermeeting@gmail.com
         </a>
       </p>
+
+      <p>
+        The website's "Friend Finder" has been temporarily disabled. A directory
+        is available, however, for members of Morningside Meeting to contact
+        each other. If you would like a copy of the directory or need to reach
+        another member of the meeting, please contact{" "}
+        <a href="mailto:morningsidequakermeeting@gmail.com">
+          morningsidequakermeeting@gmail.com
+        </a>
+        .
+      </p>
+
       <p>
         For in-person worship, Morningside Friends meet in the tower of the
         Riverside Church in New York City, which is located on Riverside Drive
