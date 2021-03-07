@@ -44,7 +44,14 @@ const AboutPage = () => (
 
 ### Adding a Shared Calendar
 
-Shared calendars are owned by the `morningsidemeetingtest@gmail.com` Google account, currently maintained by Scott Blumenthal. If you'd like to have a new calendar created, please contact Scott. Once created, it administrative permissions can be shared with anyone who needs them.
+Shared calendars are owned by the `morningsidemeetingtest@gmail.com` Google account, currently maintained by Scott Blumenthal. If you'd like to have a new calendar created, please contact Scott. Once created, administrative permissions for the calendar can be shared with anyone who needs them.
+
+To add a calendar, go to **Settings** > **General** > **Add Calendar** > **Create New Calendar**. Once you've created the calendar, change its permissions:
+
+1. Under **Settings for my calendars**, choose the calendar and click **Calendar settings**. Under **Access permissions**, choose "Make available to public" and confirm:
+   ![Make available to public](https://user-images.githubusercontent.com/326477/110240250-0a617080-7f19-11eb-9071-822c4382497c.png)
+1. Copy the **Calendar ID** and add it to `/src/shared/googleConfig.js`. You can find the **Calendar ID** by scrolling down the **Calendar settings** page until you find the **Integrate calendar** section.
+   ![Copy calendar ID](https://user-images.githubusercontent.com/326477/110240403-be62fb80-7f19-11eb-84c3-f2cf1b15b39b.png)
 
 Shared calendars are accessed via a Google API. Within the codebase, they are usually referred to by a "slug" set in `CALENDAR_IDS` in `/src/shared/googleConfig.js`. After creating a new calendar, add a slug for it to the list of calendar IDs in that file.
 
