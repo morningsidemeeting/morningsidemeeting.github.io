@@ -13,6 +13,11 @@ const committeeLinks = {
   "Library Committee": "/library-committee",
   "Friends’ Committee on Unity with Nature (Friends Earthcare Witness)":
     "/nature-committee",
+  "First Day Caregivers": "/first-day-caregivers",
+  "Hospitality Committee": "/hospitality-committee",
+  "ARCH representative": "/arch",
+  "Riverside Space Committee": "/riverside-space-committee",
+  "Committee for Prison Ministry": "/prison-committee",
 };
 
 const CommitteesPage = ({ data }) => {

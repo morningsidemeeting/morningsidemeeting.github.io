@@ -34,5 +34,10 @@ export const FOLDER_IDS = {
   nominating: "1a8oMnw4AWrftx7UyWnkIhCVywHYuLDtV",
   "ministry-and-council": "1VLdXbkA2uooLagl_0QZ6CZZXyYG3KiUJ",
   "library-committee": "1fQWsN9NEOkBwB9_vsCa_SY7OtAQQvvfo",
-  "nature-committee": "",
+  "nature-committee": "1SA6bws7hg_FP-jo6rYUegK1mb7Z7W07z",
+  "first-day-caregivers": "1fnuhyZTwYDYX4h8tAIdNQGDcMc-nACJK",
+  arch: "1ZZPWZsrPlhDY5oredzmXJe8ZuYXNFRwk",
+  hospitality: "13vufxZy9NN4JnBpJkFnHwBZBrOFxqL_U",
+  riverside: "1_tT-5kbT05LXU0jNdWjT86Wlq0d8nAyC",
+  "prison-committee": "1wT_kcWYFOcxTF7fKHihyfvrysGDNOMl5",
 };
