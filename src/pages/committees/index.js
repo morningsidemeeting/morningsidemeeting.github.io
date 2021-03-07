@@ -8,28 +8,35 @@ const committeeLinks = {
   "Peace and Social Concerns Committee": "/peace-and-social-concerns",
   "Communications and Website Committee": "/communications",
   "Finance Committee": "/finance",
+  "Nominating Committee": "/nominating",
+  "Ministry and Counsel": "/ministry-and-counsel",
+  "Library Committee": "/library-committee",
+  "Friends’ Committee on Unity with Nature (Friends Earthcare Witness)":
+    "/nature-committee",
 };
 
 const CommitteesPage = ({ data }) => {
   const committees = data.allCommittees2021Csv.edges;
 
   function renderCommitteePagesList() {
+    const alphaCommittees = Object.keys(committeeLinks).sort((aName, bName) => {
+      if (aName > bName) {
+        return 1;
+      } else if (aName < bName) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
     return (
       <ul className={Styles.committeePages}>
-        {committees.reduce((acc, { node: committee }, i) => {
-          const { Position: name } = committee;
-          const committeePage = committeeLinks[name];
-          if (committeePage) {
-            acc.push(
-              <li key={`committee-${i}`}>
-                <Link to={committeePage}>
-                  {name.replace(/committee/i, "").trim()}
-                </Link>
-              </li>
-            );
-          }
-          return acc;
-        }, [])}
+        {alphaCommittees.map((name, i) => {
+          return (
+            <li key={`committee-${i}`}>
+              <Link to={committeeLinks[name]}>{name}</Link>
+            </li>
+          );
+        })}
       </ul>
     );
   }
@@ -53,8 +60,8 @@ const CommitteesPage = ({ data }) => {
             <li key={`committee-${i}`}>
               {committeeEl}
               <p className={Styles.nominees}>{members}</p>
-              {responsibilities.split("\n\n").map((text) => (
-                <p>{text}</p>
+              {responsibilities.split("\n\n").map((text, i) => (
+                <p key={`committee-p-${i}`}>{text}</p>
               ))}
             </li>
           );
