@@ -1,9 +1,10 @@
 import React from "react";
 import FilesPage from "../../components/files/filesPage";
+import { removeFileExtension } from "../../components/files/";
 
 export default function SOTMPage() {
   return (
-    <FilesPage folderSlug="sotm">
+    <FilesPage folderSlug="sotm" formatFileName={removeFileExtension}>
       <section>
         <p>
           Every year Ministry and Council organizes a time for the Meeting to

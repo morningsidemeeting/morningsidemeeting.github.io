@@ -1,9 +1,10 @@
 import React from "react";
 import FilesPage from "../../components/files/filesPage";
+import { removeFileExtension } from "../../components/files/";
 
 export default function MemorialMinutesPage() {
   return (
-    <FilesPage folderSlug="memorial">
+    <FilesPage folderSlug="memorial" formatFileName={removeFileExtension}>
       <section>
         <p>
           Local meetings often write a memorial for deceased Friends that

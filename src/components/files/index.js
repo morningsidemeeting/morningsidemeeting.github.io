@@ -25,6 +25,13 @@ const BackgroundHeader = ({ className, fileType, children }) => {
             }
           }
         }
+        doc: file(relativePath: { eq: "doc.png" }) {
+          childImageSharp {
+            fluid(quality: 90, maxWidth: 100) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
       }
       fragment childImgFields on ImageSharp {
         fluid(quality: 90, maxWidth: 100) {
@@ -87,6 +94,10 @@ async function fetchDrive(folderId, orderBy = "name", pageSize = 100) {
   });
 }
 
+export function removeFileExtension(name) {
+  return name.substr(0, name.lastIndexOf(".")) || name;
+}
+
 const Files = ({
   folderIds = [],
   orderBy,
@@ -144,6 +155,10 @@ const Files = ({
       case "application/vnd.google-apps.document":
       case "application/vnd.google-apps.shortcut":
         fileType = "gdoc";
+        break;
+      case "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
+      case "application/msword":
+        fileType = "doc";
         break;
       default:
         fileType = "unknown";

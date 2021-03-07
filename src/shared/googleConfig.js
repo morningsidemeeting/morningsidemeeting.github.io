@@ -29,7 +29,7 @@ export const FOLDER_IDS = {
   newsletters: "1n4mL6JZWAdeaC9_BP6rgh3dNd5L2Jb2T",
   sotm: "1HjcVWx-afyh3quiEhwg9BSJJ6UcZ64_T",
   communications: "12_ZPd3N84heC06hrvSsFn8tE64j7ZU2W",
-  memorial_minutes: "1fIB8s7CI63ciUCCBDTgF5LlkbOkq7DUO",
+  memorial: "1fIB8s7CI63ciUCCBDTgF5LlkbOkq7DUO",
   finance: "1MesiigW0LZYJZgV3u_du8epwl8YrU4Y_",
   nominating: "1a8oMnw4AWrftx7UyWnkIhCVywHYuLDtV",
   "ministry-and-council": "1VLdXbkA2uooLagl_0QZ6CZZXyYG3KiUJ",
@@ -40,4 +40,5 @@ export const FOLDER_IDS = {
   hospitality: "13vufxZy9NN4JnBpJkFnHwBZBrOFxqL_U",
   riverside: "1_tT-5kbT05LXU0jNdWjT86Wlq0d8nAyC",
   "prison-committee": "1wT_kcWYFOcxTF7fKHihyfvrysGDNOMl5",
+  sng: "1Mx02J1Y7GU4b9lXuIAVp6Tg_exhqbG0X",
 };
