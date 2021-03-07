@@ -13,11 +13,16 @@
   .copyright {
     text-align: center;
     font-style: italic;
+    font-size: 14px;
   }
 }
 
 .footerQuote {
   margin-bottom: 2em;
+
+  blockquote{
+    margin: 0;
+  }
   figcaption,
   blockquote p {
     font-size: $footerFontSize;
