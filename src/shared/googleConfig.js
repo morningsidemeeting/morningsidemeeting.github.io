@@ -22,6 +22,7 @@ export const CALENDAR_IDS = {
   communications: "a6hc0gdimm88606pbt8n0he3eg@group.calendar.google.com",
   "ministry-and-counsel":
     "cd0tneir1trvqsv10flbcmsqig@group.calendar.google.com",
+  nominating: "lm9ff1vd7sjuq1f49m5j19jmdo@group.calendar.google.com",
 };
 
 // FORMS

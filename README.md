@@ -177,11 +177,11 @@ Quis reprehenderit veniam ut sint. Cillum est incididunt adipisicing voluptate e
 
 Tags determine where on the site the post will show up: in the main news section, on committee pages, etc. If you want a post not to display any more, just add the `archived` tag to the list.
 
-NOTE: Make sure all of your tags have a human-readable title specified in `src/data/tags.json`.
+NOTE: Make sure all of your tags have a human-readable title specified in `src/shared/blogTags.js`.
 
 ### Footer
 
-Quotes for the footer are selected at random each time a page loaded. The quotes themselves are listed in `/src/data/quotes.json`. You can add quotes to the array using the following format:
+Quotes for the footer are selected at random each time a page loaded. The quotes themselves are listed in `/src/shared/quotes.js`. You can add quotes to the array using the following format:
 
 ```
 {

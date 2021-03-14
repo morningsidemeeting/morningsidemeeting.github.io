@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import Styles from "./siteFooter.module.scss";
-import quotes from "../../data/quotes.json";
+import QUOTES from "../../shared/quotes";
 
 export default function SiteFooter() {
   // We'll randomly select a quote from our list to use for the duration of
   // this instance's life:
   const [footerQuote] = useState(
-    quotes[Math.floor(Math.random() * quotes.length)]
+    QUOTES[Math.floor(Math.random() * QUOTES.length)]
   );
   const { quote, author, work, date } = footerQuote;
   return (

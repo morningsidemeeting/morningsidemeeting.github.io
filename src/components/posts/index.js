@@ -4,7 +4,7 @@ import { format } from "date-fns";
 import { parseISO } from "date-fns/esm";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import Styles from "./posts.module.scss";
-import tagNames from "../../data/tags.json";
+import BLOG_TAGS from "../../shared/blogTags";
 
 export const Post = ({
   title = "untitled",
@@ -18,7 +18,7 @@ export const Post = ({
   const footer = withTags ? (
     <footer>
       {tags
-        .map((t) => tagNames[t])
+        .map((t) => BLOG_TAGS[t])
         .filter((n) => !!n)
         .join(", ")}
     </footer>
