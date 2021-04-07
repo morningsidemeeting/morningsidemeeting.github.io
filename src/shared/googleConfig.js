@@ -23,6 +23,7 @@ export const CALENDAR_IDS = {
   "ministry-and-counsel":
     "cd0tneir1trvqsv10flbcmsqig@group.calendar.google.com",
   nominating: "lm9ff1vd7sjuq1f49m5j19jmdo@group.calendar.google.com",
+  arch: "hg54o72moell9kfldhlhsc3iko@group.calendar.google.com",
 };
 
 // FORMS
@@ -44,5 +45,5 @@ export const FOLDER_IDS = {
   riverside: "1_tT-5kbT05LXU0jNdWjT86Wlq0d8nAyC",
   "prison-committee": "1wT_kcWYFOcxTF7fKHihyfvrysGDNOMl5",
   sng: "1Mx02J1Y7GU4b9lXuIAVp6Tg_exhqbG0X",
-  psc: "1ip8SdBBLdn_Y4v-T9u9drz-ogX7ueWe8"
+  psc: "1ip8SdBBLdn_Y4v-T9u9drz-ogX7ueWe8",
 };
