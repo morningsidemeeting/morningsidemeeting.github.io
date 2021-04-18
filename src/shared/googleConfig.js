@@ -24,6 +24,7 @@ export const CALENDAR_IDS = {
     "cd0tneir1trvqsv10flbcmsqig@group.calendar.google.com",
   nominating: "lm9ff1vd7sjuq1f49m5j19jmdo@group.calendar.google.com",
   arch: "hg54o72moell9kfldhlhsc3iko@group.calendar.google.com",
+  board: "tc9oke9lb7k59qa2ooam71ehb4@group.calendar.google.com",
 };
 
 // FORMS
