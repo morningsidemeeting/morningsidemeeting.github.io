@@ -8,9 +8,14 @@ export const QUOTES = [
   },
   {
     quote:
-      "Friends are reminded that our Religious Society took form in times of disturbance, and that its continuing testimony has been the power of God to lead men and women out of the confusions of outward violence, inward sickness, and all other forms of self-will, however upheld by social convention.",
-    work: "Faith and Practice, Advices",
-    date: "2018",
+      "Responding to divine guidance, try to discern the right time to undertake or relinquish responsibilities without undue pride or guilt. Attend to what love requires of you, which may not be great busyness.",
+    work:
+      "Faith and Practice, advices and queries 28, The book of Christian discipline of the Yearly Meeting of the Religious Society of Friends (Quakers) in Britain",
+  },
+  {
+    quote:
+      "It may fairly be said that the whole neighbourhood was slowly uplifted by the coming of one quiet life into its midst.",
+    work: "A memoir of William Dent (1778–1861)",
   },
 ];
 
