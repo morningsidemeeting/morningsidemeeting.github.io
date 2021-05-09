@@ -3,6 +3,7 @@ import CoreLayout from "../../components/coreLayout";
 import Styles from "./committees.module.scss";
 import { Link } from "gatsby";
 import { graphql } from "gatsby";
+import SEO from "../../components/seo";
 
 const committeeLinks = {
   "Peace and Social Concerns Committee": "/peace-and-social-concerns",
@@ -77,6 +78,7 @@ const CommitteesPage = ({ data }) => {
 
   return (
     <CoreLayout withSubtitle={false}>
+      <SEO title="Committees" />
       <section>
         <p>
           As Friends do not have a traditional minister and staff, Meeting acts

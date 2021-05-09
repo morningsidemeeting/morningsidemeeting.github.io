@@ -1,9 +1,11 @@
 import React from "react";
 import CoreLayout from "../../components/coreLayout";
 import Nav from "../../components/nav/about";
+import SEO from "../../components/seo";
 
 const FaithPage = () => (
   <CoreLayout withSubtitle={false}>
+    <SEO title="Quaker Fellowship" />
     <Nav />
     <section>
       <h2>Quaker Fellowship</h2>

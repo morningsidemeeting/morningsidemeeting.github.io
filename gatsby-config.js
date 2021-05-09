@@ -32,7 +32,7 @@ module.exports = {
     url: `https://morningsidemeeting.github.io/`,
     image: "/images/ny_riverside_church.jpg",
     title: `Morningside Monthly Meeting`,
-    titleTemplate: "%s · FRIENDS.",
+    titleTemplate: "Morningside Monthly Meeting | %s",
     author: `My Name`,
     description: `A welcoming community dedicated to the Quaker testimonies of equality, integrity, simplicity, and peace.`,
     social: [

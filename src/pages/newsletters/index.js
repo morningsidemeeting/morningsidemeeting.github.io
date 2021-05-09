@@ -26,7 +26,11 @@ function formatFileName(name) {
 
 export default function NewslettersPage() {
   return (
-    <FilesPage folderSlug="newsletters" formatFileName={formatFileName}>
+    <FilesPage
+      folderSlug="newsletters"
+      formatFileName={formatFileName}
+      pageTitle="Newsletters"
+    >
       <section>
         <h3>Newsletter Submission Guidelines</h3>
         <p>

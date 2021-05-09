@@ -1,10 +1,11 @@
 import React from "react";
 import CoreLayout from "../../components/coreLayout";
 import Nav from "../../components/nav/about";
-// import Files from "../../components/files";
+import SEO from "../../components/seo";
 
 const AboutPage = () => (
   <CoreLayout withSubtitle={false}>
+    <SEO title="Meeting for Worship with a Concern for Business" />
     <Nav />
     <section>
       <h2>Meeting for Worship with a Concern for Business</h2>

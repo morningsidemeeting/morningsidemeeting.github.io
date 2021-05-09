@@ -3,10 +3,12 @@ import { graphql } from "gatsby";
 import CoreLayout from "../../components/coreLayout";
 import Posts from "../../components/posts";
 import CallToAction from "../../components/callToAction";
+import SEO from "../../components/seo";
 
 const NewsPage = ({ data }) => {
   return (
     <CoreLayout withSubtitle={false}>
+      <SEO title="News" />
       <section>
         <CallToAction path="/news/share">
           Want to share news on the website? Please fill out our form.

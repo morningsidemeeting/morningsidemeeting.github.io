@@ -4,7 +4,11 @@ import { removeFileExtension } from "../../components/files/";
 
 export default function SOTMPage() {
   return (
-    <FilesPage folderSlug="sotm" formatFileName={removeFileExtension}>
+    <FilesPage
+      folderSlug="sotm"
+      formatFileName={removeFileExtension}
+      pageTitle="State of the Meeting"
+    >
       <section>
         <p>
           Every year Ministry and Council organizes a time for the Meeting to

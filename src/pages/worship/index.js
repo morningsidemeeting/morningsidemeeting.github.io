@@ -1,9 +1,11 @@
 import React from "react";
 import CoreLayout from "../../components/coreLayout";
 import Nav from "../../components/nav/about";
+import SEO from "../../components/seo";
 
 const WorshipPage = () => (
   <CoreLayout withSubtitle={false}>
+    <SEO title="Meeting for Worship" />
     <Nav />
     <section>
       <h2>Weekly Meeting for Worship</h2>

@@ -4,7 +4,11 @@ import { removeFileExtension } from "../../components/files/";
 
 export default function MemorialMinutesPage() {
   return (
-    <FilesPage folderSlug="memorial" formatFileName={removeFileExtension}>
+    <FilesPage
+      folderSlug="memorial"
+      formatFileName={removeFileExtension}
+      pageTitle="Memorial Minutes"
+    >
       <section>
         <p>
           Local meetings often write a memorial for deceased Friends that

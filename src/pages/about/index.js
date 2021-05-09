@@ -1,9 +1,11 @@
 import React from "react";
 import CoreLayout from "../../components/coreLayout";
 import Nav from "../../components/nav/about";
+import SEO from "../../components/seo";
 
 const AboutPage = () => (
   <CoreLayout withSubtitle={false}>
+    <SEO title="About Morningside Meeting" />
     <Nav />
     <section>
       <h2>A Brief History of Morningside Monthly Meeting</h2>

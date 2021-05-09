@@ -1,9 +1,11 @@
 import React from "react";
 import CoreLayout from "../../components/coreLayout";
 import Styles from "./contact.module.scss";
+import SEO from "../../components/seo";
 
 const AboutPage = () => (
   <CoreLayout withSubtitle={false}>
+    <SEO title="Contact" />
     <section className={Styles.contact}>
       <p>
         For all inquiries, please email our main address:{" "}

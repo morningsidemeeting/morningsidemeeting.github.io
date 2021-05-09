@@ -26,6 +26,10 @@ function formatFileName(name) {
 
 export default function BusinessMinutesPage() {
   return (
-    <FilesPage folderSlug="business_minutes" formatFileName={formatFileName} />
+    <FilesPage
+      folderSlug="business_minutes"
+      formatFileName={formatFileName}
+      pageTitle="Business Minutes"
+    />
   );
 }

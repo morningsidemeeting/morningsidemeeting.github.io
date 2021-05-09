@@ -3,7 +3,6 @@ import MainNav from "../../components/nav/main";
 import SiteFooter from "../../components/siteFooter";
 import { Link } from "gatsby";
 import Styles from "./coreLayout.module.scss";
-import SEO from "../seo";
 import Analytics from "../analytics";
 
 export default function CoreLayout({
@@ -26,7 +25,6 @@ export default function CoreLayout({
       ) : null}
       <main>{children}</main>
       <SiteFooter />
-      <SEO />
       <Analytics />
     </div>
   );

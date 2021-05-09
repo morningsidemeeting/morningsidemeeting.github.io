@@ -3,6 +3,7 @@ import { format } from "date-fns";
 import { parseISO } from "date-fns/esm";
 import Styles from "./calendar.module.scss";
 import Gapi, { loadAndInitGapi } from "../gapi";
+import SEO from "../seo";
 import { CALENDAR_IDS } from "../../shared/googleConfig";
 
 async function fetchCalendar(calendarId, maxResults = 10) {
@@ -42,7 +43,11 @@ async function fetchCalendar(calendarId, maxResults = 10) {
   });
 }
 
-const Calendar = ({ calendarIds = [CALENDAR_IDS.main], withFooter = true }) => {
+const Calendar = ({
+  calendarIds = [CALENDAR_IDS.main],
+  withFooter = true,
+  pageTitle,
+}) => {
   const [events, setEvents] = useState([]);
   const [hasFetchedEvents, setHasFetchedEvents] = useState(false);
 
@@ -172,6 +177,7 @@ const Calendar = ({ calendarIds = [CALENDAR_IDS.main], withFooter = true }) => {
   return (
     <React.Fragment>
       <Gapi />
+      <SEO title={pageTitle || "Calendar"} />
       <section>{renderEvents()}</section>
     </React.Fragment>
   );

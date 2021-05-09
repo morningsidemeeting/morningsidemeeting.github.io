@@ -1,6 +1,7 @@
 import React from "react";
 import CoreLayout from "../../components/coreLayout";
 import Nav from "../../components/nav/worship";
+// import SEO from "../../components/seo";
 
 const FaithPage = () => (
   <CoreLayout withSubtitle={false}>
