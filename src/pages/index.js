@@ -5,12 +5,14 @@ import { graphql } from "gatsby";
 import Img from "gatsby-image";
 import { columnImage } from "../components/coreLayout/coreLayout.module.scss";
 import CallToAction from "../components/callToAction";
+import SEO from "../components/seo";
 
 const HomePage = ({ data }) => {
   const announcements = data.allMdxBlogPost.nodes;
   const currentAnnouncement = announcements[0];
   return (
     <CoreLayout withSubtitle={true}>
+      <SEO title="Home" />
       <section>
         <p>
           Morningside Monthly Meeting of the Religious Society of Friends,
