@@ -22,7 +22,7 @@ export default function CommitteePage() {
 
         <li>
           Maintains a list of Morningside's committees and committee members.{" "}
-          <a href="https://docs.google.com/document/d/1JfwTA2Bjl9yX_4i98LLDJwOeWmneI9MU/edit?usp=drivesdk&ouid=0&rtpof=true&sd=true">
+          <a href="https://docs.google.com/document/d/1htUHfddUgkzozc7lJTdEo2ni7waP8zAE/edit?usp=sharing&ouid=112910771868621173207&rtpof=true&sd=true">
             The current list can be found here.
           </a>
         </li>
