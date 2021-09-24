@@ -8,6 +8,7 @@
     &.pdf,
     &.gdoc,
     &.doc,
+    &.folder,
     &.unknown {
       a {
         font-weight: normal;
@@ -29,5 +30,4 @@
       font-style: italic;
     }
   }
-
 }

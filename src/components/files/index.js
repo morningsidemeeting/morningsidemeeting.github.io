@@ -32,6 +32,13 @@ const BackgroundHeader = ({ className, fileType, children }) => {
             }
           }
         }
+        folder: file(relativePath: { eq: "folder2.png" }) {
+          childImageSharp {
+            fluid(quality: 90, maxWidth: 100) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
       }
       fragment childImgFields on ImageSharp {
         fluid(quality: 90, maxWidth: 100) {
@@ -160,8 +167,12 @@ const Files = ({
       case "application/msword":
         fileType = "doc";
         break;
+      case "application/vnd.google-apps.folder":
+        fileType = "folder";
+        break;
       default:
         fileType = "unknown";
+        console.log("unknown file type: " + mimeType);
         break;
     }
     return (
