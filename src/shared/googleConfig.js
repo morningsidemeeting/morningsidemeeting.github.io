@@ -36,7 +36,7 @@ export const FOLDER_IDS = {
   communications: "12_ZPd3N84heC06hrvSsFn8tE64j7ZU2W",
   memorial: "1fIB8s7CI63ciUCCBDTgF5LlkbOkq7DUO",
   finance: "1MesiigW0LZYJZgV3u_du8epwl8YrU4Y_",
-  nominating: "1a8oMnw4AWrftx7UyWnkIhCVywHYuLDtV",
+  nominating: "1e_uZgTiT-rP4-n9JessQ3pIBK3tbxlvm",
   "ministry-and-council": "1VLdXbkA2uooLagl_0QZ6CZZXyYG3KiUJ",
   "library-committee": "1fQWsN9NEOkBwB9_vsCa_SY7OtAQQvvfo",
   "nature-committee": "1SA6bws7hg_FP-jo6rYUegK1mb7Z7W07z",
