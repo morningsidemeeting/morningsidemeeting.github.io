@@ -21,10 +21,7 @@ export default function CommitteePage() {
         <li>Meets as needed, but more frequently in the fall.</li>
 
         <li>
-          Maintains a list of Morningside's committees and committee members.{" "}
-          <a href="https://docs.google.com/document/d/1htUHfddUgkzozc7lJTdEo2ni7waP8zAE/edit?usp=sharing&ouid=112910771868621173207&rtpof=true&sd=true">
-            The current list can be found here.
-          </a>
+          Maintains a list of Morningside's committees and committee members.
         </li>
 
         <li>
