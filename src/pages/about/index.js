@@ -38,12 +38,10 @@ const AboutPage = () => (
         discussion groups on a wide variety of topics.
       </p>
       <p>
-        It is believed that Morningside was the first Meeting anywhere to take a
+        Morningside was one of the first meetings in North America to take a
         same-sex marriage under its care with the marriage of John Bohne and
-        William McCann on May 30, 1987. Other meetings had held “Ceremonies of
-        Commitment” for same-sex couples, but Morningside was the first to
-        affirm the right of all couples to name their relationships as they
-        choose.
+        William McCann on May 30, 1987. Morningside was also the first to affirm
+        the right of all couples to name their relationships as they choose.
       </p>
       <p>
         Support committees for those among us who are facing personal
