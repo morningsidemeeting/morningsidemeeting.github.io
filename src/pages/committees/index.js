@@ -90,7 +90,7 @@ const CommitteesPage = ({ data }) => {
         <h3>Committee Pages</h3>
         {renderCommitteePagesList()}
 
-        <h3>All Positions &amp; committee members for 2021</h3>
+        <h3>All Positions &amp; committee members for 2022</h3>
 
         <p>
           Committees have either a clerk for a long standing committee such as
@@ -122,7 +122,13 @@ const CommitteesPage = ({ data }) => {
           staggered terms.
         </p>
 
-        {renderCommitteesAndNominees()}
+        <p>
+          <em>
+            The full list of committee members, as approved at the called
+            meeting for worship with a concern for business on January 9, 2022,
+            will be posted here soon.
+          </em>
+        </p>
       </section>
     </CoreLayout>
   );
