@@ -8,6 +8,7 @@ const links = [
   ["Committees", "/committees"],
   ["Documents", "/newsletters"],
   ["Contact", "/contact"],
+  ["Donate", "/donate"],
 ];
 
 const MainNav = () => <Nav links={links} isPrimary={true} />;
