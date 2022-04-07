@@ -13,6 +13,8 @@ export const DISCOVERY_DOCS = [
 export const SHARE_DOCS_FORM_URL = "https://forms.gle/N5ifGKS6FoTYsZEK7";
 export const SHARE_POSTS_FORM_EMBEDDED_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSduWq8tRwHnHzr4_BFJ4v89ZYL6okhw31pAqawNUSDHpGsvGw/viewform?embedded=true";
+export const CONTACT_DB_FORM_EMBEDDED_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSdxCRBnPA2M6xBOgDgvAU_80ehB7n4xDDNbqy1kOUKcM4RFDg/viewform?embedded=true";
 
 // CALENDARS
 

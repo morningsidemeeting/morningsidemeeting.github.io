@@ -1,5 +1,6 @@
 import React from "react";
 import CoreLayout from "../../components/coreLayout";
+import CallToAction from "../../components/callToAction";
 import Styles from "./contact.module.scss";
 import SEO from "../../components/seo";
 
@@ -7,22 +8,12 @@ const AboutPage = () => (
   <CoreLayout withSubtitle={false}>
     <SEO title="Contact" />
     <section className={Styles.contact}>
+      <h3>General Information</h3>
       <p>
         For all inquiries, please email our main address:{" "}
         <a href="mailto:morningsidequakermeeting@gmail.com">
           morningsidequakermeeting@gmail.com
         </a>
-      </p>
-
-      <p>
-        The website's "Friend Finder" has been temporarily disabled. A directory
-        is available, however, for members of Morningside Meeting to contact
-        each other. If you would like a copy of the directory or need to reach
-        another member of the meeting, please contact{" "}
-        <a href="mailto:morningsidequakermeeting@gmail.com">
-          morningsidequakermeeting@gmail.com
-        </a>
-        .
       </p>
 
       <p>
@@ -38,8 +29,38 @@ const AboutPage = () => (
         walk one block east on 120 Street and turn left. The Claremont Avenue
         entrance is on the west side of the street.
       </p>
+    </section>
 
-      <h3>Directions</h3>
+    <section className={Styles.contact}>
+      <h3>Member and Attender Contacts</h3>
+
+      <p>
+        Morningside Monthly Meeting maintains a spreadsheet of contact
+        information to help members and attenders communicate with each other.
+        If you'd like access to view it online, please fill out and submit the
+        form below.
+      </p>
+
+      <CallToAction path="/contact/database">
+        Add Me to Morningside Meeting Contacts
+        <br />
+        (or Update My Information)
+      </CallToAction>
+
+      <p>
+        A standard directory also is available for members and attenders of
+        Morningside Meeting to contact each other. If you would like a copy of
+        the directory or need to reach another member of the meeting, please
+        contact{" "}
+        <a href="mailto:morningsidequakermeeting@gmail.com">
+          morningsidequakermeeting@gmail.com
+        </a>
+        .
+      </p>
+    </section>
+
+    <section className={Styles.contact}>
+      <h3>Directions to Riverside Church</h3>
 
       <p>
         <strong>By Subway</strong>Take the IRT Broadway Local train (#1) to the
