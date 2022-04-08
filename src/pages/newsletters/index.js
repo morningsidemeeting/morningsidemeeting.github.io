@@ -40,7 +40,7 @@ export default function NewslettersPage() {
           organizations, upcoming events, Meeting-sponsored projects, book
           reviews, etc. Articles and pictures are welcome. The deadline for the
           newsletter is the Sunday of the Meeting for Worship with a Concern for
-          Business. Please e-mail your material in Word or text format to
+          Business. Please e-mail your material in Word or text format to{" "}
           <a href="mailto:morningsidequakermeeting@gmail.com">
             morningsidequakermeeting@gmail.com
           </a>{" "}
