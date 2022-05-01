@@ -14,8 +14,8 @@ const DonatePage = ({ data }) => (
         activities, and worship.
       </p>
       <p>
-        You can make a one-time or recurring donation with PayPal by either
-        clicking on the Donate button or scanning the QR code below.
+        You can make a one-time or recurring donation online by either clicking
+        on the Donate button or scanning the QR code below.
       </p>
       <p>If you prefer to donate with a check, please send it to:</p>
       <p>
@@ -28,11 +28,12 @@ const DonatePage = ({ data }) => (
       </p>
     </section>
     <section>
-      <h3>Donate with PayPal</h3>
+      <h3>Donate Online</h3>
       <p>
         <em>
           Please note that clicking on the Donate button will redirect you to
-          our form on PayPal.
+          our form on PayPal; a PayPal account is <strong>not</strong> required
+          to donate, however.
         </em>
       </p>
       <div className="donate-container">
