@@ -22,8 +22,6 @@ const committeeLinks = {
 };
 
 const CommitteesPage = ({ data }) => {
-  const committees = data.allCommittees2021Csv.edges;
-
   function renderCommitteePagesList() {
     const alphaCommittees = Object.keys(committeeLinks).sort((aName, bName) => {
       if (aName > bName) {
@@ -40,35 +38,6 @@ const CommitteesPage = ({ data }) => {
           return (
             <li key={`committee-${i}`}>
               <Link to={committeeLinks[name]}>{name}</Link>
-            </li>
-          );
-        })}
-      </ul>
-    );
-  }
-
-  function renderCommitteesAndNominees() {
-    return (
-      <ul className={Styles.committeeList}>
-        {committees.map(({ node: committee }, i) => {
-          const {
-            Position: name,
-            Nominees: members,
-            Responsibilities: responsibilities,
-          } = committee;
-          const committeePage = committeeLinks[name];
-          const committeeEl = committeePage ? (
-            <Link to={committeePage}>{name}</Link>
-          ) : (
-            <strong>{name}</strong>
-          );
-          return (
-            <li key={`committee-${i}`}>
-              {committeeEl}
-              <p className={Styles.nominees}>{members}</p>
-              {responsibilities.split("\n\n").map((text, i) => (
-                <p key={`committee-p-${i}`}>{text}</p>
-              ))}
             </li>
           );
         })}
