@@ -54,12 +54,18 @@ const CommitteesPage = ({ data }) => {
     return (
       <Fragment>
         <table>
-          <thead></thead>
+          <thead>
+            <tr>
+              <th colSpan={2} className={Styles.ncp}>
+                Non-Committee Positions
+              </th>
+            </tr>
+          </thead>
           <tbody>
             {nonCommitteePositions.map(([Position, Member], i) => {
               return (
                 <tr key={`ncps-${i}`}>
-                  <td>{Position}</td>
+                  <td className={Styles.cmte}>{Position}</td>
                   <td>{Member}</td>
                 </tr>
               );
@@ -69,21 +75,39 @@ const CommitteesPage = ({ data }) => {
         <table>
           <thead>
             <tr>
-              <th>Committee</th>
+              <th className={Styles.cmte}>Committee</th>
               <th>Members</th>
             </tr>
           </thead>
           <tbody>
-            {alphaCommittees.map((name, i) => {
-              const members = membersByCommittee[name];
+            {alphaCommittees.reduce((acc, name, i) => {
+              membersByCommittee[name].forEach((member, j) => {
+                let row;
+                const key = `cms-${i}-${j}`;
+                if (j == 0) {
+                  row = (
+                    <tr key={key}>
+                      <td
+                        className={Styles.cmte}
+                        rowSpan={membersByCommittee[name].length}
+                      >
+                        {name}
+                      </td>
+                      <td>{member}</td>
+                    </tr>
+                  );
+                } else {
+                  row = (
+                    <tr key={key}>
+                      <td>{member}</td>
+                    </tr>
+                  );
+                }
+                acc.push(row);
+              });
 
-              return (
-                <tr key={`cms-${i}`}>
-                  <td>{name}</td>
-                  <td>{members.join("<br/>")}</td>
-                </tr>
-              );
-            })}
+              return acc;
+            }, [])}
           </tbody>
         </table>
       </Fragment>

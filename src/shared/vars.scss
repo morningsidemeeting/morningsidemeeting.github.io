@@ -5,3 +5,15 @@ $fullMaxWidth: 800px;
 $maxColWidth: 600px;
 $bodyFontSize: 18px;
 $footerFontSize: 16px;
+
+@mixin media($width) {
+  @media only screen and (min-width: $width) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @include media(480px) {
+    @content;
+  }
+}
