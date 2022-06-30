@@ -1,6 +1,6 @@
 import React from "react";
+import { graphql } from "gatsby";
 import CoreLayout from "../../components/coreLayout";
-// import Nav from "../../components/nav/about";
 import SEO from "../../components/seo";
 import Img from "gatsby-image";
 

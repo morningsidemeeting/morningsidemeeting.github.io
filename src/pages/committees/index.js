@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import CoreLayout from "../../components/coreLayout";
 import Styles from "./committees.module.scss";
 import { Link } from "gatsby";
@@ -22,6 +22,74 @@ const committeeLinks = {
 };
 
 const CommitteesPage = ({ data }) => {
+  function renderCommitteeMembersGrid() {
+    const allMembers = data.allCommitteeMembersCsv.edges.map(
+      ({ node }) => node
+    );
+    const nonCommitteePositions = [];
+    const membersByCommittee = {};
+    allMembers.forEach(({ Committee, Position, Member }) => {
+      if (Committee) {
+        if (!membersByCommittee[Committee]) {
+          membersByCommittee[Committee] = [];
+        }
+        membersByCommittee[Committee].push(
+          Position ? `${Member} (${Position})` : Member
+        );
+      } else {
+        nonCommitteePositions.push([Position, Member]);
+      }
+    });
+    const alphaCommittees = Object.keys(membersByCommittee).sort(
+      (aName, bName) => {
+        if (aName > bName) {
+          return 1;
+        } else if (aName < bName) {
+          return -1;
+        } else {
+          return 0;
+        }
+      }
+    );
+    return (
+      <Fragment>
+        <table>
+          <thead></thead>
+          <tbody>
+            {nonCommitteePositions.map(([Position, Member], i) => {
+              return (
+                <tr key={`ncps-${i}`}>
+                  <td>{Position}</td>
+                  <td>{Member}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+        <table>
+          <thead>
+            <tr>
+              <th>Committee</th>
+              <th>Members</th>
+            </tr>
+          </thead>
+          <tbody>
+            {alphaCommittees.map((name, i) => {
+              const members = membersByCommittee[name];
+
+              return (
+                <tr key={`cms-${i}`}>
+                  <td>{name}</td>
+                  <td>{members.join("<br/>")}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </Fragment>
+    );
+  }
+
   function renderCommitteePagesList() {
     const alphaCommittees = Object.keys(committeeLinks).sort((aName, bName) => {
       if (aName > bName) {
@@ -98,19 +166,21 @@ const CommitteesPage = ({ data }) => {
             will be posted here soon.
           </em>
         </p>
+        {renderCommitteeMembersGrid()}
       </section>
     </CoreLayout>
   );
 };
 
 export const query = graphql`
-  query {
-    allCommittees2021Csv {
+  query MyQuery {
+    allCommitteeMembersCsv {
       edges {
         node {
+          id
+          Committee
           Position
-          Nominees
-          Responsibilities
+          Member
         }
       }
     }
