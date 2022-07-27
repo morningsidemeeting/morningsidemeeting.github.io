@@ -18,7 +18,7 @@ export default function CommitteePage() {
           Business Meeting, for final approval in January.
         </li>
 
-        <li>Meets as needed, but more frequently in the fall.</li>
+        <li>Meets as needed, but more frequently in the Fall.</li>
 
         <li>
           Maintains a list of Morningside's committees and committee members.
