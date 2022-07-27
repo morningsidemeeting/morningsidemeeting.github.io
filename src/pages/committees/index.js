@@ -6,19 +6,19 @@ import { graphql } from "gatsby";
 import SEO from "../../components/seo";
 
 const committeeLinks = {
-  "Peace and Social Concerns Committee": "/peace-and-social-concerns",
-  "Communications and Website Committee": "/communications",
-  "Finance Committee": "/finance",
-  "Nominating Committee": "/nominating",
+  "Peace and Social Concerns": "/peace-and-social-concerns",
+  "Communications and Website": "/communications",
+  Finance: "/finance",
+  Nominating: "/nominating",
   "Ministry and Counsel": "/ministry-and-counsel",
-  "Library Committee": "/library-committee",
+  Library: "/library-committee",
   "Friends’ Committee on Unity with Nature (Friends Earthcare Witness)":
     "/nature-committee",
-  "First Day Caregivers": "/first-day-caregivers",
-  "Hospitality Committee": "/hospitality-committee",
+  "Caregivers for Meeting with Children": "/first-day-caregivers",
+  Hospitality: "/hospitality-committee",
   "ARCH representative": "/arch",
-  "Riverside Space Committee": "/riverside-space-committee",
-  "Committee for Prison Ministry": "/prison-committee",
+  "Riverside Space": "/riverside-space-committee",
+  "Prison Ministry": "/prison-committee",
 };
 
 const CommitteesPage = ({ data }) => {
@@ -86,12 +86,16 @@ const CommitteesPage = ({ data }) => {
                 const key = `cms-${i}-${j}`;
                 if (j == 0) {
                   row = (
-                    <tr key={key}>
+                    <tr key={key} className={Styles.cmte}>
                       <td
                         className={Styles.cmte}
                         rowSpan={membersByCommittee[name].length}
                       >
-                        {name}
+                        {committeeLinks[name] ? (
+                          <Link to={committeeLinks[name]}>{name}</Link>
+                        ) : (
+                          <span>{name}</span>
+                        )}
                       </td>
                       <td>{member}</td>
                     </tr>
@@ -129,7 +133,8 @@ const CommitteesPage = ({ data }) => {
         {alphaCommittees.map((name, i) => {
           return (
             <li key={`committee-${i}`}>
-              <Link to={committeeLinks[name]}>{name}</Link>
+              committeeLinks[name] ?{" "}
+              <Link to={committeeLinks[name]}>{name}</Link> : {name}
             </li>
           );
         })}
@@ -147,11 +152,6 @@ const CommitteesPage = ({ data }) => {
           Relief Committee with three members, activities in Quakerism are
           accomplished through Committees.
         </p>
-
-        <h3>Committee Pages</h3>
-        {renderCommitteePagesList()}
-
-        <h3>All Positions &amp; committee members for 2022</h3>
 
         <p>
           Committees have either a clerk for a long standing committee such as

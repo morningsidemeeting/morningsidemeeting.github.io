@@ -75,7 +75,9 @@
   }
 
   p,
-  li {
+  li,
+  th,
+  td {
     font-family: $bodyFontFamily;
     font-size: $bodyFontSize;
   }

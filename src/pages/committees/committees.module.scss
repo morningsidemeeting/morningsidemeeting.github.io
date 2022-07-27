@@ -40,10 +40,15 @@
 table {
   border-collapse: collapse;
   width: 100%;
+  margin-bottom: 40px;
+  tr.cmte td {
+    // border-top: 1px solid #ddd;
+    padding-top: 25px;
+  }
   th,
   td {
     text-align: left;
-    padding: 5px 0 5px 10px;
+    padding: 5px 0 5px 20px;
     vertical-align: top;
     &.cmte {
       padding-left: 0;
