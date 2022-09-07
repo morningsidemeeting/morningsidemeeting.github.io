@@ -89,6 +89,7 @@ const UrgentCallPage = () => (
       </ol>
     </section>
     <section>
+      <h2>Possible Actions</h2>
       <h3>Defending Truth</h3>
       <p>
         We urge all Friends to discern the deep truths that provide a foundation
