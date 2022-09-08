@@ -109,20 +109,6 @@ const UrgentCallPage = () => (
           Equality and Justice for All We urge Friends to act for equality and
           equity within our diverse society:
         </li>
-        <li>
-          Join or support organizations led by people of color which are working
-          for the empowerment of black, brown, indigenous and Asian people and
-          communities.
-        </li>
-        <li>
-          Speak, write, and protest in support for full equality of all people
-          in American society, whatever their racial or sexual identity, gender,
-          or class.
-        </li>
-        <li>
-          Support legislative and economic changes that would lead to actual
-          equity among all peoples.
-        </li>
       </ul>
       <h3>Working for True Equality and Justice for All</h3>
       <p>
