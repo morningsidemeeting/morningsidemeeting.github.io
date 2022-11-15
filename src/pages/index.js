@@ -24,9 +24,9 @@ const HomePage = ({ data }) => {
         <p>
           We gather for silent worship every First Day (Sunday) morning at 11
           o’clock. Traditionally, we meet at Riverside Church in Manhattan.
-          Currently we hold hybrid meetings, with most members attending via
-          Zoom and a small number gathering together and connecting from
-          Riverside. All are welcome.
+          Currently we hold hybrid meetings, with some members attending via
+          Zoom and others gathering together and connecting from Riverside. All
+          are welcome.
         </p>
 
         {currentAnnouncement ? (
