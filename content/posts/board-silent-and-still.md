@@ -1,15 +1,19 @@
 ---
-title: What is Silent and Still—it's music and movement!
-date: 2023-03-03
+title: Life After COVID Worship in our Cemetery
+date: 2023-05-28
 tags: [board]
 ---
 
 Charlene Ray writes:
 
-What is Silent and Still? It is a dance/music opportunity—but how can it be silent and still if it is music and movement? Come and find out! Brooklyn Meetinghouse, March 19!
+Most of our lives we live on a conveyer belt. Like a piece of luggage, we go round and round, until someone claims us. Once we are off, we go home, to some place familiar, or we might explore the world around and within us. In essence, we claim ourselves, have a plan, a vision if you will.
 
-Being brought to us by the work of Concern for Quaker Living (“CLQ”) of NYQM, we hope that this movement and music will bring us into the Spring and new/renewed relationships with spirit, each other and our world. Bring snacks to share at intermission.
+What if that experience of living, of discovery, is exacerbated by a dense persistent fog? That is what it has felt like during this covid pandemic for many of us.
 
-Use this link to find out more about the program and the performers and to sign up: https://www.groupmuse.com/events/13117-silent-and-still. With the code, quaker, you can bypass the Groupmuse $5 fee. While the program is offered free, we will be asking for donations that go directly to the performers ($20 per person is suggested).
+Let us gather in worship, share what we have experienced, have learned, gained and lost, and are looking forward to. For more about the Cemetery and a map go to http://www.nycquakers.org/resources/cemetery
 
-Silent and Still, March 19, 2:30pm, 110 Schermerhorn St, Brooklyn. Hope to see you there! https://www.groupmuse.com/events/13117-silent-and-still.
+Come to the Cemetery on Saturday, June 3rd at 10:30 to share, to eat and to enjoy each other’s company. Worship sharing starts at 11:00-12:00, followed by a potluck lunch.
+
+And if it is raining, come to 110 Schermerhorn, Brooklyn Friends Meetinghouse.
+
+_Sponsored by NYQM Concern for Quaker Living and Cemetery Committee_
