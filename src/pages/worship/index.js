@@ -11,12 +11,11 @@ const WorshipPage = () => (
       <h2>Weekly Meeting for Worship</h2>
       <p>
         Traditionally, we have gathered for worship each First Day (Sunday) at
-        11:00am on the 12th floor of the tower in Riverside Church in New York
-        City. In March 2020, meeting for worship was moved entirely online in
-        response to the COVID-19 pandemic. In November 2020, arrangements were
-        made for up to 20 Friends and attenders to meet for in-person worship on
-        the 20th floor of the tower of Riverside Church, where we join in
-        blended worship with those attending online.
+        11:00am in Riverside Church in New York City. In March 2020, meeting for
+        worship was moved entirely online in response to the COVID-19 pandemic.
+        Today, Friends and attenders meet for in-person worship on the 12th
+        floor of the tower of Riverside Church, where we join in blended worship
+        with those attending online.
       </p>
       <p>Our weekly worship adheres to the following pattern:</p>
       <h3>Worship</h3>
@@ -24,7 +23,7 @@ const WorshipPage = () => (
         Unprogrammed Quaker worship follows from our belief that each of us is
         capable of a direct, unmediated experience of the Eternal Presence. It
         is characterized by a deep and expectant silence, during which each
-        worshipper aims to free her/himself from the distractions of daily life.
+        worshiper aims to free her/himself from the distractions of daily life.
         This “centering down” allows us to be more fully alive to the Spirit.
         Occasionally, out of this silence, one or more individuals may be led to
         rise and share a message discerned to be intended for all those
@@ -33,7 +32,7 @@ const WorshipPage = () => (
         message with a period of silence.
       </p>
       <p>
-        Traditionally, meeting for worship begins when the first worshipper
+        Traditionally, meeting for worship begins when the first worshiper
         enters the room and begins to settle into the Silence; its conclusion is
         signaled by a handshake initiated by the meeting coordinator. As a
         blended meeting, those attending online begin to sign in at 10:45 a.m.,
