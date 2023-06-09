@@ -6,10 +6,18 @@ import { Link } from "gatsby";
 export default function CommitteePage() {
   return (
     <Committee title={title} basePath={basePath}>
-      <p>
-        Committee description coming soon. Please see the main{" "}
-        <Link to="/committees">Committees page</Link> for more details.
-      </p>
+      <ul>
+        <li>
+          Recruits volunteers to prepare simple refreshments for after Meeting,
+          and forwards list of volunteers to Newsletter Committee
+        </li>
+        <li>Keeps track of and replenishes general supplies such as cups</li>
+        <li>Greets newcomers and visitors to the Meeting</li>
+        <li>
+          Prepares special literature for an Inquirers’ table and speaks with
+          visitors to the table after Meeting for Worship
+        </li>
+      </ul>
     </Committee>
   );
 }
