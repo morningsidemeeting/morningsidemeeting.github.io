@@ -27,29 +27,21 @@ const LibraryPage = ({ data }) => {
     console.log(allBooks);
     return (
       <Fragment>
-        <table>
-          <thead>
-            <tr>
-              <th>Author</th>
-              <th>Title</th>
-              <th>Shelving Category</th>
-              <th>Descriptors</th>
-            </tr>
-          </thead>
-          <tbody>
-            {allBooks.map((book, i) => {
-              const { Author, Title, Category, Descriptors } = book;
-              return (
-                <tr key={`book-${i}`}>
-                  <td>{Author}</td>
-                  <td>{Title}</td>
-                  <td>{Category}</td>
-                  <td>{Descriptors}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+        <ol>
+          {allBooks.map((book, i) => {
+            const { Author, Title, Category, Descriptors } = book;
+            return (
+              <li key={`book-${i}`}>
+                <header>{Title}</header>
+                <div className={Styles.author}>{Author}</div>
+                <div className={Styles.category}>{Category}</div>
+                <ul>
+                  <li>{Descriptors}</li>
+                </ul>
+              </li>
+            );
+          })}
+        </ol>
       </Fragment>
     );
 
