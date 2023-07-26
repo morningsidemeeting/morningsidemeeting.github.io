@@ -24,7 +24,28 @@ const committeeLinks = {
 const LibraryPage = ({ data }) => {
   function renderCatalogGrid() {
     const allBooks = data.allLibraryCatalogCsv.edges.map(({ node }) => node);
-    console.log(allBooks);
+    const booksByCategory = allBooks.reduce((acc, { Category, id }, i) => {
+      const majorCategoryMatch = Category.match(/(^\w+)\/([\w\s]+)/);
+      if (majorCategoryMatch) {
+        console.log(majorCategoryMatch);
+      }
+      const majorCategory =
+        Category.indexOf("b-") == 0 ? "Biography" : Category;
+      const subCategory = "";
+      if (!acc[majorCategory]) {
+        acc[majorCategory] = {
+          books: [id],
+          subCategories: {
+            [subCategory]: { books: [id] },
+          },
+        };
+      } else {
+        acc[majorCategory].books.push(id);
+      }
+      return acc;
+    }, {});
+    const categories = Object.keys(booksByCategory);
+    // console.log(booksByCategory);
     return (
       <Fragment>
         <ol>
@@ -42,97 +63,6 @@ const LibraryPage = ({ data }) => {
             );
           })}
         </ol>
-      </Fragment>
-    );
-
-    const nonCommitteePositions = [];
-    const membersByCommittee = {};
-    allMembers.forEach(({ Committee, Position, Member }) => {
-      if (Committee) {
-        if (!membersByCommittee[Committee]) {
-          membersByCommittee[Committee] = [];
-        }
-        membersByCommittee[Committee].push(
-          Position ? `${Member} (${Position})` : Member
-        );
-      } else {
-        nonCommitteePositions.push([Position, Member]);
-      }
-    });
-    const alphaCommittees = Object.keys(membersByCommittee).sort(
-      (aName, bName) => {
-        if (aName > bName) {
-          return 1;
-        } else if (aName < bName) {
-          return -1;
-        } else {
-          return 0;
-        }
-      }
-    );
-    return (
-      <Fragment>
-        <table>
-          <thead>
-            <tr>
-              <th colSpan={2} className={Styles.ncp}>
-                Non-Committee Positions
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {nonCommitteePositions.map(([Position, Member], i) => {
-              return (
-                <tr key={`ncps-${i}`}>
-                  <td className={Styles.cmte}>{Position}</td>
-                  <td>{Member}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-        <table>
-          <thead>
-            <tr>
-              <th className={Styles.cmte}>Committee</th>
-              <th>Members</th>
-            </tr>
-          </thead>
-          <tbody>
-            {alphaCommittees.reduce((acc, name, i) => {
-              membersByCommittee[name].forEach((member, j) => {
-                let row;
-                const key = `cms-${i}-${j}`;
-                if (j == 0) {
-                  row = (
-                    <tr key={key} className={Styles.cmte}>
-                      <td
-                        className={Styles.cmte}
-                        rowSpan={membersByCommittee[name].length}
-                      >
-                        {committeeLinks[name] ? (
-                          <Link to={committeeLinks[name]}>{name}</Link>
-                        ) : (
-                          <span>{name}</span>
-                        )}
-                      </td>
-                      <td>{member}</td>
-                    </tr>
-                  );
-                } else {
-                  row = (
-                    <tr key={key}>
-                      <td>{member}</td>
-                    </tr>
-                  );
-                }
-                acc.push(row);
-              });
-
-              return acc;
-            }, [])}
-          </tbody>
-        </table>
       </Fragment>
     );
   }
