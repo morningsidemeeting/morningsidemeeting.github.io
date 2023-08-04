@@ -1,37 +1,60 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
+import Fuse from "fuse.js";
 import CoreLayout from "../../components/coreLayout";
 import Styles from "./library.module.scss";
-import { Link } from "gatsby";
+// import { Link } from "gatsby";
 import { graphql } from "gatsby";
 import SEO from "../../components/seo";
 
-const committeeLinks = {
-  "Peace and Social Concerns": "/peace-and-social-concerns",
-  "Communications and Website": "/communications",
-  Finance: "/finance",
-  Nominating: "/nominating",
-  "Ministry and Counsel": "/ministry-and-counsel",
-  Library: "/library-committee",
-  "Friends’ Committee on Unity with Nature (Friends Earthcare Witness)":
-    "/nature-committee",
-  "Caregivers for Meeting with Children": "/first-day-caregivers",
-  Hospitality: "/hospitality-committee",
-  "ARCH representative": "/arch",
-  "Riverside Space": "/riverside-space-committee",
-  "Prison Ministry": "/prison-committee",
-};
-
 const LibraryPage = ({ data }) => {
+  const [selectedCategory, setSelectedCategory] = useState();
+
+  function selectCategory(e) {
+    console.log(e.currentTarget.textContent);
+    setSelectedCategory(e.currentTarget.textContent);
+  }
+
   function renderCatalogGrid() {
     const allBooks = data.allLibraryCatalogCsv.edges.map(({ node }) => node);
+    const fuseOptions = {
+      // isCaseSensitive: false,
+      // includeScore: false,
+      // shouldSort: true,
+      // includeMatches: false,
+      // findAllMatches: false,
+      // minMatchCharLength: 1,
+      // location: 0,
+      // threshold: 0.6,
+      // distance: 100,
+      // useExtendedSearch: false,
+      // ignoreLocation: false,
+      // ignoreFieldNorm: false,
+      // fieldNormWeight: 1,
+      keys: ["Title", "Author", "Category"],
+    };
+    const fuse = new Fuse(allBooks, fuseOptions);
+
+    // console.log(allBooks[0]);
+    // console.log(fuse.search("quaker"));
+
+    const catMatchA = /(^\w+)\/([\w\s]+)/;
+    const catMatchB = /^b\-(\w+)\/*([\w\s]*)/;
     const booksByCategory = allBooks.reduce((acc, { Category, id }, i) => {
-      const majorCategoryMatch = Category.match(/(^\w+)\/([\w\s]+)/);
-      if (majorCategoryMatch) {
-        console.log(majorCategoryMatch);
+      let majorCategory = "";
+      let subCategory = "";
+      let catMatches;
+      if ((catMatches = Category.match(catMatchA))) {
+        majorCategory = catMatches[1];
+        subCategory = catMatches[2];
+      } else if ((catMatches = Category.match(catMatchB))) {
+        majorCategory = `Biography (${catMatches[1]})`;
+        subCategory = catMatches[2];
+      } else if (Category.indexOf("P&SC") === 0) {
+        majorCategory = "Peace & Social Concerns";
+        subCategory = Category.substr(5);
+      } else {
+        majorCategory = Category;
       }
-      const majorCategory =
-        Category.indexOf("b-") == 0 ? "Biography" : Category;
-      const subCategory = "";
       if (!acc[majorCategory]) {
         acc[majorCategory] = {
           books: [id],
@@ -42,25 +65,37 @@ const LibraryPage = ({ data }) => {
       } else {
         acc[majorCategory].books.push(id);
       }
+      allBooks[i].majorCategory = majorCategory;
+      allBooks[i].subCategory = subCategory;
       return acc;
     }, {});
+    // console.log(allBooks[0]);l
     const categories = Object.keys(booksByCategory);
-    // console.log(booksByCategory);
     return (
       <Fragment>
-        <ol>
+        {selectedCategory ? "" : ""}
+        <ol className={Styles.bookList}>
           {allBooks.map((book, i) => {
-            const { Author, Title, Category, Descriptors } = book;
-            return (
-              <li key={`book-${i}`}>
-                <header>{Title}</header>
+            const { Author, Title, majorCategory, subCategory, Descriptors } =
+              book;
+            return !selectedCategory ||
+              (selectedCategory && selectedCategory == majorCategory) ? (
+              <li key={`book-${i}`} className={Styles.book}>
+                <div className={Styles.title}>{Title}</div>
                 <div className={Styles.author}>{Author}</div>
-                <div className={Styles.category}>{Category}</div>
-                <ul>
-                  <li>{Descriptors}</li>
-                </ul>
+                <div className={Styles.category}>
+                  <span onClick={selectCategory}>{majorCategory}</span>
+                  {subCategory ? ` — ${subCategory}` : ""}
+                </div>
+                {Descriptors ? (
+                  <ul className={Styles.descriptors}>
+                    <li>{Descriptors}</li>
+                  </ul>
+                ) : (
+                  ""
+                )}
               </li>
-            );
+            ) : null;
           })}
         </ol>
       </Fragment>
