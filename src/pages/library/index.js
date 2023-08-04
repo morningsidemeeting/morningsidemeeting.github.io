@@ -10,8 +10,11 @@ const LibraryPage = ({ data }) => {
   const [selectedCategory, setSelectedCategory] = useState();
 
   function selectCategory(e) {
-    console.log(e.currentTarget.textContent);
     setSelectedCategory(e.currentTarget.textContent);
+  }
+
+  function deselectCategory(e) {
+    setSelectedCategory(null);
   }
 
   function renderCatalogGrid() {
@@ -73,7 +76,21 @@ const LibraryPage = ({ data }) => {
     const categories = Object.keys(booksByCategory);
     return (
       <Fragment>
-        {selectedCategory ? "" : ""}
+        <form>
+          <select name="categories">
+            {categories.map((category) => {
+              return <option value={category}>{category}</option>;
+            })}
+          </select>
+        </form>
+        <ul className={Styles.filters}>
+          {selectedCategory ? (
+            <li onClick={deselectCategory}>Category: {selectedCategory}</li>
+          ) : (
+            ""
+          )}
+        </ul>
+
         <ol className={Styles.bookList}>
           {allBooks.map((book, i) => {
             const { Author, Title, majorCategory, subCategory, Descriptors } =
