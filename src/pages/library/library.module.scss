@@ -41,7 +41,8 @@
   display: inline-block;
   background-color: #ddd;
   padding: 5px 10px;
-  border-radius: 3px;
+  margin-right: 5px;
+  border-radius: 8px;
   &::after {
     content: "x";
     padding-left: 5px;
