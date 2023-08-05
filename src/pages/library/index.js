@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useRef } from "react";
 import Fuse from "fuse.js";
 import CoreLayout from "../../components/coreLayout";
 import Styles from "./library.module.scss";
@@ -8,9 +8,14 @@ import SEO from "../../components/seo";
 
 const LibraryPage = ({ data }) => {
   const [selectedCategory, setSelectedCategory] = useState();
+  const categorySelect = useRef();
 
   function selectCategory(e) {
-    setSelectedCategory(e.currentTarget.textContent);
+    const val =
+      e.target === categorySelect.current
+        ? categorySelect.current.value
+        : e.currentTarget.textContent;
+    setSelectedCategory(val);
   }
 
   function deselectCategory(e) {
@@ -36,9 +41,6 @@ const LibraryPage = ({ data }) => {
       keys: ["Title", "Author", "Category"],
     };
     const fuse = new Fuse(allBooks, fuseOptions);
-
-    // console.log(allBooks[0]);
-    // console.log(fuse.search("quaker"));
 
     const catMatchA = /(^\w+)\/([\w\s]+)/;
     const catMatchB = /^b\-(\w+)\/*([\w\s]*)/;
@@ -72,14 +74,33 @@ const LibraryPage = ({ data }) => {
       allBooks[i].subCategory = subCategory;
       return acc;
     }, {});
-    // console.log(allBooks[0]);l
-    const categories = Object.keys(booksByCategory);
+    const categories = Object.keys(booksByCategory).sort((a, b) => {
+      if (a > b) {
+        return 1;
+      } else if (b > a) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
     return (
       <Fragment>
         <form>
-          <select name="categories">
-            {categories.map((category) => {
-              return <option value={category}>{category}</option>;
+          <select
+            name="categories"
+            onChange={selectCategory}
+            ref={categorySelect}
+          >
+            {categories.map((category, i) => {
+              return (
+                <option
+                  value={category}
+                  key={`catSelect${i}`}
+                  selected={category === selectedCategory}
+                >
+                  {category}
+                </option>
+              );
             })}
           </select>
         </form>
