@@ -106,6 +106,7 @@ const LibraryPage = ({ data }) => {
   }
 
   function updateSearchField(e) {
+    console.log("update!!!", e.currentTarget.value);
     setSearchInput(e.currentTarget.value);
   }
 
