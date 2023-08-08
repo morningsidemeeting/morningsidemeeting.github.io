@@ -207,32 +207,6 @@ const LibraryPage = ({ data }) => {
             />
           </div>
         </form>
-        <ul className={Styles.filters}>
-          {searchTerm ? (
-            <li onClick={clearSearch}>
-              <span>Searching for</span>
-              <span>{searchTerm}</span>
-            </li>
-          ) : (
-            ""
-          )}
-          {selectedCategory ? (
-            <li onClick={deselectCategory}>
-              <span>Category</span>
-              <span>{selectedCategory}</span>
-            </li>
-          ) : (
-            ""
-          )}
-          {selectedAuthor ? (
-            <li onClick={deselectAuthor}>
-              <span>Author</span>
-              <span>{selectedAuthor}</span>
-            </li>
-          ) : (
-            ""
-          )}
-        </ul>
 
         <ol className={Styles.bookList}>
           {(searchResults || allBooks).map((book, i) => {
