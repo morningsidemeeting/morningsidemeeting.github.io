@@ -8,13 +8,14 @@ import SEO from "../../components/seo";
 const LibraryPage = ({ data }) => {
   const [selectedCategory, setSelectedCategory] = useState();
   const [selectedAuthor, setSelectedAuthor] = useState();
-  const [searchTerm, setSearchTerm] = useState();
-  const [searchInput, setSearchInput] = useState();
-  const [searchParams, setSearchParams] = useState([true, true]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchInput, setSearchInput] = useState("");
+  const [searchParams, setSearchParams] = useState([true, true, true]);
   const categorySelect = useRef();
   const searchField = useRef();
   const searchByAuthorCheck = useRef();
   const searchByTitleCheck = useRef();
+  const searchByTagsCheck = useRef();
 
   const catMatchA = /(^\w+)\/([\w\s]+)/;
   const catMatchB = /^b\-(\w+)\/*([\w\s]*)/;
@@ -70,15 +71,17 @@ const LibraryPage = ({ data }) => {
       findAllMatches: false,
       // minMatchCharLength: 1,
       // location: 0,
-      // threshold: 0.6,
+      threshold: 0.2,
       // distance: 100,
       // useExtendedSearch: false,
       // ignoreLocation: false,
       // ignoreFieldNorm: false,
       // fieldNormWeight: 1,
       keys: searchParams.reduce((acc, val, i) => {
+        // this is sloppy!
+        const indices = ["Author", "Title", "Descriptors"];
         if (val === true) {
-          acc.push(i === 0 ? "Author" : "Title");
+          acc.push(indices[i]);
         }
         return acc;
       }, []),
@@ -106,7 +109,6 @@ const LibraryPage = ({ data }) => {
   }
 
   function updateSearchField(e) {
-    console.log("update!!!", e.currentTarget.value);
     setSearchInput(e.currentTarget.value);
   }
 
@@ -120,9 +122,11 @@ const LibraryPage = ({ data }) => {
 
   function toggleSearchParam(e) {
     setSearchParams(
-      [searchByAuthorCheck, searchByTitleCheck].map((ref) => {
-        return ref.current.checked;
-      })
+      [searchByAuthorCheck, searchByTitleCheck, searchByTagsCheck].map(
+        (ref) => {
+          return ref.current.checked;
+        }
+      )
     );
   }
 
@@ -131,8 +135,17 @@ const LibraryPage = ({ data }) => {
     setSearchInput("");
   }
 
+  const filteredResults = (searchResults || allBooks).filter((book, i) => {
+    const { Author, Title, majorCategory, subCategory, Descriptors } = book;
+    const isFiltered =
+      (selectedCategory && selectedCategory != majorCategory) ||
+      (selectedAuthor && selectedAuthor != Author);
+    return !isFiltered;
+  });
+
+  const [searchByAuthor, searchByTitle, searchByTags] = searchParams;
+
   function renderCatalogGrid() {
-    const [searchByAuthor, searchByTitle] = searchParams;
     return (
       <Fragment>
         <form onSubmit={searchCatalog}>
@@ -177,6 +190,15 @@ const LibraryPage = ({ data }) => {
                   onChange={toggleSearchParam}
                 />{" "}
               </label>
+              <label>
+                Tags{" "}
+                <input
+                  type="checkbox"
+                  checked={searchByTags === true}
+                  ref={searchByTagsCheck}
+                  onChange={toggleSearchParam}
+                />{" "}
+              </label>
             </div>
 
             <header className={Styles.filterHead}>Category</header>
@@ -198,7 +220,6 @@ const LibraryPage = ({ data }) => {
                   );
                 })}
             </select>
-
             <input
               type="reset"
               value="Clear"
@@ -208,15 +229,14 @@ const LibraryPage = ({ data }) => {
             />
           </div>
         </form>
-
+        <p className={Styles.resultsCount}>
+          Showing {filteredResults.length} results
+        </p>
         <ol className={Styles.bookList}>
-          {(searchResults || allBooks).map((book, i) => {
+          {filteredResults.map((book, i) => {
             const { Author, Title, majorCategory, subCategory, Descriptors } =
               book;
-            const isFiltered =
-              (selectedCategory && selectedCategory != majorCategory) ||
-              (selectedAuthor && selectedAuthor != Author);
-            return !isFiltered ? (
+            return (
               <li key={`book-${i}`} className={Styles.book}>
                 <div className={Styles.title}>{Title}</div>
                 <div className={Styles.author} onClick={selectAuthor}>
@@ -228,13 +248,13 @@ const LibraryPage = ({ data }) => {
                 </div>
                 {Descriptors ? (
                   <ul className={Styles.descriptors}>
-                    <li>{Descriptors}</li>
+                    <li>Tags: {Descriptors}</li>
                   </ul>
                 ) : (
                   ""
                 )}
               </li>
-            ) : null;
+            );
           })}
         </ol>
       </Fragment>
