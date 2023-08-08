@@ -77,7 +77,9 @@
   p,
   li,
   th,
-  td {
+  td,
+  label,
+  input {
     font-family: $bodyFontFamily;
     font-size: $bodyFontSize;
   }
