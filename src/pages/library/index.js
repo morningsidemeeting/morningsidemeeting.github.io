@@ -2,7 +2,6 @@ import React, { Fragment, useState, useRef } from "react";
 import Fuse from "fuse.js";
 import CoreLayout from "../../components/coreLayout";
 import Styles from "./library.module.scss";
-// import { Link } from "gatsby";
 import { graphql } from "gatsby";
 import SEO from "../../components/seo";
 
@@ -10,8 +9,12 @@ const LibraryPage = ({ data }) => {
   const [selectedCategory, setSelectedCategory] = useState();
   const [selectedAuthor, setSelectedAuthor] = useState();
   const [searchTerm, setSearchTerm] = useState();
+  const [searchInput, setSearchInput] = useState();
+  const [searchParams, setSearchParams] = useState([true, true]);
   const categorySelect = useRef();
   const searchField = useRef();
+  const searchByAuthorCheck = useRef();
+  const searchByTitleCheck = useRef();
 
   const catMatchA = /(^\w+)\/([\w\s]+)/;
   const catMatchB = /^b\-(\w+)\/*([\w\s]*)/;
@@ -73,11 +76,15 @@ const LibraryPage = ({ data }) => {
       // ignoreLocation: false,
       // ignoreFieldNorm: false,
       // fieldNormWeight: 1,
-      keys: ["Title", "Author", "Category"],
+      keys: searchParams.reduce((acc, val, i) => {
+        if (val === true) {
+          acc.push(i === 0 ? "Author" : "Title");
+        }
+        return acc;
+      }, []),
     };
     const fuse = new Fuse(allBooks, fuseOptions);
     searchResults = fuse.search(searchTerm).map(({ item }) => item);
-    console.log(searchResults);
   }
 
   function selectCategory(e) {
@@ -85,6 +92,7 @@ const LibraryPage = ({ data }) => {
       e.target === categorySelect.current
         ? categorySelect.current.value
         : e.currentTarget.textContent;
+
     setSelectedCategory(val);
   }
 
@@ -97,47 +105,130 @@ const LibraryPage = ({ data }) => {
     setSearchTerm(searchField.current.value);
   }
 
+  function updateSearchField(e) {
+    setSearchInput(e.currentTarget.value);
+  }
+
   function deselectCategory(e) {
-    setSelectedCategory(null);
+    setSelectedCategory("");
   }
 
   function deselectAuthor(e) {
     setSelectedAuthor(null);
   }
 
+  function toggleSearchParam(e) {
+    setSearchParams(
+      [searchByAuthorCheck, searchByTitleCheck].map((ref) => {
+        return ref.current.checked;
+      })
+    );
+  }
+
+  function clearSearch() {
+    setSearchTerm("");
+    setSearchInput("");
+  }
+
   function renderCatalogGrid() {
+    const [searchByAuthor, searchByTitle] = searchParams;
     return (
       <Fragment>
         <form onSubmit={searchCatalog}>
-          <label htmlFor="categories">Category</label>
-          <select
-            name="categories"
-            onChange={selectCategory}
-            ref={categorySelect}
-          >
-            {categories.map((category, i) => {
-              return (
-                <option
-                  value={category}
-                  key={`catSelect${i}`}
-                  selected={category === selectedCategory}
-                >
-                  {category}
-                </option>
-              );
-            })}
-          </select>
-          <input type="text" ref={searchField} />
-          <input type="submit" value="Search" />
+          <div className={Styles.searchForm}>
+            <header className={Styles.searchHead}>Search</header>
+            <input
+              type="text"
+              ref={searchField}
+              value={searchInput}
+              onChange={updateSearchField}
+              className={StyleSheet.fieldCol2}
+            />
+
+            <input
+              type="submit"
+              value="Search"
+              className={StyleSheet.fieldCol3}
+            />
+            <input
+              type="reset"
+              value="Clear"
+              disabled={!searchTerm}
+              onClick={clearSearch}
+              className={StyleSheet.fieldCol4}
+            />
+            <div className={Styles.fieldCol2}>
+              <label>
+                Author{" "}
+                <input
+                  type="checkbox"
+                  checked={searchByAuthor === true}
+                  ref={searchByAuthorCheck}
+                  onChange={toggleSearchParam}
+                />{" "}
+              </label>
+              <label>
+                Title{" "}
+                <input
+                  type="checkbox"
+                  checked={searchByTitle === true}
+                  ref={searchByTitleCheck}
+                  onChange={toggleSearchParam}
+                />{" "}
+              </label>
+            </div>
+
+            <header className={Styles.filterHead}>Category</header>
+            <select
+              name="categories"
+              onChange={selectCategory}
+              ref={categorySelect}
+              value={selectedCategory}
+              className={Styles.fieldCol2}
+            >
+              <option value=""></option>
+              {categories
+                .filter((cat) => !!cat)
+                .map((category, i) => {
+                  return (
+                    <option value={category} key={`catSelect${i}`}>
+                      {category}
+                    </option>
+                  );
+                })}
+            </select>
+
+            <input
+              type="reset"
+              value="Clear"
+              disabled={!selectedCategory}
+              onClick={deselectCategory}
+              className="fieldCol3"
+            />
+          </div>
         </form>
         <ul className={Styles.filters}>
+          {searchTerm ? (
+            <li onClick={clearSearch}>
+              <span>Searching for</span>
+              <span>{searchTerm}</span>
+            </li>
+          ) : (
+            ""
+          )}
           {selectedCategory ? (
-            <li onClick={deselectCategory}>Category: {selectedCategory}</li>
+            <li onClick={deselectCategory}>
+              <span>Category</span>
+              <span>{selectedCategory}</span>
+            </li>
           ) : (
             ""
           )}
           {selectedAuthor ? (
-            <li onClick={deselectAuthor}>Author: {selectedAuthor}</li>
+            <li onClick={deselectAuthor}>
+              <span>Author</span>
+              <span>{selectedAuthor}</span>
+            </li>
           ) : (
             ""
           )}
@@ -179,7 +270,13 @@ const LibraryPage = ({ data }) => {
     <CoreLayout withSubtitle={false}>
       <SEO title="Library" />
       <section>
-        <p>This is the Library page.</p>
+        <p>
+          Morningside Monthly Meeting maintains a library containing books,
+          pamplets, and other media of interest to Quakers. It is open to all
+          before and after meeting for worship, and anyone may borrow by simply
+          leaving their contact information.
+        </p>
+        <h3>Library Catalog</h3>
         {renderCatalogGrid()}
       </section>
     </CoreLayout>
