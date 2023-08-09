@@ -3,6 +3,7 @@ import Fuse from "fuse.js";
 import CoreLayout from "../../components/coreLayout";
 import Styles from "./library.module.scss";
 import { graphql } from "gatsby";
+import Nav from "../../components/nav/about";
 import SEO from "../../components/seo";
 
 const LibraryPage = ({ data }) => {
@@ -264,7 +265,9 @@ const LibraryPage = ({ data }) => {
   return (
     <CoreLayout withSubtitle={false}>
       <SEO title="Library" />
+      <Nav />
       <section>
+        <h2>Library</h2>
         <p>
           Morningside Monthly Meeting maintains a library containing books,
           pamplets, and other media of interest to Quakers. It is open to all

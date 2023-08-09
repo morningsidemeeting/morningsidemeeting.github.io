@@ -6,9 +6,9 @@ const links = [
   ["Calendar", "/calendar"],
   ["News", "/news"],
   ["Committees", "/committees"],
+  ["Documents", "/newsletters"],
   ["Contact", "/contact"],
   ["Donate", "/donate"],
-  ["Documents", "/newsletters"],
 ];
 
 const MainNav = () => <Nav links={links} isPrimary={true} />;

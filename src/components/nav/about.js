@@ -7,6 +7,7 @@ const links = [
   ["Worship", "/worship"],
   ["Business", "/business"],
   ["Fellowship", "/fellowship"],
+  ["Library", "/library"],
 ];
 
 const AboutNav = () => <Nav links={links} />;
