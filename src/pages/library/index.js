@@ -157,20 +157,16 @@ const LibraryPage = ({ data }) => {
               ref={searchField}
               value={searchInput}
               onChange={updateSearchField}
-              className={StyleSheet.fieldCol2}
+              className={Styles.fieldCol2}
             />
 
-            <input
-              type="submit"
-              value="Search"
-              className={StyleSheet.fieldCol3}
-            />
+            <input type="submit" value="Search" className={Styles.fieldCol3} />
             <input
               type="reset"
               value="Clear"
               disabled={!searchTerm}
               onClick={clearSearch}
-              className={StyleSheet.fieldCol4}
+              className={Styles.fieldCol4}
             />
             <div className={Styles.fieldCol2}>
               <label>
