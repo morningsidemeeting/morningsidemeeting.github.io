@@ -1,7 +1,7 @@
 import React from "react";
 import CoreLayout from "../components/coreLayout";
 import Posts from "../components/posts";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import Img from "gatsby-image";
 import { columnImage } from "../components/coreLayout/coreLayout.module.scss";
 import CallToAction from "../components/callToAction";
@@ -22,11 +22,11 @@ const HomePage = ({ data }) => {
         </p>
 
         <p>
-          We gather for silent worship every First Day (Sunday) morning at 11
-          o’clock. Traditionally, we meet at Riverside Church in Manhattan.
-          Currently we hold hybrid meetings, with some members attending via
-          Zoom and others gathering together and connecting from Riverside. All
-          are welcome.
+          We gather for <Link to="worship">silent worship</Link> every First Day
+          (Sunday) morning at 11 o’clock. Traditionally, we meet at Riverside
+          Church in Manhattan. Currently we hold hybrid meetings, with some
+          members attending via Zoom and others gathering together and
+          connecting from Riverside. All are welcome.
         </p>
 
         {currentAnnouncement ? (
